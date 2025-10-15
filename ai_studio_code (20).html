@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大队候选人竞选 - 张瑞灵</title>
+    <!-- Tailwind CSS 3.0+ -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/simple.min.css" id="theme">
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tesla-red': '#E31937',
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans SC"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for Apple-like Motion & Reveal Overrides */
+        body {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); /* Orange gradient */
+            overflow: hidden;
+        }
+        #p5-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        .reveal {
+            font-family: 'Noto Sans SC', sans-serif;
+            color: #1f2937;
+        }
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+            text-transform: none;
+            font-family: inherit;
+        }
+        /* Bento Grid Base */
+        .bento-box {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .bento-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(227, 25, 55, 0.2);
+        }
+        /* Highlight Gradient Tech Feel */
+        .tech-highlight {
+            background: linear-gradient(90deg, rgba(227, 25, 55, 0.8) 0%, rgba(227, 25, 55, 0.2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Typography Constraints */
+        .eng-sub {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #6b7280;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            display: block;
+        }
+        .big-num {
+            font-size: 6rem;
+            line-height: 1;
+            font-weight: 900;
+            color: #E31937;
+        }
+        /* Animation Classes for Framer-like effect on slide change */
+        .animate-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .present .animate-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* Reveal JS reset for grids */
+        .reveal .slides section {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- P5.js Background Container -->
+    <div id="p5-container"></div>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Page 1: Cover / Introduction -->
+            <section>
+                <div class="grid grid-cols-12 gap-6 h-full items-center">
+                    <div class="col-span-12 text-center animate-up">
+                        <span class="eng-sub mb-4">Candidate Presentation</span>
+                        <h1 class="text-8xl font-black mb-2">大家好！</h1>
+                        <h2 class="text-6xl font-bold mb-6">我是 <span class="text-tesla-red">张瑞灵</span></h2>
+                        <div class="w-24 h-2 bg-tesla-red mx-auto mb-8 rounded-full"></div>
+                        <p class="text-2xl font-medium text-gray-700">
+                            带着服务的热忱和成长的积淀<br>
+                            <strong class="text-3xl text-black mt-2 block">第二次站在这里</strong>
+                        </p>
+                        <span class="eng-sub mt-4">Passion for Service & Accumulated Growth</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 2: Current Roles & Identity -->
+            <section>
+                <div class="grid grid-cols-12 grid-rows-2 gap-6 h-3/4">
+                    <div class="col-span-12 mb-4 animate-up">
+                        <h3 class="text-4xl font-bold">我的身份与担当 <span class="eng-sub inline-block ml-2">Identity & Responsibility</span></h3>
+                    </div>
+                    <!-- Roles Bento -->
+                    <div class="col-span-8 row-span-2 bento-box flex flex-col justify-center animate-up delay-1">
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <i class="fa-solid fa-users text-4xl text-tesla-red mb-2"></i>
+                                <div class="font-bold text-xl">七五5班班长</div>
+                                <div class="eng-sub">Class Monitor</div>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-sitemap text-4xl text-tesla-red mb-2"></i>
+                                <div class="font-bold text-xl">大队组织部部长</div>
+                                <div class="eng-sub">Head of Org. Dept.</div>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-utensils text-4xl text-tesla-red mb-2"></i>
+                                <div class="font-bold text-xl">校膳食委员会委员</div>
+                                <div class="eng-sub">Dietary Committee</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Philosophy Bento -->
+                    <div class="col-span-4 row-span-2 bento-box bg-tesla-red text-white flex flex-col justify-center items-center p-6 animate-up delay-2" style="background: #E31937; color: white;">
+                        <i class="fa-solid fa-quote-left text-4xl opacity-50 mb-4"></i>
+                        <p class="text-2xl font-bold leading-relaxed">
+                            我用行动证明：<br>
+                            责任不是口号，<br>
+                            是融入日常的担当。
+                        </p>
+                        <span class="eng-sub text-red-200 mt-4 text-center">Action speaks louder than words</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 3: Achievements (Past Year) -->
+            <section>
+                <div class="grid grid-cols-12 gap-6 h-full content-center">
+                    <div class="col-span-12 animate-up">
+                        <h3 class="text-5xl font-black mb-2">过去一年 <span class="text-tesla-red">双线成长</span></h3>
+                        <span class="eng-sub">Dual Growth in the Past Year</span>
+                    </div>
+                    
+                    <!-- Academic -->
+                    <div class="col-span-6 bento-box animate-up delay-1 relative overflow-hidden">
+                        <i class="fa-solid fa-book-open text-gray-200 absolute -right-10 -bottom-10 text-9xl z-0"></i>
+                        <div class="relative z-10">
+                            <h4 class="text-3xl font-bold mb-4 border-b-2 border-tesla-red inline-block pb-1">学习与实践</h4>
+                            <ul class="space-y-4 mt-4">
+                                <li class="flex items-center">
+                                    <i class="fa-regular fa-circle-check text-tesla-red mr-3"></i>
+                                    <span class="text-xl font-bold">荣获“善思奖”</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fa-regular fa-circle-check text-tesla-red mr-3"></i>
+                                    <span class="text-xl font-bold">多科“小达人”称号</span>
+                                </li>
+                            </ul>
+                            <span class="eng-sub mt-6">Academic Excellence</span>
+                        </div>
+                    </div>
+
+                    <!-- Art -->
+                    <div class="col-span-6 bento-box animate-up delay-2 relative overflow-hidden">
+                        <i class="fa-solid fa-palette text-gray-200 absolute -right-10 -bottom-10 text-9xl z-0"></i>
+                        <div class="relative z-10">
+                            <h4 class="text-3xl font-bold mb-4 border-b-2 border-tesla-red inline-block pb-1">艺术赛场</h4>
+                            <ul class="space-y-4 mt-4">
+                                <li>
+                                    <div class="text-tesla-red font-black text-2xl">一等奖 <span class="text-sm text-gray-500 font-normal">First Prize</span></div>
+                                    <div class="text-lg">希望杯全国青少年书画艺术大展</div>
+                                </li>
+                                <li>
+                                    <div class="text-tesla-red font-black text-2xl">二等奖 <span class="text-sm text-gray-500 font-normal">Second Prize</span></div>
+                                    <div class="text-lg">2025上海市学生艺术单项比赛(普陀区)</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 4: Leadership Training (Data Viz style) -->
+            <section>
+                <div class="grid grid-cols-12 gap-6 h-full items-center">
+                    <div class="col-span-5 animate-up">
+                        <h3 class="text-5xl font-black leading-tight">核心能力<br>进阶</h3>
+                        <span class="eng-sub mb-6">Leadership Upgrade</span>
+                        <p class="text-xl text-gray-600 mb-4">代表学校完成区队长学校培训</p>
+                        <p class="font-bold text-2xl text-tesla-red">将理论转化为服务集体的方法论。</p>
+                    </div>
+                    <div class="col-span-7 bento-box flex items-center justify-around animate-up delay-1">
+                        <div class="text-center">
+                            <span class="big-num tech-highlight">5</span>
+                            <span class="text-2xl font-bold block">天</span>
+                            <span class="eng-sub">Days</span>
+                        </div>
+                        <div class="h-24 w-px bg-gray-300"></div>
+                        <div class="text-center">
+                            <span class="big-num tech-highlight">4</span>
+                            <span class="text-2xl font-bold block">晚</span>
+                            <span class="eng-sub">Nights</span>
+                        </div>
+                        <div class="text-xl font-bold bg-gray-100 px-4 py-2 rounded-lg">
+                            封闭式训练 <i class="fa-solid fa-lock text-tesla-red ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 5: Roles Inside School -->
+            <section>
+                <div class="animate-up mb-8">
+                    <h3 class="text-4xl font-bold">校园内：多面手 <span class="eng-sub inline-block ml-2">Versatility on Campus</span></h3>
+                </div>
+                <div class="grid grid-cols-4 gap-6">
+                    <div class="bento-box text-center animate-up delay-1 aspect-square flex flex-col justify-center items-center">
+                        <i class="fa-solid fa-microphone-lines text-5xl text-tesla-red mb-4"></i>
+                        <h4 class="text-xl font-bold">文艺汇演主持人</h4>
+                        <span class="eng-sub">Gala Host</span>
+                    </div>
+                    <div class="bento-box text-center animate-up delay-2 aspect-square flex flex-col justify-center items-center">
+                        <i class="fa-solid fa-chalkboard-user text-5xl text-tesla-red mb-4"></i>
+                        <h4 class="text-xl font-bold">少先队课主讲人</h4>
+                        <span class="eng-sub">Lesson Presenter</span>
+                    </div>
+                    <div class="bento-box text-center animate-up delay-3 aspect-square flex flex-col justify-center items-center">
+                        <i class="fa-solid fa-video text-5xl text-tesla-red mb-4"></i>
+                        <h4 class="text-xl font-bold">结业典礼视频制作</h4>
+                        <span class="eng-sub">Video Producer</span>
+                    </div>
+                    <div class="bento-box text-center animate-up delay-4 aspect-square flex flex-col justify-center items-center">
+                        <i class="fa-solid fa-music text-5xl text-tesla-red mb-4"></i>
+                        <h4 class="text-xl font-bold">室内乐团长笛手</h4>
+                        <span class="eng-sub">Flutist</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 6: Roles Outside School & Key Learnings -->
+            <section>
+                <div class="grid grid-cols-12 gap-6 h-full">
+                    <div class="col-span-6 flex flex-col justify-center animate-up">
+                        <h3 class="text-4xl font-bold mb-2">校园外：社会实践</h3>
+                        <span class="eng-sub mb-6">Beyond Campus</span>
+                        <ul class="space-y-3 text-xl font-medium text-gray-700">
+                            <li><i class="fa-solid fa-store text-tesla-red w-8"></i> 爱心店长</li>
+                            <li><i class="fa-solid fa-building-columns text-tesla-red w-8"></i> 政务体验官</li>
+                            <li><i class="fa-solid fa-tree text-tesla-red w-8"></i> 小林长</li>
+                            <li><i class="fa-solid fa-bullhorn text-tesla-red w-8"></i> 研学发言代表</li>
+                        </ul>
+                    </div>
+                    <div class="col-span-6 bento-box flex flex-col justify-center items-center animate-up delay-2">
+                        <h4 class="eng-sub mb-4">What I've Learned</h4>
+                        <!-- Using Chart.js for visual representation of values -->
+                        <div style="width: 80%; margin: auto;">
+                            <canvas id="valuesChart"></canvas>
+                        </div>
+                        <div class="text-center mt-4 font-bold text-lg">
+                            懂得关爱、责任、环保与团队协作的意义
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 7: Campaign Goal/Slogan -->
+            <section>
+                <div class="flex flex-col justify-center items-center h-full text-center animate-up">
+                    <span class="eng-sub mb-4">Campaign Vision</span>
+                    <i class="fa-solid fa-star text-6xl text-tesla-red mb-6 fa-beat" style="--fa-animation-duration: 2s;"></i>
+                    <h2 class="text-5xl font-black leading-normal mb-8">
+                        “积极向上做<span class="tech-highlight text-6xl">闪耀的自己</span>，<br>
+                        团结一心筑<span class="tech-highlight text-6xl">最强的集体</span>”
+                    </h2>
+                    <div class="px-8 py-3 border-2 border-tesla-red rounded-full text-2xl font-bold text-tesla-red">
+                        竞选大队候选人
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 8: Three Promises (The Plan) -->
+            <section>
+                <div class="animate-up mb-6">
+                    <h3 class="text-4xl font-bold">如果当选，我将做好三件事：</h3>
+                    <span class="eng-sub">My Action Plan</span>
+                </div>
+                <div class="grid grid-cols-3 gap-4 h-2/3">
+                    <!-- Point 1 -->
+                    <div class="bento-box animate-up delay-1 flex flex-col relative overflow-hidden group">
+                        <span class="big-num absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">01</span>
+                        <i class="fa-solid fa-flag text-4xl text-tesla-red mb-4"></i>
+                        <h4 class="text-2xl font-black mb-2">当榜样</h4>
+                        <span class="eng-sub mb-4">Be a Role Model</span>
+                        <p class="text-gray-700 text-sm flex-grow">用成绩证明努力，用行动传递正能量，主动担当，化解矛盾。让每个日常都成为“向上”的注脚。</p>
+                    </div>
+                    <!-- Point 2 -->
+                    <div class="bento-box animate-up delay-2 flex flex-col relative overflow-hidden group">
+                        <span class="big-num absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">02</span>
+                        <i class="fa-solid fa-comments text-4xl text-tesla-red mb-4"></i>
+                        <h4 class="text-2xl font-black mb-2">传声音</h4>
+                        <span class="eng-sub mb-4">Be a Voice</span>
+                        <p class="text-gray-700 text-sm flex-grow">畅通沟通渠道，认真收集大家对校园生活的建议，做师生之间的“连心桥”。</p>
+                    </div>
+                    <!-- Point 3 -->
+                    <div class="bento-box animate-up delay-3 flex flex-col relative overflow-hidden group">
+                        <span class="big-num absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">03</span>
+                        <i class="fa-solid fa-seedling text-4xl text-tesla-red mb-4"></i>
+                        <h4 class="text-2xl font-black mb-2">共成长</h4>
+                        <span class="eng-sub mb-4">Grow Together</span>
+                        <p class="text-gray-700 text-sm flex-grow">分享学习经验，答疑解惑。带领同学积极参加活动，让每个人在分享与实践中收获成长。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 9: Philosophy Metaphor -->
+            <section>
+                <div class="grid grid-cols-12 gap-6 h-full items-center">
+                    <div class="col-span-12 animate-up text-center mb-8">
+                        <h3 class="text-3xl font-bold">
+                            大队长不是戴袖章的<span class="line-through decoration-tesla-red decoration-4 text-gray-400 mx-2">管理者</span>，<br>
+                            而是跑遍校园的<span class="text-tesla-red text-5xl mx-2">“服务者”</span>。
+                        </h3>
+                    </div>
+                    <div class="col-span-10 col-start-2 bento-box animate-up delay-2 p-8 flex items-center">
+                        <i class="fa-solid fa-palette text-6xl text-tesla-red mr-8 opacity-80"></i>
+                        <div>
+                            <p class="text-xl font-medium leading-relaxed text-gray-800">
+                                “再绚丽的单色素描也需要<strong class="text-tesla-red">底色衬托</strong>，再精彩的个人独奏也离不开<strong class="text-tesla-red">和声呼应</strong>。”
+                            </p>
+                            <div class="w-full h-px bg-gray-300 my-4"></div>
+                            <p class="text-xl font-bold">
+                                我愿做那个<span class="tech-highlight">调和色彩的人</span>，让每位同学的独特光芒，都能在集体这幅画卷上找到最动人的落点。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 10: Final Call to Action -->
+            <section data-background-gradient="linear-gradient(135deg, #fff 0%, #ffe4e6 100%)">
+                <div class="flex flex-col justify-center items-center h-full text-center animate-up">
+                    <div class="w-32 h-32 rounded-full bg-tesla-red text-white flex items-center justify-center text-5xl font-bold mb-8 shadow-lg shadow-red-500/50">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h2 class="text-5xl font-black mb-4">请相信这个会用行动说话的我</h2>
+                    <h3 class="text-3xl font-bold text-gray-700 mb-12">请再一次选择这个始终和你们并肩奔跑的我！</h3>
+                    
+                    <button class="px-10 py-4 bg-tesla-red text-white text-2xl font-bold rounded-full shadow-xl hover:bg-red-700 transition-colors flex items-center gap-3">
+                        投我一票 <span class="text-sm opacity-70 uppercase tracking-widest">Vote for Zhang Ruiling</span>
+                    </button>
+                    
+                    <div class="mt-16 text-xl font-medium text-gray-500">
+                        谢谢大家。
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        // Initialize Reveal.js
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+            backgroundTransition: 'fade',
+            display: 'flex', // Important for Tailwind Grid inside slides
+            width: 1200,
+            height: 800,
+            margin: 0.04,
+        });
+
+        // Trigger Chart.js on Slide 6
+        Reveal.on( 'slidechanged', event => {
+            if (event.currentSlide.querySelector('#valuesChart')) {
+                renderChart();
+            }
+        } );
+
+        function renderChart() {
+            const ctx = document.getElementById('valuesChart');
+            // Prevent re-rendering over existing chart
+            if (window.myRadarChart) return; 
+
+            window.myRadarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['关爱 (Love)', '责任 (Responsibility)', '环保 (Eco)', '团队协作 (Teamwork)'],
+                    datasets: [{
+                        label: '核心价值观',
+                        data: [90, 95, 85, 92],
+                        fill: true,
+                        backgroundColor: 'rgba(227, 25, 55, 0.2)',
+                        borderColor: '#E31937',
+                        pointBackgroundColor: '#E31937',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#E31937'
+                    }]
+                },
+                options: {
+                    elements: { line: { borderWidth: 2 } },
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(0,0,0,0.1)' },
+                            grid: { color: 'rgba(0,0,0,0.1)' },
+                            pointLabels: {
+                                font: { size: 14, weight: 'bold' },
+                                color: '#374151'
+                            },
+                            suggestedMin: 50,
+                            suggestedMax: 100,
+                            ticks: { display: false } // Hide numbers on axis
+                        }
+                    },
+                    plugins: { legend: { display: false } },
+                    animation: { duration: 2000, easing: 'easeOutQuart' }
+                }
+            });
+        }
+
+        // --- P5.js Particle Background ---
+        const sketch = (p) => {
+            let particles = [];
+            const numParticles = 50;
+
+            p.setup = () => {
+                let canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+                canvas.parent('p5-container');
+                for (let i = 0; i < numParticles; i++) {
+                    particles.push(new Particle());
+                }
+            };
+
+            p.draw = () => {
+                p.clear(); // Keep background transparent
+                p.noStroke();
+                
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].display();
+                }
+            };
+
+            p.windowResized = () => {
+                p.resizeCanvas(p.windowWidth, p.windowHeight);
+            };
+
+            class Particle {
+                constructor() {
+                    this.reset();
+                    // Start at random positions initially
+                    this.pos = p.createVector(p.random(p.width), p.random(p.height));
+                }
+
+                reset() {
+                    this.pos = p.createVector(p.random(p.width), p.height + 10);
+                    this.vel = p.createVector(p.random(-0.5, 0.5), p.random(-0.5, -1.5));
+                    this.size = p.random(3, 8);
+                    // Color: Orange to Red range, low opacity
+                    let r = p.map(p.random(1), 0, 1, 255, 227); // White to Tesla Red R
+                    let g = p.map(p.random(1), 0, 1, 200, 25);  // Orange to Tesla Red G
+                    let b = p.map(p.random(1), 0, 1, 150, 55);  // Orange to Tesla Red B
+                    this.color = p.color(r, g, b, p.random(50, 150));
+                }
+
+                update() {
+                    this.pos.add(this.vel);
+                    // Add gentle wobble
+                    this.pos.x += p.sin(p.frameCount * 0.01 + this.size) * 0.2;
+
+                    if (this.pos.y < -10) {
+                        this.reset();
+                    }
+                }
+
+                display() {
+                    p.fill(this.color);
+                    p.ellipse(this.pos.x, this.pos.y, this.size);
+                }
+            }
+        };
+
+        new p5(sketch);
+
+    </script>
+</body>
+</html>
