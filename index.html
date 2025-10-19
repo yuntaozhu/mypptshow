@@ -3,249 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>实干笃行张瑞灵 - 竖版竞选海报 (v2)</title>
-
-    <!-- TailwindCSS via CDN -->
-    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <title>励志笃行 瑞灵最灵 - 竞选海报</title>
     
-    <!-- JavaScript Libraries via CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.umd.js"></script>
-    
-    <!-- Font Awesome Icons via CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Google Fonts for custom typography -->
+    <!-- Google Fonts for a friendly, rounded look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght=700;900&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        html, body {
-            margin: 0; padding: 0; width: 100%; scroll-behavior: smooth;
+        :root {
+            --bg-pink: #FFF0F5; /* Light Lavender Blush background */
+            --main-pink: #FF69B4; /* Hot Pink for titles */
+            --text-dark: #333;
+            --border-color: #E0BBE4; /* Light purple for borders */
         }
-        body {
-            font-family: 'Poppins', 'Noto Sans SC', sans-serif;
-            background-color: #111827;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 3rem 0;
-            min-height: 100vh;
-        }
-        .poster-container {
-            width: 95%;
-            max-width: 1000px;
-            aspect-ratio: 90 / 120;
-            margin: 2rem 0;
-            transform-origin: top center;
-            transition: transform 0.5s ease;
-            background: linear-gradient(135deg, #FF9500, #FF6B00);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            display: flex;
-        }
-        #p5-canvas {
-            position: absolute; top: 0; left: 0; z-index: 0; width: 100%; height: 100%;
-        }
-        .content-grid {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            padding: clamp(1rem, 4vw, 3rem);
-            display: grid;
-            gap: clamp(0.5rem, 2vw, 1.5rem);
-            grid-template-columns: repeat(2, 1fr);
-            grid-auto-rows: min-content;
-        }
-        .bento-box {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: clamp(1rem, 2vw, 2rem);
-            padding: clamp(1rem, 3vw, 2rem);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            display: flex;
-            flex-direction: column;
-        }
-        .highlight-text {
-            color: #E31937;
-            text-shadow: 0 0 15px rgba(227, 25, 55, 0.8);
-        }
-        
-        /* === MODIFICATION 1: Reduced title font size === */
-        .main-title { font-size: clamp(3.5rem, 9vw, 6.5rem); font-weight: 900; line-height: 1.2; }
-        .sub-title { font-size: clamp(1rem, 2.5vw, 1.8rem); font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; }
-        .bento-title { font-size: clamp(1.5rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 1rem; }
-        .bento-content { font-size: clamp(0.9rem, 1.8vw, 1.5rem); line-height: 1.7; }
-        .icon-large { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem; }
 
-        .col-span-1 { grid-column: span 1 / span 1; }
-        .col-span-2 { grid-column: span 2 / span 2; }
-        .row-span-1 { grid-row: span 1 / span 1; }
-        .row-span-2 { grid-row: span 2 / span 2; }
-        
-        /* === MODIFICATION 2: New styles for the cropped award image gallery === */
-        .award-box {
-            /* Darker background to match reference */
-            background-color: rgba(0, 0, 0, 0.15);
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            background-color: var(--bg-pink);
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .award-item {
+
+        .poster-container {
+            width: 900px; /* Fixed width for poster layout */
+            background-color: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden; /* Hide overflowing decorative elements */
+        }
+
+        /* Header Title Styles */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            font-size: 80px;
+            font-weight: 900;
+            margin: 0;
+            display: inline-block; /* Allows for better spacing */
+        }
+        .title-part1 {
+            color: var(--main-pink);
+            margin-right: 20px;
+        }
+        .title-part2 {
+            background: linear-gradient(45deg, #FFA500, #FF6347);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            /* Create the outline effect */
+            text-shadow: 
+                -2px -2px 0 #FFF, 2px -2px 0 #FFF, 
+                -2px 2px 0 #FFF, 2px 2px 0 #FFF, 
+                -4px -4px 0 #FFB6C1, 4px -4px 0 #FFB6C1, 
+                -4px 4px 0 #FFB6C1, 4px 4px 0 #FFB6C1;
+        }
+
+        /* Main Content Area */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Introduction Section */
+        .intro-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .profile-image-container {
+            flex-shrink: 0;
+            width: 300px;
+        }
+        .profile-image {
             width: 100%;
-            height: 100%;
-            background-size: cover; /* This zooms to fill the container */
-            background-position: center 30%; /* Focus on the upper-middle of the image */
-            border-radius: 0.75rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border-radius: 20px;
         }
-        .award-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-            z-index: 10;
+        .intro-text-box {
+            flex-grow: 1;
+            background-color: #fff;
+            border: 3px dashed var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
             position: relative;
         }
+
+        /* Section Title Tags (e.g., "自我介绍") */
+        .section-title-tag {
+            background-color: var(--main-pink);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: 800;
+            position: absolute;
+            top: -25px; /* Position it overlapping the top border */
+            left: 30px;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
+        }
+
+        .intro-text-box h2 {
+            font-size: 32px;
+            color: var(--text-dark);
+            margin-top: 20px;
+        }
+        .intro-text-box ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 2;
+            color: #555;
+        }
+        .intro-text-box ul li {
+            margin-bottom: 10px;
+        }
+        .intro-text-box .highlight {
+            font-weight: 700;
+            color: var(--main-pink);
+            background-color: #FFF0F5;
+            padding: 2px 6px;
+            border-radius: 5px;
+        }
+
+        /* Declaration Section */
+        .declaration-box {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            padding-top: 50px; /* Space for the title tag */
+            position: relative;
+            border: 3px solid transparent;
+            /* Create the colorful border effect */
+            background-image: 
+                linear-gradient(white, white), 
+                linear-gradient(to right, #FFC3A0, #FFAFBD);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+        .declaration-box p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+        }
+        .slogan {
+            font-size: 22px;
+            font-weight: 800;
+            text-align: center;
+            color: var(--main-pink);
+            background-color: #FFF0F5;
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        /* Awards Collage Section */
+        .awards-collage {
+            margin-top: 20px;
+            height: 300px; /* Set a fixed height for the collage area */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .awards-collage img {
+            position: absolute;
+            max-width: 200px; /* Control certificate size */
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        .awards-collage img:hover {
+            transform: scale(1.2) rotate(0deg) !important; /* Enlarge and straighten on hover */
+            z-index: 100; /* Bring to front on hover */
+        }
+        
+        /* Manual positioning and rotation for the collage effect */
+        .cert-1 { transform: rotate(-15deg) translate(-150px, 20px); z-index: 1; }
+        .cert-2 { transform: rotate(10deg) translate(50px, -30px); z-index: 2; }
+        .cert-3 { transform: rotate(-5deg) translate(-50px, 40px); z-index: 3; }
+        .cert-4 { transform: rotate(20deg) translate(200px, 10px); z-index: 4; }
+        .cert-5 { transform: rotate(5deg) translate(-250px, -10px); z-index: 5; }
+        .cert-6 { transform: rotate(-10deg) translate(150px, 50px); z-index: 6; }
+        .cert-7 { transform: rotate(0deg) translate(0, 0); z-index: 7; }
     </style>
 </head>
 <body>
 
-    <div class="poster-container" id="poster">
-        <canvas id="p5-canvas"></canvas>
+    <div class="poster-container">
+        <header>
+            <h1>
+                <span class="title-part1">励志笃行</span>
+                <span class="title-part2">瑞灵最灵</span>
+            </h1>
+        </header>
+
+        <main>
+            <section class="intro-section">
+                <div class="profile-image-container">
+                    <!-- IMPORTANT: Replace 'profile.png' with the actual path to your photo -->
+                    <img src="profile.png" alt="张瑞灵" class="profile-image">
+                </div>
+                <div class="intro-text-box">
+                    <div class="section-title-tag">自我介绍</div>
+                    <h2>你们好, 我是来自六(5)中队的<strong class="highlight-text">张瑞灵</strong></h2>
+                    <p style="color: #777;">很高兴通过这样的方式让你认识我!</p>
+                    <ul>
+                        <li>☀️ <strong>舞台上的我:</strong> 阳光开朗、自信大方, 长笛、演讲、表演从不怯场。</li>
+                        <li>🎉 <strong>学校里的我:</strong> 品学兼优, 全面发展, 网球、书法、画画样样拿手。</li>
+                        <li>💖 <strong>社会中的我:</strong> 助人为乐, 热情服务, 在各类志愿者活动中都活跃着我的身影。</li>
+                    </ul>
+                    <p class="highlight">2023年“学雷”奖学金获得者; 2024年普陀区百优“新时代好少年”</p>
+                </div>
+            </section>
+
+            <section class="declaration-box">
+                <div class="section-title-tag">竞选宣言</div>
+                <p>
+                    我曾经担任过大队委员, 深受老师和同学的信赖。我珍惜这份来之不易的信任, 希望继续有机会为同学服务, 为少先队贡献自己的力量! 我将一如既往展现新时代少年的社会责任感, 向上向善的精神风貌, 用实际行动展现“强国有我”的担当和风采。我的竞选口号是:
+                </p>
+                <div class="slogan">
+                    真心诚意为同学服务, 以身作则树榜样形象 ✨
+                </div>
+            </section>
+        </main>
         
-        <div class="content-grid">
-            
-            <header class="bento-box col-span-2 text-center justify-center">
-                <h2 class="main-title" style="font-family: 'Noto Sans SC', sans-serif;">实干笃行 <span class="highlight-text">张瑞灵</span></h2>
-                <p class="sub-title text-white opacity-80 mt-2">DOER · ZHANG RUILING</p>
-            </header>
+        <section class="awards-collage">
+            <!-- IMPORTANT: Replace these with your actual certificate image files -->
+            <img src="16.jpg" alt="奖状1" class="cert-1">
+            <img src="17.jpg" alt="奖状2" class="cert-2">
+            <img src="18.jpg" alt="奖状3" class="cert-3">
+            <img src="19.jpg" alt="奖状4" class="cert-4">
+            <img src="20.jpg" alt="奖状5" class="cert-5">
+            <img src="16.jpg" alt="奖状6" class="cert-6">
+            <img src="17.jpg" alt="奖状7" class="cert-7">
+        </section>
 
-            <!-- =================== MODIFIED SECTION START =================== -->
-            <!-- Award Image Gallery with Cropped Images -->
-            <section class="bento-box award-box col-span-1 row-span-2 flex flex-col p-0 overflow-hidden">
-                <div class="text-center py-3 px-4 bg-black bg-opacity-20 flex-shrink-0">
-                    <h2 class="text-xl font-bold text-white">奖状见证成长</h2>
-                    <p class="text-xs opacity-80 uppercase">Awards & Recognitions</p>
-                </div>
-                <!-- New Image Grid using Divs for cropping effect -->
-                <div class="flex-grow grid grid-cols-2 grid-rows-3 gap-2.5 p-2.5">
-                    <div class="award-item" style="background-image: url('/16.jpg')"></div>
-                    <div class="award-item" style="background-image: url('/17.jpg')"></div>
-                    <div class="award-item" style="background-image: url('/18.jpg')"></div>
-                    <div class="award-item" style="background-image: url('/19.jpg')"></div>
-                    <div class="award-item col-span-2" style="background-image: url('/20.jpg')"></div>
-                </div>
-            </section>
-            <!-- =================== MODIFIED SECTION END =================== -->
-
-            <section class="bento-box col-span-1 justify-center">
-                <div class="flex items-center">
-                    <i class="fas fa-graduation-cap icon-large highlight-text mr-4"></i>
-                    <h2 class="bento-title" style="font-family: 'Noto Sans SC', sans-serif;">学业·拔萃</h2>
-                </div>
-                 <div class="bento-content mt-2">
-                    <p>荣获 <strong class="highlight-text font-bold">“善思奖”</strong></p>
-                    <p>多科 <strong class="highlight-text font-bold">“小达人”</strong> 称号</p>
-                </div>
-            </section>
-
-            <section class="bento-box col-span-1 justify-center">
-                <div class="flex items-center">
-                    <i class="fas fa-palette icon-large highlight-text mr-4"></i>
-                    <h2 class="bento-title" style="font-family: 'Noto Sans SC', sans-serif;">学业外·发展</h2>
-                </div>
-                <div class="bento-content mt-2">
-                    <p>爱好广泛，全面发展</p>
-                    <p>尤其擅长 <strong class="font-bold highlight-text">画画</strong></p>
-                </div>
-            </section>
-
-            <section class="bento-box col-span-2">
-                <div class="flex items-center">
-                    <i class="fas fa-user-circle icon-large highlight-text mr-4"></i>
-                    <h2 class="bento-title" style="font-family: 'Noto Sans SC', sans-serif;">自我介绍 & 服务</h2>
-                </div>
-                <div class="bento-content mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <p><strong class="font-bold">来自:</strong> 七（5）中队</p>
-                        <p><strong class="font-bold">校职务:</strong> 校大队组织部部长</p>
-                        <p><strong class="font-bold">班职务:</strong> 七（5）中队班长</p>
-                    </div>
-                    <div>
-                        <p><strong>培训经历:</strong></p>
-                        <p>参加区队长学校培训，深化服务意识与能力。</p>
-                    </div>
-                </div>
-            </section>
-            
-            <section class="bento-box col-span-2 text-center justify-center">
-                 <h3 class="bento-title" style="font-family: 'Noto Sans SC', sans-serif;">竞选口号 & 宣言</h3>
-                 <p class="text-xl md:text-2xl font-semibold my-2">实干笃行张瑞灵，积极向上共前行</p>
-                 <div class="w-1/3 h-px bg-white opacity-40 mx-auto my-4"></div>
-                 <p class="text-xl md:text-2xl font-semibold my-2">积极向上做闪耀的自己，团结一心筑最强的集体</p>
-            </section>
-        </div>
     </div>
 
-    <script>
-        /**
-         * p5.js Sketch for Particle Background
-         */
-        let particles = [];
-        let p5Canvas;
-        function setup() {
-            let poster = document.getElementById('poster');
-            p5Canvas = createCanvas(poster.offsetWidth, poster.offsetHeight);
-            p5Canvas.parent('p5-canvas');
-            let numParticles = Math.floor(poster.offsetWidth * poster.offsetHeight / 15000);
-            for (let i = 0; i < numParticles; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function windowResized() {
-            let poster = document.getElementById('poster');
-            resizeCanvas(poster.offsetWidth, poster.offsetHeight);
-        }
-
-        function draw() {
-            clear();
-            particles.forEach((p, index) => {
-                p.update(); p.draw(); p.checkParticles(particles.slice(index));
-            });
-        }
-        class Particle {
-            constructor() { this.pos = createVector(random(width), random(height)); this.vel = createVector(random(-0.5, 0.5), random(-0.5, 0.5)); this.size = random(2, 5); }
-            update() { this.pos.add(this.vel); this.edges(); }
-            draw() { noStroke(); fill('rgba(255, 255, 255, 0.6)'); circle(this.pos.x, this.pos.y, this.size); }
-            edges() { if (this.pos.x < 0 || this.pos.x > width) this.vel.x *= -1; if (this.pos.y < 0 || this.pos.y > height) this.vel.y *= -1; }
-            checkParticles(otherParticles) { otherParticles.forEach(p => { const d = dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y); if (d < 150) { stroke(`rgba(255, 255, 255, ${map(d, 0, 150, 0.4, 0)})`); line(this.pos.x, this.pos.y, p.pos.x, p.pos.y); } }); }
-        }
-
-        /**
-         * Framer Motion for Animations
-         */
-        document.addEventListener('DOMContentLoaded', () => {
-            const { motion } = Motion;
-            const bentoBoxes = document.querySelectorAll('.bento-box');
-
-            bentoBoxes.forEach((box, index) => {
-                motion(box, {
-                    initial: { opacity: 0, y: 50, scale: 0.95 },
-                    animate: { opacity: 1, y: 0, scale: 1 },
-                    transition: { duration: 0.5, delay: index * 0.05, ease: "easeOut" }
-                });
-            });
-
-            window.addEventListener('scroll', () => {
-                let scrollY = window.scrollY;
-                let poster = document.getElementById('poster');
-                let scaleValue = Math.max(0.85, 1 - scrollY / 1500);
-                poster.style.transform = `scale(${scaleValue})`;
-            }, { passive: true });
-        });
-    </script>
 </body>
 </html>
