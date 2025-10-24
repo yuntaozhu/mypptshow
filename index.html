@@ -26,7 +26,8 @@
             --highlight-color: #E31937; /* Tesla Red */
             --text-main: #FFFFFF;
             --text-secondary: #CCCCCC;
-            --bg-dark: #0f172a; /* Dark Slate Blue */
+            --bg-dark: #0a0a0a; /* Even darker background */
+            --bg-slide: #111111;
         }
 
         /* Custom Reveal.js Theme */
@@ -43,26 +44,15 @@
 
         .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
             color: var(--text-main);
-            font-weight: 800; /* Extra Bold */
+            font-weight: 800;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.02em;
         }
 
-        .reveal .highlight {
-            color: var(--highlight-color);
-        }
-        
-        .reveal strong {
-           color: var(--highlight-color);
-           font-weight: 800;
-        }
-
-        .reveal .controls-arrow {
-           color: var(--highlight-color) !important;
-        }
-
-        .reveal .progress span {
-            background: var(--highlight-color) !important;
-        }
+        .reveal .highlight { color: var(--highlight-color); }
+        .reveal strong { color: var(--highlight-color); font-weight: 800; }
+        .reveal .controls-arrow { color: var(--highlight-color) !important; }
+        .reveal .progress span { background: var(--highlight-color) !important; }
         
         .reveal blockquote {
             background: rgba(255, 255, 255, 0.05);
@@ -71,73 +61,39 @@
             width: 100%;
         }
         
-        .reveal .slide-background-content {
-            z-index: 0;
-        }
+        #p5-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
-        #p5-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
+        /* Typography */
+        .super-title { font-size: 6rem; font-weight: 900; line-height: 1.1; }
+        .subtitle-en { font-size: 1.5rem; letter-spacing: 0.2em; color: var(--text-secondary); opacity: 0.7; text-transform: uppercase; }
 
-        /* Custom Typography */
-        .super-title {
-            font-size: 6rem;
-            font-weight: 900;
-            line-height: 1.1;
-        }
-        
-        .super-number {
-            font-size: 10rem;
-            font-weight: 900;
-            line-height: 1;
-            color: var(--highlight-color);
-            text-shadow: 0 0 20px rgba(227, 25, 55, 0.5);
-        }
-
-        .subtitle-en {
-            font-size: 1.5rem;
-            letter-spacing: 0.2em;
-            color: var(--text-secondary);
-            opacity: 0.7;
-            text-transform: uppercase;
-        }
-
-        /* Bento Grid Style */
-        .bento-grid {
-            display: grid;
-            gap: 1.5rem;
-            width: 100%;
-            height: 60vh;
-        }
-        .bento-item {
+        /* Bento Grid & Card Styles */
+        .bento-item, .card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 2rem;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
             transition: all 0.3s ease;
         }
-        .bento-item:hover {
+        .bento-item:hover, .card:hover {
            transform: translateY(-5px);
            border-color: rgba(227, 25, 55, 0.5);
-           box-shadow: 0 10px 30px -10px rgba(227, 25, 55, 0.3);
+           box-shadow: 0 10px 30px -10px rgba(227, 25, 55, 0.2);
         }
         
-        /* Animate elements on slide visibility */
-        .motion-div {
-           opacity: 0;
+        /* Animation */
+        .motion-div { opacity: 0; }
+        .present .motion-div { opacity: 1; }
+
+        /* Special style for Dalio section */
+        .dalio-section-bg {
+            background: radial-gradient(circle, rgba(50,20,25,0.5) 0%, rgba(10,10,10,0.8) 70%) !important;
         }
-        .present .motion-div {
-            opacity: 1;
+        .dalio-card {
+            border-color: rgba(227, 25, 55, 0.2);
+            background: rgba(0,0,0,0.3);
         }
 
     </style>
@@ -162,22 +118,22 @@
             <section data-transition="slide-in">
                 <h2 class="text-5xl font-extrabold">CONTENTS</h2>
                  <div class="mt-16 grid grid-cols-2 gap-8 text-left">
-                     <div class="motion-div p-6 bg-gray-900/30 rounded-lg border border-gray-700 hover:border-red-500 transition-all" data-delay="100">
+                     <div class="motion-div card" data-delay="100">
                         <span class="text-4xl font-black text-red-500">01</span>
-                        <h3 class="text-3xl mt-2">美国“对等关税”政策解析</h3>
+                        <h3 class="text-3xl mt-2">政策解析：关税的逻辑与作用</h3>
                         <p class="text-gray-400 mt-2">POLICY ANALYSIS</p>
                      </div>
-                     <div class="motion-div p-6 bg-gray-900/30 rounded-lg border border-gray-700 hover:border-red-500 transition-all" data-delay="200">
+                     <div class="motion-div card" data-delay="200">
                         <span class="text-4xl font-black text-red-500">02</span>
-                        <h3 class="text-3xl mt-2">目的与经济影响</h3>
-                        <p class="text-gray-400 mt-2">OBJECTIVES & IMPACT</p>
-                     </div>
-                     <div class="motion-div p-6 bg-gray-900/30 rounded-lg border border-gray-700 hover:border-red-500 transition-all" data-delay="300">
-                        <span class="text-4xl font-black text-red-500">03</span>
-                        <h3 class="text-3xl mt-2">电子元器件企业的冲击与应对</h3>
+                        <h3 class="text-3xl mt-2">企业冲击与战略应对</h3>
                         <p class="text-gray-400 mt-2">CORPORATE STRATEGY</p>
                      </div>
-                     <div class="motion-div p-6 bg-gray-900/30 rounded-lg border border-gray-700 hover:border-red-500 transition-all" data-delay="400">
+                     <div class="motion-div card" data-delay="300">
+                        <span class="text-4xl font-black text-red-500">03</span>
+                        <h3 class="text-3xl mt-2">宏观背景：秩序变革的视角</h3>
+                        <p class="text-gray-400 mt-2">THE BIG PICTURE: A DALIO PERSPECTIVE</p>
+                     </div>
+                     <div class="motion-div card" data-delay="400">
                         <span class="text-4xl font-black text-red-500">04</span>
                         <h3 class="text-3xl mt-2">总结与展望</h3>
                         <p class="text-gray-400 mt-2">CONCLUSION & OUTLOOK</p>
@@ -185,202 +141,206 @@
                  </div>
             </section>
 
-            <!-- SLIDE 3: PART 1 TITLE -->
-            <section data-transition="slide-in" data-background-opacity="0.5">
+            <!-- === PART 1: POLICY ANALYSIS === -->
+            <section data-transition="slide-in">
                 <p class="subtitle-en">PART ONE</p>
-                <h2 class="text-6xl font-black mt-4">美国“对等关税”政策解析</h2>
+                <h2 class="text-6xl font-black mt-4">政策解析：关税的逻辑与作用</h2>
             </section>
             
-            <!-- SLIDE 4: PART 1 CONTENT 1 -->
             <section>
                 <div class="flex items-center justify-around w-full gap-12">
-                    <div class="w-1/2 text-left motion-div p-8 bg-white/5 rounded-2xl border border-white/10" data-delay="100">
+                    <div class="w-1/2 text-left motion-div card" data-delay="100">
                         <span class="text-2xl font-bold text-gray-400 uppercase tracking-wider">表面宣称</span>
                         <h3 class="text-5xl font-extrabold mt-2">“对等公平”原则</h3>
-                        <p class="mt-6 text-xl text-gray-300 leading-relaxed">美方声称“对等关税”旨在实现贸易条件对等，将外国对美综合税率（含关税、增值税等）作为征税依据。</p>
-                        <div class="mt-6 pt-6 border-t border-white/10">
-                            <p class="text-lg">例如：声称中国对美综合税率 <strong class="text-3xl ml-2">67%</strong></p>
-                            <p class="text-lg mt-2">故加征关税 <strong class="text-3xl ml-2">34%</strong></p>
-                        </div>
+                        <p class="mt-6 text-xl text-gray-300 leading-relaxed">美方声称“对等关税”旨在实现贸易条件对等，将外国对美综合税率作为征税依据。</p>
+                        <blockquote class="mt-4 text-lg">例如：声称中国对美综合税率 <strong class="text-2xl">67%</strong>，故加征 <strong class="text-2xl">34%</strong> 关税。</blockquote>
                     </div>
-                    <div class="w-1/2 text-left motion-div p-8 bg-white/5 rounded-2xl border border-white/10" data-delay="300">
+                    <div class="w-1/2 text-left motion-div card" data-delay="300">
                         <span class="text-2xl font-bold text-gray-400 uppercase tracking-wider">实际逻辑</span>
                         <h3 class="text-5xl font-extrabold mt-2">“逆差导向”算法</h3>
                         <p class="mt-6 text-xl text-gray-300 leading-relaxed">真实计算方式极为粗暴，暴露其以逆差为借口广泛加税的本质，而非追求精准对等。</p>
-                        <div class="mt-6 pt-6 border-t border-white/10">
-                            <p class="text-lg font-mono bg-black/30 p-4 rounded-lg">
-                                “对等税率” ≈ <br>
-                                (美国对某国贸易逆差 / 美国从该国进口总额)
-                            </p>
-                        </div>
+                        <blockquote class="mt-4 text-lg font-mono">“对等税率” ≈ (贸易逆差 / 进口总额)</blockquote>
                     </div>
                 </div>
             </section>
             
-            <!-- SLIDE 5: PART 1 CONTENT 2 -->
             <section>
-                 <h3 class="text-4xl font-extrabold mb-16">辩证作用：<span class="highlight">保护</span>与<span class="highlight">破坏</span>并存</h3>
+                 <h3 class="text-4xl font-extrabold mb-12">辩证作用：<span class="highlight">保护</span>与<span class="highlight">破坏</span>并存</h3>
                  <div class="flex justify-around items-stretch w-full gap-8">
-                    <div class="w-5/12 text-center motion-div p-8 bg-gradient-to-b from-green-900/20 to-transparent rounded-3xl border border-green-500/20" data-delay="100">
-                         <div class="w-24 h-24 mx-auto bg-green-500/10 rounded-full flex items-center justify-center mb-6">
-                            <i class="fas fa-shield-alt text-5xl text-green-400"></i>
-                         </div>
+                    <div class="w-5/12 text-center motion-div card" data-delay="100">
+                         <i class="fas fa-shield-alt text-7xl text-green-400 mb-6"></i>
                          <h4 class="text-3xl font-bold text-green-400">短期本土保护效应</h4>
-                         <p class="text-lg mt-6 text-gray-300 leading-relaxed">短期内提升美国本土制造业竞争力，吸引部分产业回流，为特定行业带来发展机遇。</p>
+                         <p class="text-lg mt-4 text-gray-300 leading-relaxed">短期内提升美国本土制造业竞争力，吸引部分产业回流，为特定行业带来发展机遇。</p>
                     </div>
-                    <div class="w-5/12 text-center motion-div p-8 bg-gradient-to-b from-red-900/20 to-transparent rounded-3xl border border-red-500/20" data-delay="300">
-                        <div class="w-24 h-24 mx-auto bg-red-500/10 rounded-full flex items-center justify-center mb-6">
-                            <i class="fas fa-bomb text-5xl text-red-500"></i>
-                        </div>
+                    <div class="w-5/12 text-center motion-div card" data-delay="300">
+                        <i class="fas fa-bomb text-7xl text-red-500 mb-6"></i>
                          <h4 class="text-3xl font-bold text-red-500">长期系统性破坏风险</h4>
-                         <p class="text-lg mt-6 text-gray-300 leading-relaxed">长期将推高美国通胀，引发全球贸易体系混乱，激起他国反制，形成关税战恶性循环，甚至可能引发全球经济萧条。</p>
+                         <p class="text-lg mt-4 text-gray-300 leading-relaxed">长期将推高美国通胀，引发全球贸易体系混乱，激起他国反制，形成关税战恶性循环。</p>
                     </div>
                  </div>
             </section>
-            
-            <!-- SLIDE 6: PART 2 TITLE -->
-             <section data-transition="slide-in" data-background-opacity="0.5">
+
+            <!-- === PART 2: CORPORATE STRATEGY === -->
+            <section data-transition="slide-in">
                 <p class="subtitle-en">PART TWO</p>
-                <h2 class="text-6xl font-black mt-4">“对等关税”的目的与经济影响</h2>
+                <h2 class="text-6xl font-black mt-4">企业冲击与战略应对</h2>
             </section>
 
-            <!-- SLIDE 7: PART 2 CONTENT 1 -->
             <section>
-                <h3 class="text-4xl font-extrabold mb-12">特朗普政府的核心政策目的</h3>
-                <div class="bento-grid" style="grid-template-columns: repeat(3, 1fr); height: 50vh;">
-                   <div class="bento-item motion-div" data-delay="100">
-                      <i class="fas fa-hand-holding-usd text-6xl highlight mb-6 opacity-80"></i>
-                      <h4 class="text-3xl font-bold">补充财政收入</h4>
-                      <p class="text-gray-300 mt-4 text-lg">为国内减税与公共支出提供资金，缓解财政压力。</p>
+                <h3 class="text-4xl font-extrabold mb-8">财务冲击：成本飙升与利润挤压</h3>
+                <div class="grid grid-cols-3 gap-8 text-center items-stretch">
+                   <div class="motion-div card" data-delay="100">
+                      <i class="fas fa-arrow-up text-6xl text-red-500 mb-4"></i>
+                      <h4 class="text-3xl font-bold">采购成本剧增 (COGS)</h4>
+                      <p class="text-gray-300 mt-4 text-lg">关税直接叠加在进口成本上，导致原材料和零部件价格上涨。</p>
                    </div>
-                   <div class="bento-item motion-div" data-delay="300">
-                      <i class="fas fa-industry text-6xl highlight mb-6 opacity-80"></i>
-                      <h4 class="text-3xl font-bold">推动制造业回流</h4>
-                      <p class="text-gray-300 mt-4 text-lg">引导高科技、关键原材料等产业链回归美国，强化本土基础。</p>
+                   <div class="motion-div card" data-delay="300">
+                       <i class="fas fa-compress-alt text-6xl text-yellow-500 mb-4"></i>
+                       <h4 class="text-3xl font-bold">利润空间受压</h4>
+                       <p class="text-gray-300 mt-4 text-lg">企业需在“自行吸收成本”与“向下游客户涨价”之间艰难抉择。</p>
                    </div>
-                   <div class="bento-item motion-div" data-delay="500">
-                     <i class="fas fa-chess-queen text-6xl highlight mb-6 opacity-80"></i>
-                      <h4 class="text-3xl font-bold">战略博弈筹码</h4>
-                      <p class="text-gray-300 mt-4 text-lg">以关税为工具，迫使他国在汇率、债务等问题上让步。</p>
+                   <div class="motion-div card" data-delay="500">
+                       <i class="fas fa-file-invoice-dollar text-6xl text-blue-400 mb-4"></i>
+                       <h4 class="text-3xl font-bold">现金流与定价复杂化</h4>
+                       <p class="text-gray-300 mt-4 text-lg">需预缴关税，增加资金压力；频繁变化的税率使长期定价变得困难。</p>
                    </div>
+                </div>
+           </section>
+
+            <section>
+                <h3 class="text-4xl font-extrabold mb-12">短期战术应对：灵活止损</h3>
+                <div class="flex justify-around items-stretch w-full gap-16">
+                   <div class="w-1/2 motion-div card p-8" data-delay="100">
+                        <h4 class="text-3xl font-bold text-blue-400 mb-6"><i class="fas fa-calculator mr-3"></i>成本与价格管理</h4>
+                        <ul class="text-left text-xl list-none space-y-4">
+                          <li class="flex"><i class="fas fa-check-circle text-green-400 mt-1.5 mr-3"></i><strong>价格谈判:</strong> 与客户和供应商协商，共同分担关税成本。</li>
+                          <li class="flex"><i class="fas fa-check-circle text-green-400 mt-1.5 mr-3"></i><strong>内部交易:</strong> 利用美国分公司，通过内部定价策略降低应税基数。</li>
+                          <li class="flex"><i class="fas fa-check-circle text-green-400 mt-1.5 mr-3"></i><strong>申请豁免:</strong> 积极向美国政府申请特定产品的关税豁免。</li>
+                        </ul>
+                   </div>
+                   <div class="w-1/2 motion-div card p-8" data-delay="300">
+                        <h4 class="text-3xl font-bold text-purple-400 mb-6"><i class="fas fa-cogs mr-3"></i>运营与供应链调整</h4>
+                        <ul class="text-left text-xl list-none space-y-4">
+                          <li class="flex"><i class="fas fa-check-circle text-green-400 mt-1.5 mr-3"></i><strong>库存管理:</strong> 暂停或延后高关税产品的订单，避免库存积压。</li>
+                          <li class="flex"><i class="fas fa-check-circle text-green-400 mt-1.5 mr-3"></i><strong>关税工程:</strong> 微调产品设计或规格，使其归入税率更低的HS编码。</li>
+                        </ul>
+                   </div>
+                </div>
+           </section>
+
+            <section>
+                <h3 class="text-4xl font-extrabold mb-12">中长期战略调整：重塑未来</h3>
+                <div class="grid grid-cols-2 gap-8 w-full">
+                    <div class="motion-div card text-left p-8" data-delay="100">
+                        <i class="fas fa-globe-americas text-6xl text-red-500 mb-4"></i>
+                        <h4 class="text-3xl font-bold">供应链全球化再布局</h4>
+                        <p class="text-gray-300 mt-4 text-xl">将高关税地区（中国）的产能逐步转移至低关税或免税地区，如<strong>墨西哥、越南、东南亚及南美国家</strong>，建立更具韧性的多元化供应网络。</p>
+                    </div>
+                    <div class="motion-div card text-left p-8" data-delay="200">
+                        <i class="fas fa-chart-pie text-6xl text-red-500 mb-4"></i>
+                        <h4 class="text-3xl font-bold">市场多元化</h4>
+                        <p class="text-gray-300 mt-4 text-xl">主动减少对单一美国市场的过度依赖，大力开拓<strong>欧盟、东盟、拉美</strong>以及<strong>中国本土</strong>等新兴市场，平衡风险。</p>
+                    </div>
                 </div>
             </section>
 
-            <!-- SLIDE 8: PART 2 CONTENT 2 -->
-            <section>
-                <h3 class="text-4xl font-extrabold mb-12">对美国及全球经济的影响</h3>
-                <div class="flex justify-around items-start w-full gap-12">
-                   <div class="w-5/12 motion-div p-8 bg-white/5 rounded-2xl" data-delay="100">
-                       <h4 class="text-3xl font-bold highlight flex items-center">
-                           <i class="fas fa-flag-usa mr-4"></i>对美国经济
-                       </h4>
-                       <ul class="text-left mt-8 text-xl space-y-4">
-                           <li class="flex items-start"><i class="fas fa-plus-circle text-green-400 mt-1 mr-3"></i><span>短期提振部分制造业，增加关税收入。</span></li>
-                           <li class="flex items-start"><i class="fas fa-minus-circle text-red-500 mt-1 mr-3"></i><span>输入性通胀加剧，供应链混乱，损害出口与全球领导力。</span></li>
-                       </ul>
-                   </div>
-                   <div class="w-5/12 motion-div p-8 bg-white/5 rounded-2xl" data-delay="300">
-                       <h4 class="text-3xl font-bold highlight flex items-center">
-                           <i class="fas fa-globe mr-4"></i>对全球贸易
-                       </h4>
-                       <ul class="text-left mt-8 text-xl space-y-4">
-                           <li class="flex items-start"><i class="fas fa-random text-blue-400 mt-1 mr-3"></i><span>产业链从亚洲向美洲、欧洲分散。</span></li>
-                           <li class="flex items-start"><i class="fas fa-handshake-slash text-blue-400 mt-1 mr-3"></i><span>WTO被边缘化，区域性双边协定更受重视。</span></li>
-                           <li class="flex items-start"><i class="fas fa-chart-line-down text-blue-400 mt-1 mr-3"></i><span>全球经济增长放缓，投资信心受挫。</span></li>
-                       </ul>
-                   </div>
-                </div>
-            </section>
-            
-             <!-- SLIDE 9: PART 3 TITLE -->
-            <section data-transition="slide-in" data-background-opacity="0.5">
+            <!-- === PART 3: DALIO'S PERSPECTIVE === -->
+            <section data-transition="fade" data-background-color="#111" class="dalio-section-bg">
                 <p class="subtitle-en">PART THREE</p>
-                <h2 class="text-6xl font-black mt-4">电子元器件企业的冲击与应对</h2>
+                <h2 class="text-6xl font-black mt-4">宏观背景：达利欧视角下的<span class="highlight">秩序变革</span></h2>
+                <p class="text-2xl mt-6 text-gray-400">关税不仅是贸易政策，更是历史周期中三大秩序崩溃的表象。</p>
             </section>
-            
-            <!-- SLIDE 10: PART 3 CONTENT 1 -->
-            <section>
-                <h3 class="text-4xl font-extrabold mb-12">具体冲击分析：不同地区的税率影响</h3>
-                 <div class="grid grid-cols-3 gap-8 text-center items-stretch">
-                    <div class="p-8 bg-gradient-to-br from-red-900/40 to-transparent border border-red-500/30 rounded-2xl motion-div flex flex-col" data-delay="100">
-                       <div class="flex-1">
-                           <p class="text-lg font-bold text-red-300 uppercase tracking-wider mb-4">高冲击区 (中国/越南)</p>
-                           <p class="text-7xl font-black my-6 text-white">65%<span class="text-3xl align-top ml-1">/46%</span></p>
-                       </div>
-                       <p class="text-gray-300 text-lg border-t border-white/10 pt-4">成本大幅上升，竞争力骤降，转口贸易受重创。</p>
+
+            <section data-transition="fade" data-background-color="#111" class="dalio-section-bg">
+                <h3 class="text-4xl font-extrabold mb-10">三大驱动力的同步崩溃</h3>
+                <div class="grid grid-cols-3 gap-8 w-full">
+                    <div class="motion-div dalio-card p-6 text-center" data-delay="100">
+                        <i class="fas fa-money-bill-wave text-6xl text-red-400 mb-4"></i>
+                        <h4 class="text-2xl font-bold">货币/经济秩序</h4>
+                        <p class="text-gray-300 mt-3 text-lg"><strong>债务过度</strong>与<strong>贸易失衡</strong>达到极限，现行货币体系不可持续，全球化模式必须改变。</p>
                     </div>
-                    <div class="p-8 bg-gradient-to-br from-yellow-700/40 to-transparent border border-yellow-500/30 rounded-2xl motion-div flex flex-col" data-delay="300">
-                       <div class="flex-1">
-                           <p class="text-lg font-bold text-yellow-300 uppercase tracking-wider mb-4">中冲击区 (台/日/韩/墨)</p>
-                           <p class="text-7xl font-black my-6 text-white">~32%</p>
-                       </div>
-                       <p class="text-gray-300 text-lg border-t border-white/10 pt-4">半导体面临高壁垒，非协定产品仍受冲击。</p>
+                    <div class="motion-div dalio-card p-6 text-center" data-delay="300">
+                        <i class="fas fa-landmark text-6xl text-red-400 mb-4"></i>
+                        <h4 class="text-2xl font-bold">国内政治秩序</h4>
+                        <p class="text-gray-300 mt-3 text-lg">财富鸿沟加剧<strong>民粹主义</strong>，政治极化导致社会撕裂，民主与法治被削弱。</p>
                     </div>
-                    <div class="p-8 bg-gradient-to-br from-green-800/40 to-transparent border border-green-500/30 rounded-2xl motion-div flex flex-col" data-delay="500">
-                       <div class="flex-1">
-                           <p class="text-lg font-bold text-green-300 uppercase tracking-wider mb-4">低冲击区 (南美/巴西)</p>
-                           <p class="text-7xl font-black my-6 text-white">10%</p>
-                       </div>
-                       <p class="text-gray-300 text-lg border-t border-white/10 pt-4">影响相对较小，可成为潜在的转产选项。</p>
+                    <div class="motion-div dalio-card p-6 text-center" data-delay="500">
+                        <i class="fas fa-globe text-6xl text-red-400 mb-4"></i>
+                        <h4 class="text-2xl font-bold">国际地缘政治秩序</h4>
+                        <p class="text-gray-300 mt-3 text-lg">从<strong>单极主导</strong>转向多边对抗，大国竞争加剧，“实力说了算”的单边主义抬头。</p>
                     </div>
+                </div>
+            </section>
+
+            <section data-transition="fade" data-background-color="#111" class="dalio-section-bg">
+                 <h3 class="text-4xl font-extrabold mb-10">贸易失衡：不可持续的旧循环</h3>
+                 <p class="text-2xl text-gray-400 mb-10">关税是打破“中国制造 → 美国消费 → 中国购买美债”这一循环的激进尝试。</p>
+                 <div class="flex items-center justify-around w-11/12 motion-div" data-delay="100">
+                     <div class="text-center">
+                         <i class="fas fa-industry text-8xl text-blue-400"></i>
+                         <p class="text-2xl mt-4">中国制造<br>MADE IN CHINA</p>
+                     </div>
+                     <i class="fas fa-arrow-right text-6xl text-gray-500 mx-8"></i>
+                     <div class="text-center">
+                         <i class="fas fa-shopping-cart text-8xl text-green-400"></i>
+                         <p class="text-2xl mt-4">美国消费<br>US CONSUMPTION</p>
+                     </div>
+                     <i class="fas fa-arrow-right text-6xl text-gray-500 mx-8"></i>
+                     <div class="text-center">
+                         <i class="fas fa-file-invoice-dollar text-8xl text-yellow-400"></i>
+                         <p class="text-2xl mt-4">中国购买美债<br>CHINA BUYS US DEBT</p>
+                     </div>
                  </div>
+                 <blockquote class="mt-12 text-xl">这一模式导致<strong>美国制造业空心化</strong>和<strong>债务不可持续</strong>，而中国过度依赖出口。在互信缺失的背景下，这种失衡变得极度危险。</blockquote>
             </section>
-            
-            <!-- SLIDE 11: PART 3 CONTENT 2 -->
-            <section>
-                 <h3 class="text-4xl font-extrabold mb-16">企业具体应对策略</h3>
-                 <div class="flex justify-center items-stretch w-full gap-16">
-                    <div class="w-5/12 motion-div p-10 bg-[#1e293b] rounded-3xl shadow-2xl" data-delay="100">
-                         <h4 class="text-3xl font-bold text-blue-400 mb-8 flex items-center">
-                             <i class="far fa-clock mr-3"></i>短期应对措施
-                         </h4>
-                         <ul class="text-left text-xl list-none space-y-6">
-                           <li class="flex items-center bg-black/20 p-4 rounded-xl"><i class="fas fa-handshake mr-4 text-red-500 text-2xl"></i><span><strong>价格谈判:</strong> 与客户商议关税分担比例。</span></li>
-                           <li class="flex items-center bg-black/20 p-4 rounded-xl"><i class="fas fa-building mr-4 text-red-500 text-2xl"></i><span><strong>内部交易:</strong> 利用美国分公司降低关税总额。</span></li>
-                           <li class="flex items-center bg-black/20 p-4 rounded-xl"><i class="fas fa-boxes mr-4 text-red-500 text-2xl"></i><span><strong>库存管理:</strong> 暂停或延后未交订单。</span></li>
-                         </ul>
+
+            <section data-transition="fade" data-background-color="#111" class="dalio-section-bg">
+                <h3 class="text-4xl font-extrabold mb-10">另外两大驱动力：变革的加速器</h3>
+                <div class="flex justify-center gap-12 w-full">
+                    <div class="w-2/5 motion-div dalio-card p-8 text-center" data-delay="100">
+                        <i class="fas fa-cloud-sun-rain text-6xl text-cyan-400 mb-4"></i>
+                        <h4 class="text-3xl font-bold">自然因素 (Acts of Nature)</h4>
+                        <p class="mt-4 text-xl text-gray-300">疫情、洪水、干旱等灾害暴露了全球供应链的脆弱性，强化了各国追求“自给自足”的动机。</p>
                     </div>
-                    <div class="w-5/12 motion-div p-10 bg-[#1e293b] rounded-3xl shadow-2xl" data-delay="300">
-                         <h4 class="text-3xl font-bold text-purple-400 mb-8 flex items-center">
-                             <i class="fas fa-route mr-3"></i>中长期战略
-                         </h4>
-                         <ul class="text-left text-xl list-none space-y-6">
-                           <li class="flex items-start bg-black/20 p-4 rounded-xl"><i class="fas fa-map-marked-alt mr-4 text-red-500 text-2xl mt-1"></i><div><strong>产能再布局:</strong><br><span class="text-gray-400 text-lg">向低关税区(墨西哥/南美)转移。</span></div></li>
-                           <li class="flex items-start bg-black/20 p-4 rounded-xl"><i class="fas fa-chart-pie mr-4 text-red-500 text-2xl mt-1"></i><div><strong>市场多元化:</strong><br><span class="text-gray-400 text-lg">开拓欧盟、东南亚、拉美市场。</span></div></li>
-                         </ul>
+                    <div class="w-2/5 motion-div dalio-card p-8 text-center" data-delay="300">
+                        <i class="fas fa-robot text-6xl text-purple-400 mb-4"></i>
+                        <h4 class="text-3xl font-bold">技术变革 (Technology)</h4>
+                        <p class="mt-4 text-xl text-gray-300">AI等颠覆性技术成为大国竞争的核心领域，技术战、人才战与关税战相互交织，重塑全球经济与军事格局。</p>
                     </div>
-                 </div>
+                </div>
             </section>
-            
-            <!-- SLIDE 12: PART 4 TITLE -->
-             <section data-transition="slide-in" data-background-opacity="0.5">
+
+            <section data-transition="fade" data-background-color="#111" class="dalio-section-bg">
+                <h3 class="text-5xl font-extrabold mb-10"><span class="highlight">历史正在重演</span></h3>
+                <blockquote class="text-2xl leading-normal motion-div" data-delay="100">
+                    当前的局面就是历史的重演。暂停向“敌国”偿债、实施资本管制、征收特别税... 这些在不久前可能都难以想象，但并不表示现在的政策制定者不会再次采用。因此，理解经济萧条、内战、世界大战等秩序崩溃的形式，以及它们如何催生新的秩序，至关重要。
+                </blockquote>
+            </section>
+
+
+            <!-- === PART 4: CONCLUSION === -->
+            <section data-transition="slide-in">
                 <p class="subtitle-en">PART FOUR</p>
                 <h2 class="text-6xl font-black mt-4">总结与展望</h2>
             </section>
             
-            <!-- SLIDE 13: PART 4 CONTENT 1 -->
             <section>
                 <div class="flex items-stretch justify-around w-full gap-12">
-                    <div class="w-1/2 p-10 bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-3xl text-left motion-div shadow-2xl" data-delay="100">
-                        <h3 class="text-3xl font-extrabold flex items-center">
-                            <i class="fas fa-lightbulb text-yellow-500 mr-4"></i>政策本质再认识
-                        </h3>
+                    <div class="w-1/2 p-10 card text-left motion-div" data-delay="100">
+                        <h3 class="text-3xl font-extrabold flex items-center"><i class="fas fa-lightbulb text-yellow-500 mr-4"></i>政策本质再认识</h3>
                         <p class="mt-8 text-xl text-gray-300 leading-loose">
-                            特朗普的“对等关税”不仅是贸易工具，更是<strong class="highlight px-1">战略博弈手段</strong>。其深层目标是通过关税实现财政增收、制造业回流、重塑核心硬实力，并打击主要竞争对手，最终服务于其“让美国再次伟大”的宏大目标。
+                            特朗普的“对等关税”不仅是贸易工具，更是<strong class="px-1">大国战略博弈</strong>的手段，是全球经济、政治秩序深刻变革下的<strong>必然产物与催化剂</strong>。
                         </p>
                     </div>
-                     <div class="w-1/2 p-10 bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-3xl text-left motion-div shadow-2xl" data-delay="300">
-                        <h3 class="text-3xl font-extrabold flex items-center">
-                            <i class="fas fa-compass text-blue-500 mr-4"></i>企业应对核心思路
-                        </h3>
+                     <div class="w-1/2 p-10 card text-left motion-div" data-delay="300">
+                        <h3 class="text-3xl font-extrabold flex items-center"><i class="fas fa-compass text-blue-500 mr-4"></i>企业应对核心思路</h3>
                          <p class="mt-8 text-xl text-gray-300 leading-loose">
-                            企业必须结合<strong class="highlight px-1">短期措施</strong>与<strong class="highlight px-1">中长期战略</strong>，灵活应对成本压力和市场变化。核心在于通过调整产能布局和开拓多元市场，<strong class="highlight px-1">降低对单一市场的依赖</strong>，从而提升自身的抗风险能力。
+                            在动荡的“新常态”下，企业必须从<strong>被动应对</strong>转向<strong>主动重塑</strong>。核心在于建立<strong>多元化、有韧性</strong>的供应链和市场布局，将风险管理置于战略核心，提升在不确定环境下的生存与发展能力。
                         </p>
                     </div>
                 </div>
             </section>
             
-            <!-- SLIDE 14: END -->
             <section data-transition="zoom-out">
                 <div class="motion-div">
                     <h2 class="text-9xl font-black tracking-tighter">谢谢</h2>
@@ -392,15 +352,14 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.js"></script>
     <script>
-        // Framer Motion Animation Integration
         function animateElements() {
              const motionDivs = document.querySelectorAll('.present .motion-div');
-             motionDivs.forEach((div, index) => {
+             motionDivs.forEach((div) => {
                  const delay = parseFloat(div.getAttribute('data-delay') || '0');
                  motion.animate(
                      div, 
                      { opacity: [0, 1], y: [40, 0] },
-                     { duration: 0.8, delay: delay / 1000, ease: [0.22, 1, 0.36, 1] } // Custom ease-out
+                     { duration: 0.8, delay: delay / 1000, ease: [0.22, 1, 0.36, 1] }
                  );
              });
         }
@@ -412,8 +371,7 @@
             width: 1920,
             height: 1080,
             transition: 'slide',
-            backgroundTransition: 'crossfade',
-            // Ensures only horizontal navigation is possible.
+            backgroundTransition: 'fade',
             navigationMode: 'linear',
             controlsLayout: 'edges',
             controlsTutorial: false,
@@ -421,26 +379,15 @@
             slideNumber: false,
         });
 
-        Reveal.on('slidechanged', event => {
-            // Animate elements on the current slide
-            animateElements();
-        });
-        
-        // Initial animation for the first slide
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(animateElements, 500);
-        });
-
+        Reveal.on('slidechanged', animateElements);
+        document.addEventListener('DOMContentLoaded', () => setTimeout(animateElements, 500));
     </script>
     
     <script>
-        // p5.js Particle Background Sketch
         let particles = [];
         function setup() {
             let canvas = createCanvas(windowWidth, windowHeight);
             canvas.parent('p5-canvas');
-            background('#0f172a');
-            
             const particlesLength = Math.min(Math.floor(window.innerWidth / 15), 150);
             for(let i = 0; i < particlesLength; i++){
                 particles.push(new Particle());
@@ -448,7 +395,7 @@
         }
 
         function draw() {
-            background('rgba(15, 23, 42, 0.2)'); // Slightly transparent for trails
+            background('rgba(10, 10, 10, 0.2)');
             particles.forEach((p, index) => {
                 p.update();
                 p.draw();
@@ -456,10 +403,7 @@
             });
         }
         
-        function windowResized() {
-            resizeCanvas(windowWidth, windowHeight);
-            background('#0f172a');
-        }
+        function windowResized() { resizeCanvas(windowWidth, windowHeight); }
 
         class Particle {
             constructor(){
@@ -467,27 +411,19 @@
                 this.vel = createVector(random(-0.5, 0.5), random(-0.5, 0.5));
                 this.size = random(2, 4);
             }
-
             update(){
                 this.pos.add(this.vel);
                 this.edges();
             }
-
             draw(){
                 noStroke();
-                fill('rgba(227, 25, 55, 0.5)'); // Tesla Red with opacity
+                fill('rgba(227, 25, 55, 0.5)');
                 circle(this.pos.x, this.pos.y, this.size);
             }
-
             edges(){
-                if(this.pos.x < 0 || this.pos.x > width){
-                    this.vel.x *= -1;
-                }
-                if(this.pos.y < 0 || this.pos.y > height){
-                    this.vel.y *= -1;
-                }
+                if(this.pos.x < 0 || this.pos.x > width){ this.vel.x *= -1; }
+                if(this.pos.y < 0 || this.pos.y > height){ this.vel.y *= -1; }
             }
-            
             checkParticles(particles){
                 particles.forEach(particle => {
                     const d = dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
