@@ -1,254 +1,505 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>励志笃行 瑞灵最灵 - 竞选海报</title>
+    <title>特朗普“对等关税”对全球贸易及企业的影响与应对</title>
+
+    <!-- TailwindCSS 3.4.1 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Reveal.js 4.6.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/black.min.css">
+
+    <!-- p5.js 1.9.0 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     
-    <!-- Google Fonts for a friendly, rounded look -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&display=swap" rel="stylesheet">
-    
+    <!-- Framer Motion 10.16.16 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.16/framer-motion.dev.js"></script>
+
+    <!-- Font Awesome 6.5.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         :root {
-            --bg-pink: #FFF0F5; /* Light Lavender Blush background */
-            --main-pink: #FF69B4; /* Hot Pink for titles */
-            --text-dark: #333;
-            --border-color: #E0BBE4; /* Light purple for borders */
+            --highlight-color: #E31937; /* Tesla Red */
+            --text-main: #FFFFFF;
+            --text-secondary: #CCCCCC;
+            --bg-dark: #0f172a; /* Dark Slate Blue */
         }
 
+        /* Custom Reveal.js Theme */
         body {
-            font-family: 'M PLUS Rounded 1c', sans-serif;
-            background-color: var(--bg-pink);
+            background-color: var(--bg-dark);
             margin: 0;
-            padding: 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            overflow: hidden;
         }
 
-        .poster-container {
-            width: 900px; /* Fixed width for poster layout */
-            background-color: white;
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden; /* Hide overflowing decorative elements */
+        .reveal {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            color: var(--text-main);
         }
 
-        /* Header Title Styles */
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        header h1 {
-            font-size: 80px;
-            font-weight: 900;
-            margin: 0;
-            display: inline-block; /* Allows for better spacing */
-        }
-        .title-part1 {
-            color: var(--main-pink);
-            margin-right: 20px;
-        }
-        .title-part2 {
-            background: linear-gradient(45deg, #FFA500, #FF6347);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-            /* Create the outline effect */
-            text-shadow: 
-                -2px -2px 0 #FFF, 2px -2px 0 #FFF, 
-                -2px 2px 0 #FFF, 2px 2px 0 #FFF, 
-                -4px -4px 0 #FFB6C1, 4px -4px 0 #FFB6C1, 
-                -4px 4px 0 #FFB6C1, 4px 4px 0 #FFB6C1;
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            color: var(--text-main);
+            font-weight: 800; /* Extra Bold */
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
-        /* Main Content Area */
-        main {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        /* Introduction Section */
-        .intro-section {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        .profile-image-container {
-            flex-shrink: 0;
-            width: 300px;
-        }
-        .profile-image {
-            width: 100%;
-            border-radius: 20px;
-        }
-        .intro-text-box {
-            flex-grow: 1;
-            background-color: #fff;
-            border: 3px dashed var(--border-color);
-            border-radius: 20px;
-            padding: 30px;
-            position: relative;
-        }
-
-        /* Section Title Tags (e.g., "自我介绍") */
-        .section-title-tag {
-            background-color: var(--main-pink);
-            color: white;
-            padding: 10px 30px;
-            border-radius: 50px;
-            font-size: 24px;
-            font-weight: 800;
-            position: absolute;
-            top: -25px; /* Position it overlapping the top border */
-            left: 30px;
-            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
-        }
-
-        .intro-text-box h2 {
-            font-size: 32px;
-            color: var(--text-dark);
-            margin-top: 20px;
-        }
-        .intro-text-box ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-            font-size: 18px;
-            line-height: 2;
-            color: #555;
-        }
-        .intro-text-box ul li {
-            margin-bottom: 10px;
-        }
-        .intro-text-box .highlight {
-            font-weight: 700;
-            color: var(--main-pink);
-            background-color: #FFF0F5;
-            padding: 2px 6px;
-            border-radius: 5px;
-        }
-
-        /* Declaration Section */
-        .declaration-box {
-            background-color: #fff;
-            border-radius: 20px;
-            padding: 30px;
-            padding-top: 50px; /* Space for the title tag */
-            position: relative;
-            border: 3px solid transparent;
-            /* Create the colorful border effect */
-            background-image: 
-                linear-gradient(white, white), 
-                linear-gradient(to right, #FFC3A0, #FFAFBD);
-            background-origin: border-box;
-            background-clip: content-box, border-box;
-        }
-        .declaration-box p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #555;
-        }
-        .slogan {
-            font-size: 22px;
-            font-weight: 800;
-            text-align: center;
-            color: var(--main-pink);
-            background-color: #FFF0F5;
-            padding: 15px;
-            border-radius: 15px;
-            margin-top: 20px;
-        }
-
-        /* Awards Collage Section */
-        .awards-collage {
-            margin-top: 20px;
-            height: 300px; /* Set a fixed height for the collage area */
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .awards-collage img {
-            position: absolute;
-            max-width: 200px; /* Control certificate size */
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-        .awards-collage img:hover {
-            transform: scale(1.2) rotate(0deg) !important; /* Enlarge and straighten on hover */
-            z-index: 100; /* Bring to front on hover */
+        .reveal .highlight {
+            color: var(--highlight-color);
         }
         
-        /* Manual positioning and rotation for the collage effect */
-        .cert-1 { transform: rotate(-15deg) translate(-150px, 20px); z-index: 1; }
-        .cert-2 { transform: rotate(10deg) translate(50px, -30px); z-index: 2; }
-        .cert-3 { transform: rotate(-5deg) translate(-50px, 40px); z-index: 3; }
-        .cert-4 { transform: rotate(20deg) translate(200px, 10px); z-index: 4; }
-        .cert-5 { transform: rotate(5deg) translate(-250px, -10px); z-index: 5; }
-        .cert-6 { transform: rotate(-10deg) translate(150px, 50px); z-index: 6; }
-        .cert-7 { transform: rotate(0deg) translate(0, 0); z-index: 7; }
+        .reveal strong {
+           color: var(--highlight-color);
+           font-weight: 800;
+        }
+
+        .reveal .controls-arrow {
+           color: var(--highlight-color) !important;
+        }
+
+        .reveal .progress span {
+            background: var(--highlight-color) !important;
+        }
+        
+        .reveal blockquote {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 5px solid var(--highlight-color);
+            padding: 20px;
+            width: 100%;
+        }
+        
+        .reveal .slide-background-content {
+            z-index: 0;
+        }
+
+        #p5-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Custom Typography */
+        .super-title {
+            font-size: 6rem;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+        
+        .super-number {
+            font-size: 10rem;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--highlight-color);
+            text-shadow: 0 0 20px rgba(227, 25, 55, 0.5);
+        }
+
+        .subtitle-en {
+            font-size: 1.5rem;
+            letter-spacing: 0.2em;
+            color: var(--text-secondary);
+            opacity: 0.7;
+            text-transform: uppercase;
+        }
+
+        /* Bento Grid Style */
+        .bento-grid {
+            display: grid;
+            gap: 1.5rem;
+            width: 100%;
+            height: 60vh;
+        }
+        .bento-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .bento-item:hover {
+           transform: translateY(-5px);
+           border-color: rgba(227, 25, 55, 0.5);
+           box-shadow: 0 10px 30px -10px rgba(227, 25, 55, 0.3);
+        }
+        
+        /* Animate elements on slide visibility */
+        .motion-div {
+           opacity: 0;
+        }
+        .present .motion-div {
+            opacity: 1;
+        }
+
     </style>
 </head>
 <body>
+    <div id="p5-canvas"></div>
 
-    <div class="poster-container">
-        <header>
-            <h1>
-                <span class="title-part1">励志笃行</span>
-                <span class="title-part2">瑞灵最灵</span>
-            </h1>
-        </header>
-
-        <main>
-            <section class="intro-section">
-                <div class="profile-image-container">
-                    <!-- IMPORTANT: Replace 'profile.png' with the actual path to your photo -->
-                    <img src="profile.png" alt="张瑞灵" class="profile-image">
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- SLIDE 1: TITLE -->
+            <section data-transition="zoom">
+                <div class="motion-div" data-delay="100">
+                    <h1 class="super-title">特朗普“对等关税”</h1>
+                    <h2 class="super-title -mt-4">全球贸易的影响与应对</h2>
+                    <p class="subtitle-en mt-8">Impact & Strategy on Global Trade</p>
+                    <p class="mt-20 text-xl text-gray-400">25级2班 | 8组</p>
                 </div>
-                <div class="intro-text-box">
-                    <div class="section-title-tag">自我介绍</div>
-                    <h2>你们好, 我是来自六(5)中队的<strong class="highlight-text">张瑞灵</strong></h2>
-                    <p style="color: #777;">很高兴通过这样的方式让你认识我!</p>
-                    <ul>
-                        <li>☀️ <strong>舞台上的我:</strong> 阳光开朗、自信大方, 长笛、演讲、表演从不怯场。</li>
-                        <li>🎉 <strong>学校里的我:</strong> 品学兼优, 全面发展, 网球、书法、画画样样拿手。</li>
-                        <li>💖 <strong>社会中的我:</strong> 助人为乐, 热情服务, 在各类志愿者活动中都活跃着我的身影。</li>
-                    </ul>
-                    <p class="highlight">2023年“学雷”奖学金获得者; 2024年普陀区百优“新时代好少年”</p>
+            </section>
+            
+            <!-- SLIDE 2: AGENDA -->
+            <section data-transition="slide-in">
+                <h2 class="text-5xl font-extrabold">CONTENTS</h2>
+                 <div class="mt-16 grid grid-cols-2 gap-8 text-left">
+                     <div class="motion-div p-6 bg-gray-900/30 rounded-lg border border-gray-700 hover:border-red-500 transition-all" data-delay="100">
+                        <span class="text-4xl font-black text-red-500">01</span>
+                        <h3 class="text-3xl mt-2">美国“对等关税”政策解析</h3>
+                        <p class="text-gray-400 mt-2">POLICY ANALYSIS</p>
+                     </div>
+                     <div class="motion-div p-6 bg-gray-900/30 rounded-lg border border-gray-700 hover:border-red-500 transition-all" data-delay="200">
+                        <span class="text-4xl font-black text-red-500">02</span>
+                        <h3 class="text-3xl mt-2">目的与经济影响</h3>
+                        <p class="text-gray-400 mt-2">OBJECTIVES & IMPACT</p>
+                     </div>
+                     <div class="motion-div p-6 bg-gray-900/30 rounded-lg border border-gray-700 hover:border-red-500 transition-all" data-delay="300">
+                        <span class="text-4xl font-black text-red-500">03</span>
+                        <h3 class="text-3xl mt-2">电子元器件企业的冲击与应对</h3>
+                        <p class="text-gray-400 mt-2">CORPORATE STRATEGY</p>
+                     </div>
+                     <div class="motion-div p-6 bg-gray-900/30 rounded-lg border border-gray-700 hover:border-red-500 transition-all" data-delay="400">
+                        <span class="text-4xl font-black text-red-500">04</span>
+                        <h3 class="text-3xl mt-2">总结与展望</h3>
+                        <p class="text-gray-400 mt-2">CONCLUSION & OUTLOOK</p>
+                     </div>
+                 </div>
+            </section>
+
+            <!-- SLIDE 3: PART 1 TITLE -->
+            <section data-transition="slide-in" data-background-opacity="0.5">
+                <p class="subtitle-en">PART ONE</p>
+                <h2 class="text-6xl font-black mt-4">美国“对等关税”政策解析</h2>
+            </section>
+            
+            <!-- SLIDE 4: PART 1 CONTENT 1 -->
+            <section>
+                <div class="flex items-center justify-around w-full gap-12">
+                    <div class="w-1/2 text-left motion-div p-8 bg-white/5 rounded-2xl border border-white/10" data-delay="100">
+                        <span class="text-2xl font-bold text-gray-400 uppercase tracking-wider">表面宣称</span>
+                        <h3 class="text-5xl font-extrabold mt-2">“对等公平”原则</h3>
+                        <p class="mt-6 text-xl text-gray-300 leading-relaxed">美方声称“对等关税”旨在实现贸易条件对等，将外国对美综合税率（含关税、增值税等）作为征税依据。</p>
+                        <div class="mt-6 pt-6 border-t border-white/10">
+                            <p class="text-lg">例如：声称中国对美综合税率 <strong class="text-3xl ml-2">67%</strong></p>
+                            <p class="text-lg mt-2">故加征关税 <strong class="text-3xl ml-2">34%</strong></p>
+                        </div>
+                    </div>
+                    <div class="w-1/2 text-left motion-div p-8 bg-white/5 rounded-2xl border border-white/10" data-delay="300">
+                        <span class="text-2xl font-bold text-gray-400 uppercase tracking-wider">实际逻辑</span>
+                        <h3 class="text-5xl font-extrabold mt-2">“逆差导向”算法</h3>
+                        <p class="mt-6 text-xl text-gray-300 leading-relaxed">真实计算方式极为粗暴，暴露其以逆差为借口广泛加税的本质，而非追求精准对等。</p>
+                        <div class="mt-6 pt-6 border-t border-white/10">
+                            <p class="text-lg font-mono bg-black/30 p-4 rounded-lg">
+                                “对等税率” ≈ <br>
+                                (美国对某国贸易逆差 / 美国从该国进口总额)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- SLIDE 5: PART 1 CONTENT 2 -->
+            <section>
+                 <h3 class="text-4xl font-extrabold mb-16">辩证作用：<span class="highlight">保护</span>与<span class="highlight">破坏</span>并存</h3>
+                 <div class="flex justify-around items-stretch w-full gap-8">
+                    <div class="w-5/12 text-center motion-div p-8 bg-gradient-to-b from-green-900/20 to-transparent rounded-3xl border border-green-500/20" data-delay="100">
+                         <div class="w-24 h-24 mx-auto bg-green-500/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-shield-alt text-5xl text-green-400"></i>
+                         </div>
+                         <h4 class="text-3xl font-bold text-green-400">短期本土保护效应</h4>
+                         <p class="text-lg mt-6 text-gray-300 leading-relaxed">短期内提升美国本土制造业竞争力，吸引部分产业回流，为特定行业带来发展机遇。</p>
+                    </div>
+                    <div class="w-5/12 text-center motion-div p-8 bg-gradient-to-b from-red-900/20 to-transparent rounded-3xl border border-red-500/20" data-delay="300">
+                        <div class="w-24 h-24 mx-auto bg-red-500/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-bomb text-5xl text-red-500"></i>
+                        </div>
+                         <h4 class="text-3xl font-bold text-red-500">长期系统性破坏风险</h4>
+                         <p class="text-lg mt-6 text-gray-300 leading-relaxed">长期将推高美国通胀，引发全球贸易体系混乱，激起他国反制，形成关税战恶性循环，甚至可能引发全球经济萧条。</p>
+                    </div>
+                 </div>
+            </section>
+            
+            <!-- SLIDE 6: PART 2 TITLE -->
+             <section data-transition="slide-in" data-background-opacity="0.5">
+                <p class="subtitle-en">PART TWO</p>
+                <h2 class="text-6xl font-black mt-4">“对等关税”的目的与经济影响</h2>
+            </section>
+
+            <!-- SLIDE 7: PART 2 CONTENT 1 -->
+            <section>
+                <h3 class="text-4xl font-extrabold mb-12">特朗普政府的核心政策目的</h3>
+                <div class="bento-grid" style="grid-template-columns: repeat(3, 1fr); height: 50vh;">
+                   <div class="bento-item motion-div" data-delay="100">
+                      <i class="fas fa-hand-holding-usd text-6xl highlight mb-6 opacity-80"></i>
+                      <h4 class="text-3xl font-bold">补充财政收入</h4>
+                      <p class="text-gray-300 mt-4 text-lg">为国内减税与公共支出提供资金，缓解财政压力。</p>
+                   </div>
+                   <div class="bento-item motion-div" data-delay="300">
+                      <i class="fas fa-industry text-6xl highlight mb-6 opacity-80"></i>
+                      <h4 class="text-3xl font-bold">推动制造业回流</h4>
+                      <p class="text-gray-300 mt-4 text-lg">引导高科技、关键原材料等产业链回归美国，强化本土基础。</p>
+                   </div>
+                   <div class="bento-item motion-div" data-delay="500">
+                     <i class="fas fa-chess-queen text-6xl highlight mb-6 opacity-80"></i>
+                      <h4 class="text-3xl font-bold">战略博弈筹码</h4>
+                      <p class="text-gray-300 mt-4 text-lg">以关税为工具，迫使他国在汇率、债务等问题上让步。</p>
+                   </div>
                 </div>
             </section>
 
-            <section class="declaration-box">
-                <div class="section-title-tag">竞选宣言</div>
-                <p>
-                    我曾经担任过大队委员, 深受老师和同学的信赖。我珍惜这份来之不易的信任, 希望继续有机会为同学服务, 为少先队贡献自己的力量! 我将一如既往展现新时代少年的社会责任感, 向上向善的精神风貌, 用实际行动展现“强国有我”的担当和风采。我的竞选口号是:
-                </p>
-                <div class="slogan">
-                    真心诚意为同学服务, 以身作则树榜样形象 ✨
+            <!-- SLIDE 8: PART 2 CONTENT 2 -->
+            <section>
+                <h3 class="text-4xl font-extrabold mb-12">对美国及全球经济的影响</h3>
+                <div class="flex justify-around items-start w-full gap-12">
+                   <div class="w-5/12 motion-div p-8 bg-white/5 rounded-2xl" data-delay="100">
+                       <h4 class="text-3xl font-bold highlight flex items-center">
+                           <i class="fas fa-flag-usa mr-4"></i>对美国经济
+                       </h4>
+                       <ul class="text-left mt-8 text-xl space-y-4">
+                           <li class="flex items-start"><i class="fas fa-plus-circle text-green-400 mt-1 mr-3"></i><span>短期提振部分制造业，增加关税收入。</span></li>
+                           <li class="flex items-start"><i class="fas fa-minus-circle text-red-500 mt-1 mr-3"></i><span>输入性通胀加剧，供应链混乱，损害出口与全球领导力。</span></li>
+                       </ul>
+                   </div>
+                   <div class="w-5/12 motion-div p-8 bg-white/5 rounded-2xl" data-delay="300">
+                       <h4 class="text-3xl font-bold highlight flex items-center">
+                           <i class="fas fa-globe mr-4"></i>对全球贸易
+                       </h4>
+                       <ul class="text-left mt-8 text-xl space-y-4">
+                           <li class="flex items-start"><i class="fas fa-random text-blue-400 mt-1 mr-3"></i><span>产业链从亚洲向美洲、欧洲分散。</span></li>
+                           <li class="flex items-start"><i class="fas fa-handshake-slash text-blue-400 mt-1 mr-3"></i><span>WTO被边缘化，区域性双边协定更受重视。</span></li>
+                           <li class="flex items-start"><i class="fas fa-chart-line-down text-blue-400 mt-1 mr-3"></i><span>全球经济增长放缓，投资信心受挫。</span></li>
+                       </ul>
+                   </div>
                 </div>
             </section>
-        </main>
-        
-        <section class="awards-collage">
-            <!-- IMPORTANT: Replace these with your actual certificate image files -->
-            <img src="16.jpg" alt="奖状1" class="cert-1">
-            <img src="17.jpg" alt="奖状2" class="cert-2">
-            <img src="18.jpg" alt="奖状3" class="cert-3">
-            <img src="19.jpg" alt="奖状4" class="cert-4">
-            <img src="20.jpg" alt="奖状5" class="cert-5">
-            <img src="16.jpg" alt="奖状6" class="cert-6">
-            <img src="17.jpg" alt="奖状7" class="cert-7">
-        </section>
-
+            
+             <!-- SLIDE 9: PART 3 TITLE -->
+            <section data-transition="slide-in" data-background-opacity="0.5">
+                <p class="subtitle-en">PART THREE</p>
+                <h2 class="text-6xl font-black mt-4">电子元器件企业的冲击与应对</h2>
+            </section>
+            
+            <!-- SLIDE 10: PART 3 CONTENT 1 -->
+            <section>
+                <h3 class="text-4xl font-extrabold mb-12">具体冲击分析：不同地区的税率影响</h3>
+                 <div class="grid grid-cols-3 gap-8 text-center items-stretch">
+                    <div class="p-8 bg-gradient-to-br from-red-900/40 to-transparent border border-red-500/30 rounded-2xl motion-div flex flex-col" data-delay="100">
+                       <div class="flex-1">
+                           <p class="text-lg font-bold text-red-300 uppercase tracking-wider mb-4">高冲击区 (中国/越南)</p>
+                           <p class="text-7xl font-black my-6 text-white">65%<span class="text-3xl align-top ml-1">/46%</span></p>
+                       </div>
+                       <p class="text-gray-300 text-lg border-t border-white/10 pt-4">成本大幅上升，竞争力骤降，转口贸易受重创。</p>
+                    </div>
+                    <div class="p-8 bg-gradient-to-br from-yellow-700/40 to-transparent border border-yellow-500/30 rounded-2xl motion-div flex flex-col" data-delay="300">
+                       <div class="flex-1">
+                           <p class="text-lg font-bold text-yellow-300 uppercase tracking-wider mb-4">中冲击区 (台/日/韩/墨)</p>
+                           <p class="text-7xl font-black my-6 text-white">~32%</p>
+                       </div>
+                       <p class="text-gray-300 text-lg border-t border-white/10 pt-4">半导体面临高壁垒，非协定产品仍受冲击。</p>
+                    </div>
+                    <div class="p-8 bg-gradient-to-br from-green-800/40 to-transparent border border-green-500/30 rounded-2xl motion-div flex flex-col" data-delay="500">
+                       <div class="flex-1">
+                           <p class="text-lg font-bold text-green-300 uppercase tracking-wider mb-4">低冲击区 (南美/巴西)</p>
+                           <p class="text-7xl font-black my-6 text-white">10%</p>
+                       </div>
+                       <p class="text-gray-300 text-lg border-t border-white/10 pt-4">影响相对较小，可成为潜在的转产选项。</p>
+                    </div>
+                 </div>
+            </section>
+            
+            <!-- SLIDE 11: PART 3 CONTENT 2 -->
+            <section>
+                 <h3 class="text-4xl font-extrabold mb-16">企业具体应对策略</h3>
+                 <div class="flex justify-center items-stretch w-full gap-16">
+                    <div class="w-5/12 motion-div p-10 bg-[#1e293b] rounded-3xl shadow-2xl" data-delay="100">
+                         <h4 class="text-3xl font-bold text-blue-400 mb-8 flex items-center">
+                             <i class="far fa-clock mr-3"></i>短期应对措施
+                         </h4>
+                         <ul class="text-left text-xl list-none space-y-6">
+                           <li class="flex items-center bg-black/20 p-4 rounded-xl"><i class="fas fa-handshake mr-4 text-red-500 text-2xl"></i><span><strong>价格谈判:</strong> 与客户商议关税分担比例。</span></li>
+                           <li class="flex items-center bg-black/20 p-4 rounded-xl"><i class="fas fa-building mr-4 text-red-500 text-2xl"></i><span><strong>内部交易:</strong> 利用美国分公司降低关税总额。</span></li>
+                           <li class="flex items-center bg-black/20 p-4 rounded-xl"><i class="fas fa-boxes mr-4 text-red-500 text-2xl"></i><span><strong>库存管理:</strong> 暂停或延后未交订单。</span></li>
+                         </ul>
+                    </div>
+                    <div class="w-5/12 motion-div p-10 bg-[#1e293b] rounded-3xl shadow-2xl" data-delay="300">
+                         <h4 class="text-3xl font-bold text-purple-400 mb-8 flex items-center">
+                             <i class="fas fa-route mr-3"></i>中长期战略
+                         </h4>
+                         <ul class="text-left text-xl list-none space-y-6">
+                           <li class="flex items-start bg-black/20 p-4 rounded-xl"><i class="fas fa-map-marked-alt mr-4 text-red-500 text-2xl mt-1"></i><div><strong>产能再布局:</strong><br><span class="text-gray-400 text-lg">向低关税区(墨西哥/南美)转移。</span></div></li>
+                           <li class="flex items-start bg-black/20 p-4 rounded-xl"><i class="fas fa-chart-pie mr-4 text-red-500 text-2xl mt-1"></i><div><strong>市场多元化:</strong><br><span class="text-gray-400 text-lg">开拓欧盟、东南亚、拉美市场。</span></div></li>
+                         </ul>
+                    </div>
+                 </div>
+            </section>
+            
+            <!-- SLIDE 12: PART 4 TITLE -->
+             <section data-transition="slide-in" data-background-opacity="0.5">
+                <p class="subtitle-en">PART FOUR</p>
+                <h2 class="text-6xl font-black mt-4">总结与展望</h2>
+            </section>
+            
+            <!-- SLIDE 13: PART 4 CONTENT 1 -->
+            <section>
+                <div class="flex items-stretch justify-around w-full gap-12">
+                    <div class="w-1/2 p-10 bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-3xl text-left motion-div shadow-2xl" data-delay="100">
+                        <h3 class="text-3xl font-extrabold flex items-center">
+                            <i class="fas fa-lightbulb text-yellow-500 mr-4"></i>政策本质再认识
+                        </h3>
+                        <p class="mt-8 text-xl text-gray-300 leading-loose">
+                            特朗普的“对等关税”不仅是贸易工具，更是<strong class="highlight px-1">战略博弈手段</strong>。其深层目标是通过关税实现财政增收、制造业回流、重塑核心硬实力，并打击主要竞争对手，最终服务于其“让美国再次伟大”的宏大目标。
+                        </p>
+                    </div>
+                     <div class="w-1/2 p-10 bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-3xl text-left motion-div shadow-2xl" data-delay="300">
+                        <h3 class="text-3xl font-extrabold flex items-center">
+                            <i class="fas fa-compass text-blue-500 mr-4"></i>企业应对核心思路
+                        </h3>
+                         <p class="mt-8 text-xl text-gray-300 leading-loose">
+                            企业必须结合<strong class="highlight px-1">短期措施</strong>与<strong class="highlight px-1">中长期战略</strong>，灵活应对成本压力和市场变化。核心在于通过调整产能布局和开拓多元市场，<strong class="highlight px-1">降低对单一市场的依赖</strong>，从而提升自身的抗风险能力。
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- SLIDE 14: END -->
+            <section data-transition="zoom-out">
+                <div class="motion-div">
+                    <h2 class="text-9xl font-black tracking-tighter">谢谢</h2>
+                    <p class="subtitle-en mt-8 text-2xl tracking-[0.5em]">THANK YOU</p>
+                </div>
+            </section>
+        </div>
     </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.js"></script>
+    <script>
+        // Framer Motion Animation Integration
+        function animateElements() {
+             const motionDivs = document.querySelectorAll('.present .motion-div');
+             motionDivs.forEach((div, index) => {
+                 const delay = parseFloat(div.getAttribute('data-delay') || '0');
+                 motion.animate(
+                     div, 
+                     { opacity: [0, 1], y: [40, 0] },
+                     { duration: 0.8, delay: delay / 1000, ease: [0.22, 1, 0.36, 1] } // Custom ease-out
+                 );
+             });
+        }
+        
+        Reveal.initialize({
+            hash: true,
+            center: true,
+            margin: 0.05,
+            width: 1920,
+            height: 1080,
+            transition: 'slide',
+            backgroundTransition: 'crossfade',
+            // Ensures only horizontal navigation is possible.
+            navigationMode: 'linear',
+            controlsLayout: 'edges',
+            controlsTutorial: false,
+            progress: true,
+            slideNumber: false,
+        });
 
+        Reveal.on('slidechanged', event => {
+            // Animate elements on the current slide
+            animateElements();
+        });
+        
+        // Initial animation for the first slide
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(animateElements, 500);
+        });
+
+    </script>
+    
+    <script>
+        // p5.js Particle Background Sketch
+        let particles = [];
+        function setup() {
+            let canvas = createCanvas(windowWidth, windowHeight);
+            canvas.parent('p5-canvas');
+            background('#0f172a');
+            
+            const particlesLength = Math.min(Math.floor(window.innerWidth / 15), 150);
+            for(let i = 0; i < particlesLength; i++){
+                particles.push(new Particle());
+            }
+        }
+
+        function draw() {
+            background('rgba(15, 23, 42, 0.2)'); // Slightly transparent for trails
+            particles.forEach((p, index) => {
+                p.update();
+                p.draw();
+                p.checkParticles(particles.slice(index));
+            });
+        }
+        
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+            background('#0f172a');
+        }
+
+        class Particle {
+            constructor(){
+                this.pos = createVector(random(width), random(height));
+                this.vel = createVector(random(-0.5, 0.5), random(-0.5, 0.5));
+                this.size = random(2, 4);
+            }
+
+            update(){
+                this.pos.add(this.vel);
+                this.edges();
+            }
+
+            draw(){
+                noStroke();
+                fill('rgba(227, 25, 55, 0.5)'); // Tesla Red with opacity
+                circle(this.pos.x, this.pos.y, this.size);
+            }
+
+            edges(){
+                if(this.pos.x < 0 || this.pos.x > width){
+                    this.vel.x *= -1;
+                }
+                if(this.pos.y < 0 || this.pos.y > height){
+                    this.vel.y *= -1;
+                }
+            }
+            
+            checkParticles(particles){
+                particles.forEach(particle => {
+                    const d = dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+                    if(d < 120){
+                        const alpha = map(d, 0, 120, 0.2, 0);
+                        stroke(`rgba(227, 25, 55, ${alpha})`);
+                        strokeWeight(1);
+                        line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y)
+                    }
+                });
+            }
+        }
+    </script>
 </body>
 </html>
