@@ -37,6 +37,9 @@
         .bg-gradient-theme { background-color: #1F1F1F; }
         .agenda-card { background-color: #2a2a2a; border-radius: 16px; padding: 2rem; border: 1px solid #3a3a3a; }
         .section-header { position: absolute; top: 40px; left: 40px; }
+        .custom-table { display: grid; gap: 1px; background-color: rgba(255, 255, 255, 0.2); border-radius: 16px; overflow: hidden; font-size: 0.8em; }
+        .custom-table > div { background-color: rgba(10, 10, 10, 0.6); padding: 1rem 1.5rem; }
+        .custom-table .table-header { background-color: rgba(30, 30, 30, 0.8); font-weight: 700; }
     </style>
 </head>
 <body>
@@ -71,8 +74,8 @@
                         </div>
                         <div class="agenda-card">
                             <p class="text-highlight text-2xl font-bold">Q3</p>
-                            <h3 class="text-4xl mt-2">中国企业案例：冲击与应对策略?</h3>
-                            <p class="en-small mt-4">IMPACT & PLAYBOOK ON CHINESE FIRMS</p>
+                            <h3 class="text-4xl mt-2">企业案例：冲击与应对策略?</h3>
+                            <p class="en-small mt-4">IMPACT & PLAYBOOK</p>
                         </div>
                         <div class="agenda-card">
                             <p class="text-highlight text-2xl font-bold">&infin;</p>
@@ -84,7 +87,7 @@
             </section>
             
             <!-- Q1-1 - 第3页 -->
-             <section>
+            <section>
                  <div class="section-header"><p class="text-highlight font-bold text-4xl">Q1</p></div>
                 <h3 class="title-small mb-8 text-center" style="margin-top:20px;">关税的核心：定义、功能与影响</h3>
                 <div class="grid grid-cols-2 grid-rows-2 gap-8 h-[80vh]">
@@ -105,7 +108,19 @@
                 </div>
             </section>
 
-            <!-- Q2-1 - 第5页 -->
+            <!-- Q1-3 总结表格 - 第5页 -->
+            <section>
+                <div class="section-header"><p class="text-highlight font-bold text-4xl">Q1</p></div>
+                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">总结：关税的多维角色与本质</h3>
+                <div class="custom-table grid-cols-4 h-[80vh] mt-12">
+                    <div class="table-header">维度</div><div class="table-header">表象（The Promise）</div><div class="table-header">本质（The Peril）</div><div class="table-header">战略启示</div>
+                    <div>作为经济工具</div><div>保护国内产业，促进公平竞争</div><div>扭曲资源配置，损害消费者利益，降低整体效率</div><div class="text-highlight">是一把双刃剑，使用时机和范围至关重要</div>
+                    <div>作为政治工具</div><div>展示强硬姿态，兑现竞选承诺，争取民意支持</div><div>激化国内矛盾，固化民粹主义，疏远国际盟友</div><div>短期政治收益常以长期国家利益为代价</div>
+                    <div>作为体系力量</div><div>意图修正全球贸易失衡</div><div>破坏以规则为基础的多边体系，导向丛林法则</div><div class="text-highlight">标志着从合作共赢到零和博弈的范式转移</div>
+                </div>
+            </section>
+
+            <!-- Q2-1 - 第6页 -->
             <section>
                  <div class="section-header"><p class="text-highlight font-bold text-4xl">Q2</p></div>
                  <h3 class="title-small mb-8 text-center" style="margin-top:20px;">战略意图：解构“对等关税”政策背后的多重目的</h3>
@@ -116,7 +131,7 @@
                  </div>
             </section>
 
-             <!-- Q2-2 - 第6页 -->
+             <!-- Q2-2 - 第7页 -->
             <section>
                  <div class="section-header"><p class="text-highlight font-bold text-4xl">Q2</p></div>
                 <h3 class="title-small mb-8 text-center" style="margin-top:20px;">连锁反应：关税政策对美国及全球经济的潜在冲击</h3>
@@ -127,74 +142,76 @@
                 </div>
             </section>
             
-            <!-- Q3-1 跨境电商冲击 - 第7页 (全新内容) -->
+            <!-- Q2-3 总结表格 - 第8页 -->
             <section>
-                <div class="section-header"><p class="text-highlight font-bold text-4xl">Q3</p></div>
-                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">案例 1：对中国跨境电商 (B2C) 的深度冲击</h3>
-                <div class="grid grid-cols-2 grid-rows-2 gap-8 h-[80vh]">
-                    <div class="bento-card"><h4 class="text-3xl zh-large-bold">成本与利润的双重挤压</h4><p class="mt-4 text-xl text-gray-300">关税直接叠加于<strong class="text-white">采购成本(COGS)</strong>，而激烈的线上竞争使<strong class="text-white">价格传导极为困难</strong>，导致利润空间被极限压缩，高性价比模式面临崩溃。</p></div>
-                    <div class="bento-card"><h4 class="text-3xl zh-large-bold">供应链与物流的系统性风险</h4><p class="mt-4 text-xl text-gray-300">长期依赖中国的成熟供应链体系，<strong class="text-white">短期内难以找到同等效率和成本的替代方案</strong>。海外仓备货策略因需求不确定性而风险剧增。</p></div>
-                    <div class="bento-card"><h4 class="text-3xl zh-large-bold">平台生态与品牌建设的倒逼</h4><p class="mt-4 text-xl text-gray-300">美国电商平台可能因合规压力而<strong class="text-white">调整对中国卖家的流量与政策</strong>。企业被迫从“铺货”模式转向“品牌化”，以建立溢价能力，但品牌建设周期长、投入大。</p></div>
-                    <div class="bento-card"><h4 class="text-3xl zh-large-bold">资本市场与组织能力的挑战</h4><p class="mt-4 text-xl text-gray-300">投资人对原有商业模式的<strong class="text-white">估值逻辑动摇</strong>，融资难度增加。同时，供应链外移对<strong class="text-white">跨国管理和人才储备</strong>提出全新要求。</p></div>
-                </div>
-            </section>
-
-            <!-- Q3-2 跨境电商应对 - 第8页 -->
-            <section>
-                 <div class="section-header"><p class="text-highlight font-bold text-4xl">Q3</p></div>
-                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">案例 1：中国跨境电商的应对手册</h3>
-                 <div class="grid grid-cols-2 gap-8 h-[80vh] mt-12">
-                    <div class="bento-card"><p class="en-small">DEFENSIVE HEDGING</p><h4 class="text-4xl zh-large-bold">防御性对冲 (短期)</h4><ul class="mt-6 text-2xl text-gray-300 space-y-4 list-disc list-inside"><li><strong class="text-white">精细化成本管理：</strong>与供应商协商分担，优化物流，管理好每一分现金流。</li><li><strong class="text-white">灵活定价与清库存：</strong>小幅、分阶段调整价格，利用促销清理高成本库存。</li></ul></div>
-                     <div class="bento-card bg-highlight-gradient border-none"><p class="en-small text-white">STRATEGIC OFFENSIVE</p><h4 class="text-4xl zh-large-bold text-white">战略性反攻 (长期)</h4><ul class="mt-6 text-2xl text-white space-y-4 list-disc list-inside"><li><strong class="font-bold">供应链近岸化：</strong>在墨西哥等美洲国家建立仓储、轻加工或生产基地。</li><li><strong class="font-bold">市场多元化：</strong>大力开拓欧洲、东南亚、中东等非美市场。</li><li><strong class="font-bold">品牌出海：</strong>加大研发与品牌投入，提升产品附加值，摆脱价格战。</li></ul></div>
-                </div>
-            </section>
-
-            <!-- Q3-3 电子元器件冲击 - 第9页 (全新内容) -->
-            <section>
-                <div class="section-header"><p class="text-highlight font-bold text-4xl">Q3</p></div>
-                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">案例 2：对中国电子元器件企业 (B2B) 的深度冲击</h3>
-                <div class="grid grid-cols-3 gap-8 h-[80vh]">
-                    <div class="bento-card"><h4 class="text-3xl zh-large-bold">供应链的“去中国化”风险</h4><p class="mt-4 text-xl text-gray-300">面临的不仅是关税，更是美国及其盟友试图将中国移出关键技术供应链的<strong class="text-white">系统性风险</strong>。关税的<strong class="text-white">级联效应</strong>在复杂产业链中被指数级放大。</p></div>
-                    <div class="bento-card"><h4 class="text-3xl zh-large-bold">技术主权与标准壁垒</h4><p class="mt-4 text-xl text-gray-300">贸易摩擦常伴随<strong class="text-white">技术封锁与实体清单</strong>，迫使中国企业加速自主研发。同时面临被排斥在全球技术标准制定体系之外的风险。</p></div>
-                    <div class="bento-card"><h4 class="text-3xl zh-large-bold">客户信任与市场准入</h4><p class="mt-4 text-xl text-gray-300">海外B2B客户因地缘政治风险，对将中国元器件用于<strong class="text-white">长期项目和关键领域</strong>产生疑虑，<strong class="text-white">客户信任成本</strong>急剧上升。</p></div>
-                </div>
-            </section>
-            
-            <!-- Q3-4 电子元器件应对 - 第10页 -->
-            <section>
-                 <div class="section-header"><p class="text-highlight font-bold text-4xl">Q3</p></div>
-                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">案例 2：中国电子元器件企业的应对手册</h3>
-                 <div class="grid grid-cols-2 gap-8 h-[80vh] mt-12">
-                    <div class="bento-card"><p class="en-small">DEFENSIVE HEDGING</p><h4 class="text-4xl zh-large-bold">防御性对冲 (短期)</h4><ul class="mt-6 text-2xl text-gray-300 space-y-4 list-disc list-inside"><li><strong class="text-white">关税工程 (HS Code)：</strong>与法务专家合作，争取更优的关税分类。</li><li><strong class="text-white">绑定核心客户：</strong>通过提供卓越技术支持与服务，加深合作关系，共同应对挑战。</li></ul></div>
-                     <div class="bento-card bg-highlight-gradient border-none"><p class="en-small text-white">STRATEGIC OFFENSIVE</p><h4 class="text-4xl zh-large-bold text-white">战略性反攻 (长期)</h4><ul class="mt-6 text-2xl text-white space-y-4 list-disc list-inside"><li><strong class="font-bold">深耕国内替代 (“双循环”)：</strong>抓住国内市场对自主可控元器件的巨大需求机遇。</li><li><strong class="font-bold">建立“非美”供应链：</strong>打造服务“一带一路”及其他新兴市场的独立供应链和技术生态。</li></ul></div>
-                </div>
-            </section>
-            
-            <!-- Q3-5 总结表格 - 第11页 -->
-            <section>
-                 <div class="section-header"><p class="text-highlight font-bold text-4xl">Q3</p></div>
-                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">总结：中国企业的共通挑战与差异化应对</h3>
+                 <div class="section-header"><p class="text-highlight font-bold text-4xl">Q2</p></div>
+                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">总结：从意图到后果的连锁反应</h3>
                  <div class="custom-table grid-cols-4 h-[80vh] mt-12">
-                    <div class="table-header">维度</div>
-                    <div class="table-header">跨境电商 (B2C)</div>
-                    <div class="table-header">电子元器件 (B2B)</div>
-                    <div class="table-header">共通的战略启示</div>
-                    <div>核心脆弱点</div>
-                    <div>终端价格敏感度高，依赖单一成熟供应链</div>
-                    <div>技术依赖性强，客户转换成本高，地缘政治风险敞口大</div>
-                    <div class="text-highlight">无论模式如何，对单一市场和单一技术路径的依赖都极度危险</div>
-                    <div>应对策略核心</div>
-                    <div>供应链的快速多元化与近岸化布局</div>
-                    <div>国内市场替代与构建平行的“非美”技术生态</div>
-                    <div>从“全球最低成本”转向“区域化最优韧性”</div>
-                    <div>转型本质</div>
-                    <div>从“中国制造，全球销售”到“全球制造，全球销售”</div>
-                    <div>从“融入全球体系”到“构建自主体系”与“服务特定市场”并行</div>
-                    <div class="text-highlight">企业的核心能力需从单纯的商业运营，扩展到地缘政治风险管理</div>
+                    <div class="table-header">战略意图</div><div class="table-header">一级效应（直接后果）</div><div class="table-header">二级效应（连锁反应）</div><div class="table-header">最终格局（Endgame）</div>
+                    <div>减少贸易逆差</div><div>进口成本急剧上升，进口量短期受抑</div><div>贸易伙伴报复，出口下降；国内通胀，消费萎缩</div><div class="text-highlight">全球贸易总量下降，逆差问题依旧，但经济活力受损</div>
+                    <div>推动制造业回流</div><div>企业被迫评估并调整全球供应链</div><div>供应链转向墨西哥、东南亚等第三方国家（近岸/友岸）</div><div>全球供应链区域化、阵营化，而非真正回流美国</div>
+                    <div>获取战略筹码</div><div>关税成为极限施压的强大工具</div><div>国际信任体系瓦解，盟友关系紧张，对手立场强硬</div><div class="text-highlight">从基于规则的合作，退化为基于实力的对抗</div>
+                </div>
+            </section>
+            
+            <!-- Q3-1 (NEW) - 第9页 -->
+            <section>
+                 <div class="section-header"><p class="text-highlight font-bold text-4xl">Q3</p></div>
+                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">案例 1：跨境电商（B2C）的四重冲击</h3>
+                <div class="grid grid-cols-2 grid-rows-2 gap-8 h-[80vh] mt-12">
+                    <div class="bento-card"><p class="en-small">FINANCIAL TSUNAMI</p><h4 class="text-3xl zh-large-bold">财务海啸</h4><p class="mt-4 text-xl text-gray-300">利润被关税与上涨的物流、仓储成本吞噬；现金流因预缴关税而枯竭；融资能力受损，企业估值下挫。</p></div>
+                    <div class="bento-card"><p class="en-small">OPERATIONAL CHAOS</p><h4 class="text-3xl zh-large-bold">运营混沌</h4><p class="mt-4 text-xl text-gray-300">物流与清关瓶颈频发；紧急更换供应商导致品控下降、磨合阵痛；生产计划与库存管理完全失控。</p></div>
+                    <div class="bento-card"><p class="en-small">MARKET HEADWINDS</p><h4 class="text-3xl zh-large-bold">市场逆风</h4><p class="mt-4 text-xl text-gray-300">涨价导致客户流失，品牌形象受损；消费降级趋势下，非刚需品类需求萎缩；竞争对手以价格优势抢占市场。</p></div>
+                    <div class="bento-card"><p class="en-small">ORGANIZATIONAL STRESS</p><h4 class="text-3xl zh-large-bold">组织承压</h4><p class="mt-4 text-xl text-gray-300">团队士气因前景不明而低落；企业核心能力需从运营效率转向风险管理，对人才结构提出全新挑战。</p></div>
                 </div>
             </section>
 
-            <!-- Q4-1 - 第12页 -->
+            <!-- Q3-2 (NEW) - 第10页 -->
+            <section>
+                 <div class="section-header"><p class="text-highlight font-bold text-4xl">Q3</p></div>
+                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">案例 1：跨境电商的应对手册</h3>
+                 <div class="grid grid-cols-2 gap-8 h-[80vh] mt-12">
+                    <div class="bento-card"><p class="en-small">SHORT-TERM TACTICS</p><h4 class="text-4xl zh-large-bold">短期应对 (战术层面)</h4><ul class="mt-6 text-2xl text-gray-300 space-y-4 list-disc list-inside"><li><strong class="text-white">现金流为王：</strong>严格成本控制， renegotiate付款周期，确保生命线。</li><li><strong class="text-white">价格与促销：</strong>小步快跑式调价，配合清仓促销，维持动销。</li><li><strong class="text-white">客户沟通：</strong>主动、透明地沟通涨价原因，维系客户信任。</li></ul></div>
+                     <div class="bento-card bg-highlight-gradient border-none"><p class="en-small text-white">LONG-TERM RESTRUCTURING</p><h4 class="text-4xl zh-large-bold text-white">长期重构 (战略层面)</h4><ul class="mt-6 text-2xl text-white space-y-4 list-disc list-inside"><li><strong class="font-bold">供应链近岸化：</strong>将核心产能向墨西哥等美洲国家转移。</li><li><strong class="font-bold">品牌本土化：</strong>在目标市场建立品牌认知，摆脱纯粹的价格竞争。</li><li><strong class="font-bold">市场矩阵化：</strong>“东方不亮西方亮”，大力开拓多区域市场。</li></ul></div>
+                </div>
+            </section>
+
+            <!-- Q3-3 (NEW) - 第11页 -->
+            <section>
+                 <div class="section-header"><p class="text-highlight font-bold text-4xl">Q3</p></div>
+                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">案例 2：电子元器件企业（B2B）的四重冲击</h3>
+                <div class="grid grid-cols-2 grid-rows-2 gap-8 h-[80vh] mt-12">
+                    <div class="bento-card"><p class="en-small">FINANCE & INVESTMENT</p><h4 class="text-3xl zh-large-bold">财务与投资</h4><p class="mt-4 text-xl text-gray-300">资本支出决策（CAPEX）因前景不明而冻结；长期订单的利润核算变得极为复杂；汇率与关税双重风险剧增。</p></div>
+                    <div class="bento-card"><p class="en-small">SUPPLY CHAIN & TECHNICAL</p><h4 class="text-3xl zh-large-bold">供应链与技术</h4><p class="mt-4 text-xl text-gray-300">“卡脖子”风险空前，核心技术与设备进口受阻；知识产权与合规壁垒增高，研发进程受影响。</p></div>
+                    <div class="bento-card"><p class="en-small">MARKET & CUSTOMER</p><h4 class="text-3xl zh-large-bold">市场与客户</h4><p class="mt-4 text-xl text-gray-300">B2B客户关系面临撕裂，被迫“选边站”；新市场准入门槛（如认证）因政治因素而变高。</p></div>
+                    <div class="bento-card"><p class="en-small">STRATEGY & COMPLIANCE</p><h4 class="text-3xl zh-large-bold">战略与合规</h4><p class="mt-4 text-xl text-gray-300">企业长期战略定力失效，疲于应对短期政策变化；数据安全与跨国合规成为新的巨大挑战。</p></div>
+                </div>
+            </section>
+
+            <!-- Q3-4 (NEW) - 第12页 -->
+            <section>
+                 <div class="section-header"><p class="text-highlight font-bold text-4xl">Q3</p></div>
+                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">案例 2：电子元器件企业的应对手册</h3>
+                 <div class="grid grid-cols-2 gap-8 h-[80vh] mt-12">
+                    <div class="bento-card"><p class="en-small">SHORT-TERM TACTICS</p><h4 class="text-4xl zh-large-bold">短期应对 (战术层面)</h4><ul class="mt-6 text-2xl text-gray-300 space-y-4 list-disc list-inside"><li><strong class="text-white">关税工程 (HS Code)：</strong>与法务、报关专家合作，争取最优税率。</li><li><strong class="text-white">深度绑定核心客户：</strong>成立联合工作组，共担风险，确保合作。</li><li><strong class="text-white">合规风险排查：</strong>全面审查技术与数据合规性，规避制裁风险。</li></ul></div>
+                     <div class="bento-card bg-highlight-gradient border-none"><p class="en-small text-white">LONG-TERM RESTRUCTURING</p><h4 class="text-4xl zh-large-bold text-white">长期重构 (战略层面)</h4><ul class="mt-6 text-2xl text-white space-y-4 list-disc list-inside"><li><strong class="font-bold">供应链平行化：</strong>构建“中国+N”和“非中国”两条独立供应链。</li><li><strong class="font-bold">研发深度绑定：</strong>与关键市场的核心客户建立联合研发中心。</li><li><strong class="font-bold">组织防火墙：</strong>建立独立的区域事业部，隔离地缘政治风险。</li></ul></div>
+                </div>
+            </section>
+            
+            <!-- Q3-5 总结表格 - 第13页 -->
+            <section>
+                 <div class="section-header"><p class="text-highlight font-bold text-4xl">Q3</p></div>
+                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">总结：不同商业模式的共通挑战与差异化应对</h3>
+                 <div class="custom-table grid-cols-4 h-[80vh] mt-12">
+                    <div class="table-header">维度</div><div class="table-header">跨境电商 (B2C)</div><div class="table-header">电子元器件 (B2B)</div><div class="table-header">共通的战略启示</div>
+                    <div>核心脆弱点</div><div>终端价格敏感度高，易受消费降级影响</div><div>供应链高度复杂且环环相扣，中断风险高</div><div class="text-highlight">无论模式如何，单一市场和单一供应链都极度脆弱</div>
+                    <div>应对策略核心</div><div>快速寻找替代产地，实现供应商多元化和近岸化</div><div>构建平行的、冗余的区域化供应链，实现风险隔离</div><div>从“全球最低成本”转向“区域化最优韧性”</div>
+                    <div>转型时间窗口</div><div>相对较短，可以更快地切换供应商和调整产品</div><div>漫长，需要数年时间完成新产线的认证和量产</div><div>战略调整必须具备前瞻性，立即启动</div>
+                    <div>未来竞争力</div><div>市场敏锐度与灵活的供应链管理能力</div><div>技术自主性与地缘政治风险管理能力</div><div class="text-highlight">企业的核心能力需从单纯的商业运营，扩展到地缘政治风险管理</div>
+                </div>
+            </section>
+
+            <!-- Q4-1 - 第14页 -->
             <section>
                 <div class="section-header"><p class="text-highlight font-bold text-4xl">&infin;</p></div>
                 <div class="h-full flex flex-col justify-center items-center text-center">
@@ -202,16 +219,12 @@
                     <p class="en-small mt-4">A DALIO PERSPECTIVE</p>
                     <div class="w-24 h-1 bg-highlight-gradient my-8"></div>
                     <p class="text-3xl text-gray-300 max-w-5xl leading-relaxed">关税并非孤立的贸易摩擦，而是全球三大秩序同步变革的表象，更是服务于财政增收、产业回流、重塑核心硬实力的<strong class="text-white">战略博弈手段</strong>。</p>
-                    <div class="flex items-center mt-16 text-5xl font-black">
-                        <span class="text-gray-500">效率</span>
-                        <svg class="w-32 h-32 mx-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-7-7l7 7-7 7"/></svg>
-                        <span class="text-highlight">安全 & 韧性</span>
-                    </div>
+                    <div class="flex items-center mt-16 text-5xl font-black"><span class="text-gray-500">效率</span><svg class="w-32 h-32 mx-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-7-7l7 7-7 7"/></svg><span class="text-highlight">安全 & 韧性</span></div>
                     <p class="text-2xl text-gray-400 mt-4">旧范式正在瓦解，全球竞争的核心正从<strong class="text-white">“效率至上”</strong>转向<strong class="text-white">“安全优先”</strong>。</p>
                 </div>
             </section>
             
-             <!-- 结尾页 - 第13页 -->
+             <!-- 结尾页 - 第15页 -->
             <section class="bg-gradient-theme">
                  <div class="h-full flex flex-col justify-center items-center text-center">
                     <h2 class="text-6xl font-black text-white m-0">Thank You</h2>
@@ -219,6 +232,7 @@
                      <p class="text-3xl text-gray-400">Q & A</p>
                  </div>
             </section>
+
         </div>
     </div>
 
@@ -268,15 +282,7 @@
             update() { this.pos.add(this.vel); this.edges(); }
             draw() { noStroke(); fill('rgba(227, 25, 55, 0.5)'); circle(this.pos.x, this.pos.y, this.size); }
             edges() { if(this.pos.x < 0 || this.pos.x > width) this.vel.x *= -1; if(this.pos.y < 0 || this.pos.y > height) this.vel.y *= -1; }
-            checkParticles(others) {
-                others.forEach(other => {
-                    const d = dist(this.pos.x, this.pos.y, other.pos.x, other.pos.y);
-                    if(d < 120) {
-                        stroke(`rgba(227, 25, 55, ${map(d, 0, 120, 0.3, 0)})`);
-                        line(this.pos.x, this.pos.y, other.pos.x, other.pos.y);
-                    }
-                });
-            }
+            checkParticles(others) { others.forEach(other => { const d = dist(this.pos.x, this.pos.y, other.pos.x, other.pos.y); if(d < 120) { stroke(`rgba(227, 25, 55, ${map(d, 0, 120, 0.3, 0)})`); line(this.pos.x, this.pos.y, other.pos.x, other.pos.y); } }); }
         }
     </script>
 </body>
