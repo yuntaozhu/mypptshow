@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>对等关税政策深度解析</title>
+    <title>对等关税对全球贸易的影响及应对</title>
 
     <!-- Frameworks & Libraries (CDN) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
@@ -14,19 +14,19 @@
     
     <!-- Custom Fonts & Styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --highlight-color: #0D6EFD; /* 专业蓝 */
-            --text-color: #212529;      /* 深灰色文本 */
-            --bg-color: #F8F9FA;        /* 浅灰色背景 */
-            --border-color: #E9ECEF;    /* 浅色边框 */
+            --highlight-color: #0D6EFD; /* Professional Blue */
+            --text-color: #212529;      /* Dark Grey Text */
+            --bg-color: #F8F9FA;        /* Light Grey Background */
+            --border-color: #E9ECEF;    /* Light Border */
         }
         .reveal {
             font-family: 'Noto Sans SC', sans-serif;
-            font-size: 26px; /* 调整基础字体大小以容纳更多内容 */
+            font-size: 26px;
             color: var(--text-color);
         }
         .reveal .slides {
@@ -34,7 +34,10 @@
         }
         .reveal .slides section {
             background-color: var(--bg-color);
-            padding: 4rem; /* 调整内边距 */
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
         .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
             text-transform: none;
@@ -48,6 +51,7 @@
             border-bottom: 3px solid var(--highlight-color);
             padding-bottom: 1rem;
             margin-bottom: 2.5rem;
+            flex-shrink: 0;
         }
         .text-highlight {
             color: var(--highlight-color);
@@ -73,25 +77,30 @@
         .reveal li {
             margin-bottom: 1rem;
         }
+        .content-wrapper {
+            flex-grow: 1;
+        }
+        .svg-footer {
+            flex-shrink: 0;
+            margin-top: 2rem;
+            width: 100%;
+            height: 150px; /* Fixed height for SVG container */
+        }
     </style>
 </head>
 <body>
     <div class="reveal">
         <div class="slides">
-            <!-- 第1页：封面 -->
-            <section style="background: linear-gradient(135deg, #E0E7FF 0%, #FFFFFF 100%);">
-                <div class="h-full flex flex-col justify-center items-center text-center">
-                    <p class="en-small text-2xl tracking-[0.2em]">DEEP DIVE REPORT</p>
-                    <h1 class="text-8xl font-black mt-4">对等关税政策深度解析</h1>
-                    <h2 class="text-4xl font-normal text-gray-600 mt-6">及其对全球贸易与特定行业的影响与应对策略</h2>
-                    
-                </div>
+            <!-- Page 1: Cover Page -->
+            <section style="background: linear-gradient(135deg, #E0E7FF 0%, #FFFFFF 100%); justify-content: center; align-items: center;">
+                <h1 class="text-9xl font-black leading-tight">对等关税对全球贸易的<br>影响及应对</h1>
+                <p class="text-3xl text-gray-500 mt-12">一份基于深度讨论的战略分析报告</p>
             </section>
 
-            <!-- 第2页：问题一 (上) -->
+            <!-- Page 2: Question 1 Analysis (Part 1) -->
             <section>
                 <h2 class="page-title">Q1: 辩证作用 (上) - 解构“对等关税”的逻辑谬误</h2>
-                <div class="grid grid-cols-2 gap-12 h-[75vh]">
+                <div class="content-wrapper grid grid-cols-2 gap-12">
                     <div class="card">
                         <h3 class="text-3xl font-bold">表面逻辑：<span class="text-highlight">追求“对等”与“公平”</span></h3>
                         <p class="en-small mt-2">SURFACE LOGIC</p>
@@ -106,17 +115,29 @@
                         <p class="en-small mt-2">ACTUAL LOGIC</p>
                         <p class="mt-4 text-2xl leading-relaxed text-gray-700">其真实计算方式与所谓的“综合税率”无关，而是基于一个简单粗暴的公式，完全以贸易逆差为核心目标：</p>
                         <div class="my-4 p-4 bg-gray-100 rounded-lg text-center">
-                            <strong class="text-black text-3xl">“对等税率” ≈ (美国对某国贸易逆差 / 美国从该国进口总额)</strong>
+                            <strong class="text-black text-3xl">“对等税率” ≈ (贸易逆差 / 进口总额)</strong>
                         </div>
                         <p class="mt-4 text-2xl text-gray-600 leading-relaxed"><strong>结论：</strong>这清晰地说明其真实目的并非精准对等，而是以逆差为单一借口，实现惩罚性、广泛性的加税，服务于国内政治议程。</p>
                     </div>
                 </div>
+                <div class="svg-footer">
+                    <svg viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                        <path d="M 50 100 L 350 100" stroke="#cccccc" stroke-width="2" />
+                        <path d="M 450 100 L 750 100" stroke="#cccccc" stroke-width="2" />
+                        <text x="200" y="80" font-family="Noto Sans SC" font-size="20" fill="#333" text-anchor="middle">公平竞争</text>
+                        <text x="600" y="80" font-family="Noto Sans SC" font-size="20" fill="#333" text-anchor="middle">贸易逆差</text>
+                        <path d="M 200 60 C 200 30, 200 30, 200 20 L 600 20" fill="none" stroke="var(--highlight-color)" stroke-width="3" stroke-dasharray="8 8" />
+                        <path d="M 600 60 L 600 20" fill="none" stroke="var(--highlight-color)" stroke-width="3" />
+                        <polygon points="595,20 605,20 600,10" fill="var(--highlight-color)"/>
+                        <text x="400" y="15" font-family="Noto Sans SC" font-size="18" fill="var(--highlight-color)" text-anchor="middle">绕过公平，直指逆差</text>
+                    </svg>
+                </div>
             </section>
 
-            <!-- 第3页：问题一 (下) -->
+            <!-- Page 3: Question 1 Analysis (Part 2) -->
             <section>
                 <h2 class="page-title">Q1: 辩证作用 (下) - 保护与破坏的双重效应</h2>
-                <div class="grid grid-cols-2 gap-12 h-[75vh]">
+                <div class="content-wrapper grid grid-cols-2 gap-12">
                     <div class="card">
                         <h3 class="text-3xl font-bold text-green-700">短期保护作用</h3>
                         <p class="en-small mt-2">SHORT-TERM PROTECTIVE EFFECT</p>
@@ -137,34 +158,35 @@
                         </ul>
                     </div>
                 </div>
-            </section>
-
-            <!-- 第4页：问题二 (上) -->
-            <section>
-                <h2 class="page-title">Q2: 政策目的 (上) - 关税大棒背后的三大战略意图</h2>
-                <div class="grid grid-cols-3 gap-8 h-[75vh]">
-                    <div class="card">
-                        <p class="text-7xl font-black text-gray-200">01</p>
-                        <h3 class="text-3xl font-bold mt-4">财政增收 <br><span class="en-small">FISCAL REVENUE</span></h3>
-                        <p class="mt-4 text-2xl text-gray-700">大规模加征关税可以直接、快速地增加联邦政府的财政收入。这笔资金可以用来弥补国内因减税政策造成的财政缺口，或为基础设施建设等公共支出提供资金补充，服务于其国内经济议程。</p>
-                    </div>
-                    <div class="card">
-                        <p class="text-7xl font-black text-gray-200">02</p>
-                        <h3 class="text-3xl font-bold mt-4">制造业回流 <br><span class="en-small">MANUFACTURING RESHORING</span></h3>
-                        <p class="mt-4 text-2xl text-gray-700">通过对特定行业，尤其是高科技、关键原材料和传统制造业产品加征重税，大幅提高海外生产的综合成本，从而倒逼美国企业将产业链和工作岗位迁回美国本土，重振“美国制造”。</p>
-                    </div>
-                    <div class="card border-4 border-highlight">
-                        <p class="text-7xl font-black text-red-100">03</p>
-                        <h3 class="text-3xl font-bold mt-4 text-highlight">战略博弈筹码 <br><span class="en-small">STRATEGIC LEVERAGE</span></h3>
-                        <p class="mt-4 text-2xl text-gray-700">这是其最核心的目的。以关税为工具，“虚空造牌”，制造未来谈判的筹码，迫使贸易伙伴在汇率、债务、市场准入、知识产权乃至地缘安全等更广泛的议题上对美国做出重大让步。</p>
-                    </div>
+                <div class="svg-footer">
+                    <svg viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                        <rect x="50" y="20" width="300" height="110" rx="10" fill="#f0fff4" stroke="#28a745" stroke-width="2"/>
+                        <text x="200" y="50" font-family="Noto Sans SC" font-size="20" fill="#28a745" text-anchor="middle">短期保护</text>
+                        <path d="M 120 100 L 150 70 L 180 100" fill="none" stroke="#28a745" stroke-width="3"/>
+                        <path d="M 220 100 L 250 70 L 280 100" fill="none" stroke="#28a745" stroke-width="3"/>
+                        <rect x="450" y="20" width="300" height="110" rx="10" fill="#fff5f5" stroke="#dc3545" stroke-width="2"/>
+                        <text x="600" y="50" font-family="Noto Sans SC" font-size="20" fill="#dc3545" text-anchor="middle">长期破坏</text>
+                        <line x1="520" y1="80" x2="680" y2="110" stroke="#dc3545" stroke-width="3"/>
+                        <line x1="520" y1="110" x2="680" y2="80" stroke="#dc3545" stroke-width="3"/>
+                    </svg>
                 </div>
             </section>
 
-            <!-- 第5页：问题二 (下) -->
+            <!-- Page 4: Question 2 Analysis (Part 1) -->
+            <section>
+                <h2 class="page-title">Q2: 政策目的 (上) - 关税大棒背后的三大战略意图</h2>
+                <div class="content-wrapper grid grid-cols-3 gap-8">
+                    <div class="card"><p class="text-7xl font-black text-gray-200">01</p><h3 class="text-3xl font-bold mt-4">财政增收 <br><span class="en-small">FISCAL REVENUE</span></h3><p class="mt-4 text-2xl text-gray-700">大规模加征关税可以直接、快速地增加联邦政府的财政收入。这笔资金可以用来弥补国内因减税政策造成的财政缺口，或为基础设施建设等公共支出提供资金补充，服务于其国内经济议程。</p></div>
+                    <div class="card"><p class="text-7xl font-black text-gray-200">02</p><h3 class="text-3xl font-bold mt-4">制造业回流 <br><span class="en-small">MANUFACTURING RESHORING</span></h3><p class="mt-4 text-2xl text-gray-700">通过对特定行业，尤其是高科技、关键原材料和传统制造业产品加征重税，大幅提高海外生产的综合成本，从而倒逼美国企业将产业链和工作岗位迁回美国本土，重振“美国制造”。</p></div>
+                    <div class="card border-4 border-highlight"><p class="text-7xl font-black text-red-100">03</p><h3 class="text-3xl font-bold mt-4 text-highlight">战略博弈筹码 <br><span class="en-small">STRATEGIC LEVERAGE</span></h3><p class="mt-4 text-2xl text-gray-700">这是其最核心的目的。以关税为工具，“虚空造牌”，制造未来谈判的筹码，迫使贸易伙伴在汇率、债务、市场准入、知识产权乃至地缘安全等更广泛的议题上对美国做出重大让步。</p></div>
+                </div>
+                <p class="text-center text-2xl text-gray-600 mt-12 flex-shrink-0">三大目的层层递进，从<span class="font-bold">经济表象</span>深入到<span class="font-bold">政治议程</span>，最终服务于<span class="font-bold text-highlight">地缘政治的核心博弈</span>。</p>
+            </section>
+
+            <!-- Page 5: Question 2 Analysis (Part 2) -->
             <section>
                 <h2 class="page-title">Q2: 经济影响 (下) - 从美国本土到全球的连锁反应</h2>
-                <div class="grid grid-cols-2 gap-12 h-[75vh]">
+                <div class="content-wrapper grid grid-cols-2 gap-12">
                     <div class="card">
                         <h3 class="text-3xl font-bold mb-4 flex items-center"><i class="fas fa-flag-usa mr-4 text-gray-400"></i>对美国经济的深远影响</h3>
                         <ul class="text-2xl space-y-3">
@@ -182,16 +204,31 @@
                         </ul>
                     </div>
                 </div>
+                 <div class="svg-footer">
+                    <svg viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                        <path d="M 50 60 L 250 60" stroke="var(--highlight-color)" stroke-width="3" />
+                        <text x="30" y="65" font-size="20" fill="var(--highlight-color)">关税</text>
+                        <polygon points="250,55 250,65 260,60" fill="var(--highlight-color)"/>
+                        <rect x="270" y="35" width="200" height="50" rx="5" fill="#fff" stroke="#333" stroke-width="2"/>
+                        <text x="370" y="68" font-size="20" text-anchor="middle">美国经济 (通胀)</text>
+                        <path d="M 480 60 L 580 30" stroke="#333" stroke-width="2" />
+                        <path d="M 480 60 L 580 90" stroke="#333" stroke-width="2" />
+                        <polygon points="580,25 580,35 590,30" fill="#333"/>
+                        <polygon points="580,85 580,95 590,90" fill="#333"/>
+                        <text x="600" y="35" font-size="20">全球贸易 (重塑)</text>
+                        <text x="600" y="95" font-size="20">贸易伙伴 (反制)</text>
+                    </svg>
+                 </div>
             </section>
 
-            <!-- 第6页：案例一 -->
+            <!-- Page 6: Case Study 1 -->
             <section>
                 <h2 class="page-title">案例分析 (一)：跨境家具电商的冲击与应对</h2>
-                <div class="grid grid-cols-2 gap-12 h-[75vh]">
+                <div class="content-wrapper grid grid-cols-2 gap-12">
                     <div class="card">
                         <h3 class="text-3xl font-bold mb-4 text-red-600">核心冲击</h3>
                         <ul class="text-2xl text-gray-700 space-y-3 list-disc list-inside">
-                            <li><strong>成本与现金流双重危机：</strong>家具产品货值高、体积大，25%+的关税直接叠加在采购和高昂的物流成本之上。关税需在进口时预缴，对以资金周转为生命的电商企业是致命打击。</li>
+                            <li><strong>成本与现金流双重危机：</strong>家具货值高、体积大，25%+的关税直接叠加在采购和高昂的物流成本之上。关税需在进口时预缴，对以资金周转为生命的电商企业是致命打击。</li>
                             <li><strong>市场竞争力归零：</strong>B2C家具市场对价格极为敏感，关税导致的涨价将使产品在与本土或非关税区（如墨西哥）的竞争对手面前毫无竞争力。</li>
                             <li><strong>供应链刚性与中断风险：</strong>具备稳定产能、质量控制和设计能力的优质家具供应链难以在短期内被替代，紧急更换供应商的试错成本和品控风险极高。</li>
                         </ul>
@@ -200,14 +237,14 @@
                         <h3 class="text-3xl font-bold mb-4 text-green-700">应对策略</h3>
                         <ul class="text-2xl text-gray-700 space-y-3 list-disc list-inside">
                             <li><strong>短期 (战术层面)：</strong>
-                                <ul class="list-disc list-inside ml-6">
+                                <ul class="list-disc list-inside ml-6 text-xl">
                                     <li><strong>价格谈判：</strong>与供应商协商分担部分关税成本，或争取更长的账期。</li>
                                     <li><strong>内部定价优化：</strong>利用美国公司作为销售主体，通过合理的内部交易定价来降低关税总额。</li>
                                     <li><strong>精细化库存管理：</strong>与客户积极沟通未交付订单，避免盲目生产和备货。</li>
                                 </ul>
                             </li>
                             <li class="mt-4"><strong>长期 (战略层面)：</strong>
-                                 <ul class="list-disc list-inside ml-6">
+                                 <ul class="list-disc list-inside ml-6 text-xl">
                                      <li>核心是<span class="text-highlight font-bold">“供应链近岸外包” (Nearshoring)</span>，将大件、重型产品的产能坚决向墨西哥等低关税、近市场的地区转移。</li>
                                      <li><strong>市场多元化：</strong>减少对单一美国市场的过度依赖，大力开拓欧盟、东南亚、拉美等新兴市场。</li>
                                  </ul>
@@ -215,31 +252,44 @@
                         </ul>
                     </div>
                 </div>
+                 <div class="svg-footer">
+                    <svg viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                        <text x="400" y="25" font-size="22" text-anchor="middle" font-weight="bold">战略路径：从被动应对到主动重构</text>
+                        <rect x="50" y="50" width="300" height="90" rx="10" fill="#fff" stroke="#333" stroke-width="2"/>
+                        <text x="200" y="80" font-size="20" text-anchor="middle">短期战术</text>
+                        <text x="200" y="115" font-size="16" text-anchor="middle" fill="#555">价格谈判 / 内部优化 / 库存管理</text>
+                        <rect x="450" y="50" width="300" height="90" rx="10" fill="#EBF5FF" stroke="var(--highlight-color)" stroke-width="2"/>
+                        <text x="600" y="80" font-size="20" text-anchor="middle">长期战略</text>
+                        <text x="600" y="115" font-size="16" text-anchor="middle" fill="var(--highlight-color)">近岸外包 / 市场多元化</text>
+                        <path d="M 360 95 L 440 95" stroke="#333" stroke-width="3" />
+                        <polygon points="440,90 440,100 450,95" fill="#333"/>
+                    </svg>
+                 </div>
             </section>
 
-            <!-- 第7页：案例二 -->
+            <!-- Page 7: Case Study 2 -->
             <section>
                 <h2 class="page-title">案例分析 (二)：电子元器件产业的冲击与应对</h2>
-                <div class="grid grid-cols-2 gap-12 h-[75vh]">
+                <div class="content-wrapper grid grid-cols-2 gap-12">
                     <div class="card">
                         <h3 class="text-3xl font-bold mb-4 text-red-600">核心冲击</h3>
                         <ul class="text-2xl text-gray-700 space-y-3 list-disc list-inside">
-                            <li><strong>供应链的“级联放大”效应：</strong>元器件供应链高度全球化（如芯片在台湾、封测在越南、模组在中国），关税在每一个环节都可能被层层叠加，导致最终成本失控。任何一环中断都可能导致整个下游产业瘫痪。</li>
+                            <li><strong>供应链的“级联放大”效应：</strong>产业链高度全球化（如芯片在台湾、封测在越南、模组在中国），关税在每一个环节都可能被层层叠加，导致最终成本失控。任何一环中断都可能导致整个下游产业瘫痪。</li>
                             <li><strong>客户与技术双重锁定：</strong>B2B客户对供应商有长达1-2年的严格认证周期，切换成本极高。同时，贸易摩擦常伴随技术出口管制，对企业的研发和长期合作构成生存威胁。</li>
-                            <li><strong>区域化成本差异：</strong>不同国家和地区（如中国34%，越南46%，台湾32%，墨西哥25%）的差异化税率，使全球化布局的成本核算变得异常复杂和动荡。</li>
+                            <li><strong>区域化成本差异：</strong>不同国家和地区（如中国34%，越南46%，台湾32%）的差异化税率，使全球化布局的成本核算变得异常复杂和动荡。</li>
                         </ul>
                     </div>
                     <div class="card">
                         <h3 class="text-3xl font-bold mb-4 text-green-700">应对策略</h3>
                          <ul class="text-2xl text-gray-700 space-y-3 list-disc list-inside">
                              <li><strong>短期 (战术层面)：</strong>
-                                <ul class="list-disc list-inside ml-6">
+                                <ul class="list-disc list-inside ml-6 text-xl">
                                     <li>进行<strong class="text-black">“关税工程”(HS Code Engineering)</strong>，与法务、报关专家合作，通过优化产品描述与归类，争取归入更低税率的编码。</li>
                                     <li><strong>深度绑定核心客户：</strong>与战略客户成立联合工作组，共同评估风险，协商成本分担，确保长期合作关系不受政治因素干扰。</li>
                                 </ul>
                              </li>
                             <li class="mt-4"><strong>长期 (战略层面)：</strong>
-                                <ul class="list-disc list-inside ml-6">
+                                <ul class="list-disc list-inside ml-6 text-xl">
                                     <li>构建<span class="text-highlight font-bold">“中国+N”及“非中国”的平行供应链</span>，为不同市场提供独立的、风险隔离的供应方案。</li>
                                     <li><strong>研发本土化：</strong>在关键市场（如北美、欧洲）设立研发中心和应用支持团队，贴近客户并规避技术封锁风险。</li>
                                 </ul>
@@ -247,6 +297,22 @@
                         </ul>
                     </div>
                 </div>
+                 <div class="svg-footer">
+                    <svg viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                        <text x="400" y="25" font-size="22" text-anchor="middle" font-weight="bold">战略路径：从单一链条到平行生态</text>
+                        <text x="175" y="60" font-size="18" text-anchor="middle">之前: 全球化单一供应链</text>
+                        <path d="M 50 100 L 150 100 L 250 100 L 350 100" stroke="#333" stroke-width="2"/>
+                        <circle cx="50" cy="100" r="8" fill=" #333"/><text x="50" y="125" text-anchor="middle">台湾</text>
+                        <circle cx="150" cy="100" r="8" fill="#333"/><text x="150" y="125" text-anchor="middle">越南</text>
+                        <circle cx="250" cy="100" r="8" fill="#333"/><text x="250" y="125" text-anchor="middle">中国</text>
+                        <circle cx="350" cy="100" r="8" fill="#333"/><text x="350" y="125" text-anchor="middle">美国</text>
+                        <text x="625" y="60" font-size="18" text-anchor="middle">之后: “中国+N”平行供应链</text>
+                        <path d="M 500 90 L 600 90 L 750 90" stroke="var(--highlight-color)" stroke-width="2"/>
+                        <path d="M 500 120 L 600 120 L 750 120" stroke="#cccccc" stroke-width="2" stroke-dasharray="4 4"/>
+                        <text x="750" y="85" text-anchor="middle" fill="var(--highlight-color)">非美市场</text>
+                        <text x="750" y="135" text-anchor="middle" fill="#555">美国市场</text>
+                    </svg>
+                 </div>
             </section>
         </div>
     </div>
@@ -267,4 +333,4 @@
         });
     </script>
 </body>
-</html>```
+</html>
