@@ -95,6 +95,24 @@
             top: 40px;
             left: 40px;
         }
+        /* 表格样式 */
+        .summary-table {
+            background-color: rgba(20, 20, 20, 0.5);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        .summary-table th, .summary-table td {
+            padding: 1.25rem 1.5rem;
+            vertical-align: top;
+        }
+        .summary-table thead {
+            background-color: rgba(30, 30, 30, 0.7);
+        }
+        .summary-table tbody tr {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -129,7 +147,7 @@
                         </div>
                         <div class="agenda-card">
                             <p class="text-highlight text-2xl font-bold">Q3</p>
-                            <h3 class="text-4xl mt-2">家俱跨境电商有何冲击和如何应对?</h3>
+                            <h3 class="text-4xl mt-2">家俱电商有何冲击和应对?</h3>
                             <p class="en-small mt-4">IMPACT ON HOMELIVING</p>
                         </div>
                         <div class="agenda-card">
@@ -141,7 +159,7 @@
                 </div>
             </section>
             
-            <!-- Q1-1 - 第3页 (已按要求更新内容) -->
+            <!-- Q1-1 - 第3页 -->
             <section>
                  <div class="section-header">
                     <p class="text-highlight font-bold text-4xl">Q1</p>
@@ -174,10 +192,7 @@
                             </ul>
                         </div>
                         <div class="col-span-1 flex flex-col justify-center items-center">
-                            <svg class="w-48 h-48 text-highlight" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M50 10 L55 35 L75 30 L65 50 L75 70 L55 65 L50 90 L45 65 L25 70 L35 50 L25 30 L45 35 Z" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                <line x1="15" y1="85" x2="85" y2="15" stroke="rgba(255,255,255,0.4)" stroke-width="2.5"/>
-                            </svg>
+                            <svg class="w-48 h-48 text-highlight" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 10 L55 35 L75 30 L65 50 L75 70 L55 65 L50 90 L45 65 L25 70 L35 50 L25 30 L45 35 Z" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="15" y1="85" x2="85" y2="15" stroke="rgba(255,255,255,0.4)" stroke-width="2.5"/></svg>
                             <h4 class="text-4xl zh-large-bold mt-4">双刃剑效应</h4>
                             <p class="text-2xl text-gray-400 text-center mt-2">保护与伤害并存</p>
                         </div>
@@ -189,38 +204,71 @@
                  <div class="section-header">
                     <p class="text-highlight font-bold text-4xl">Q1</p>
                 </div>
-                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">“对等关税”的辩证解析：公平的追求与秩序的挑战</h3>
-                <div class="grid grid-cols-5 gap-8 h-[80vh]">
-                   <div class="bento-card col-span-2 flex flex-col justify-center">
-                        <p class="en-small mb-4">CONCEPT</p>
-                        <h4 class="text-4xl zh-large-bold">定义与逻辑</h4>
-                        <p class="mt-6 text-2xl text-gray-300 leading-relaxed">核心是追求“镜像式”的公平，即<strong class="text-white">“你对我征多少，我就对你征多少”</strong>。它将复杂的贸易问题简化为一个易于理解的政治口号。</p>
+                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">“对等关税”的辩证解析：逻辑的表与里</h3>
+                <div class="grid grid-cols-2 gap-8 h-[80vh]">
+                   <div class="bento-card flex flex-col justify-center">
+                        <p class="en-small mb-4">SURFACE LOGIC</p>
+                        <h4 class="text-4xl zh-large-bold">表面逻辑：追求“对等”与“公平”</h4>
+                        <p class="mt-6 text-2xl text-gray-300 leading-relaxed">声称旨在实现贸易条件的对等，即外国对美综合税率是多少，美国就对其征收一定比例的“对等关税”。</p>
                    </div>
-                   <div class="bento-card col-span-3 grid grid-cols-2 gap-8">
-                        <div class="flex flex-col">
-                            <h4 class="text-4xl zh-large-bold mb-6 flex items-center"><i class="fa-solid fa-circle-plus text-green-500 mr-4"></i>正面作用 (策略)</h4>
-                            <ul class="text-2xl text-gray-300 space-y-4">
-                                <li><strong class="text-white">强大的谈判筹码：</strong>极限施压，迫使对手让步。</li>
-                                <li><strong class="text-white">迎合国内民意：</strong>简单直接的口号，易获政治支持。</li>
-                            </ul>
-                        </div>
-                        <div class="flex flex-col">
-                             <h4 class="text-4xl zh-large-bold mb-6 flex items-center"><i class="fa-solid fa-circle-minus text-red-500 mr-4"></i>负面作用 (政策)</h4>
-                            <ul class="text-2xl text-gray-300 space-y-4">
-                                <li><strong class="text-white">违背多边规则：</strong>动摇WTO体系，挑战国际秩序。</li>
-                                <li><strong class="text-white">引发贸易战：</strong>极易导致螺旋式升级的报复。</li>
-                                <li><strong class="text-white">忽略经济复杂性：</strong>漠视比较优势，扭曲资源配置。</li>
-                            </ul>
-                        </div>
+                   <div class="bento-card flex flex-col justify-center">
+                        <p class="en-small mb-4">ACTUAL LOGIC</p>
+                        <h4 class="text-4xl zh-large-bold">实际逻辑：<span class="text-highlight">逆差导向，手段粗暴</span></h4>
+                        <p class="mt-6 text-2xl text-gray-300 leading-relaxed">其真实计算方式与“对等”无关，而是：<br><strong class="text-white">“对等税率” ≈ (对某国贸易逆差 / 从该国进口总额)</strong><br>本质是以逆差为借口，实现广泛加税。</p>
                    </div>
-                   <div class="bento-card col-span-5 flex items-center justify-between">
-                        <p class="text-4xl zh-large-bold">结论：一种高风险的<span class="text-highlight">战略威慑工具</span>，而非普适的经济政策。</p>
-                        <svg class="w-24 h-24 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 16.5a4 4 0 11-8 0 4 4 0 018 0zM21 17.5a4 4 0 11-8 0 4 4 0 018 0zM4 16.5a4 4 0 11-8 0 4 4 0 018 0z"/><path d="M4 12.5V7a1 1 0 011-1h14a1 1 0 011 1v5.5M12 2v4M4 16.5L12 12l8 4.5"/></svg>
+                   <div class="bento-card col-span-2">
+                        <p class="en-small mb-4">DIALECTICAL EFFECT</p>
+                        <h4 class="text-4xl zh-large-bold">辩证作用：保护与破坏并存</h4>
+                        <div class="grid grid-cols-2 gap-8 mt-6">
+                            <div>
+                                <h5 class="text-2xl font-bold mb-2 text-green-400">短期保护作用</h5>
+                                <p class="text-xl text-gray-300">提升美国本土制造业短期竞争力，可能吸引部分产业回流。</p>
+                            </div>
+                            <div>
+                                <h5 class="text-2xl font-bold mb-2 text-red-400">长期破坏作用</h5>
+                                <ul class="text-xl text-gray-300 space-y-2 list-disc list-inside">
+                                    <li>推高通胀，增加企业与消费者成本。</li>
+                                    <li>引发全球贸易体系混乱，规则失效。</li>
+                                    <li>激起他国反制，形成恶性循环。</li>
+                                </ul>
+                            </div>
+                        </div>
                    </div>
                 </div>
             </section>
             
-            <!-- Q2-1 - 第5页 (已按要求更新内容) -->
+            <!-- Q1-3 最终总结页 - 第5页 -->
+            <section>
+                <div class="section-header">
+                    <p class="text-highlight font-bold text-4xl">Q1</p>
+                </div>
+                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">辩证作用深度总结 / DEEP DIVE SUMMARY</h3>
+                <div class="summary-table w-full">
+                    <table class="w-full text-left text-xl">
+                        <thead>
+                            <tr>
+                                <th class="w-1/6">类别</th>
+                                <th class="w-2/5"><i class="fas fa-plus-circle text-green-500 mr-2"></i>积极作用 (理论与逻辑)</th>
+                                <th class="w-2/5"><i class="fas fa-minus-circle text-red-500 mr-2"></i>消极作用 (现实与代价)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold text-2xl text-white">一般性关税</td>
+                                <td><ul class="list-disc list-outside space-y-2 pl-4 text-gray-300"><li><strong>保护本国产业：</strong>为本土幼稚或关键产业提供成长空间。</li><li><strong>调节贸易收支：</strong>作为宏观调控工具，用以调节贸易差额。</li></ul></td>
+                                <td><ul class="list-disc list-outside space-y-2 pl-4 text-gray-300"><li><strong>降低产业竞争力：</strong>过度保护导致国内产业缺乏创新压力。</li><li><strong>损害消费者利益：</strong>商品价格上涨，增加生活成本。</li></ul></td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-2xl text-white">对等关税</td>
+                                <td><ul class="list-disc list-outside space-y-2 pl-4 text-gray-300"><li><strong>争取政治支持：</strong>保护特定产业，获得相关利益集团的政治支持。</li><li><strong>作为外交杠杆：</strong>对盟友和对手施压，迫使其在贸易以外的议题上让步。</li></ul></td>
+                                <td><ul class="list-disc list-outside space-y-2 pl-4 text-gray-300"><li><strong>违反世贸规则：</strong>严重冲击以规则为基础的多边贸易体制。</li><li><strong>代价由本国承担：</strong><span class="text-highlight font-bold">超过90%</span>的成本由本国承担，造成就业岗位净损失和GDP下滑。</li></ul></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+             <!-- Q2-1 - 第6页 -->
             <section>
                  <div class="section-header">
                     <p class="text-highlight font-bold text-4xl">Q2</p>
@@ -229,11 +277,11 @@
                  <div class="grid grid-cols-3 gap-8 h-[80vh]">
                     <div class="bento-card flex flex-col justify-between">
                        <div>
-                        <p class="en-small mb-4">ECONOMIC GOAL</p>
-                        <h4 class="text-4xl zh-large-bold">经济目的</h4>
+                        <p class="en-small mb-4">FISCAL & ECONOMIC</p>
+                        <h4 class="text-4xl zh-large-bold">财政与经济目的</h4>
                         <ul class="mt-6 text-2xl text-gray-300 space-y-6">
-                            <li><strong class="text-white">强制产业回流 <span class="en-small">RESHORING</span></strong><p class="text-xl text-gray-400 mt-2">通过高关税提升进口成本，倒逼企业将生产线迁回本土，重振制造业。</p></li>
-                            <li><strong class="text-white">削减贸易赤字 <span class="en-small">DEFICIT</span></strong><p class="text-xl text-gray-400 mt-2">将其作为核心政绩指标，通过压制进口来直接、粗暴地改变贸易数据。</p></li>
+                            <li><strong class="text-white">财政增收：</strong>关税收入可补充财政，为减税与支出提供资金。</li>
+                            <li><strong class="text-white">制造业回流：</strong>通过高成本倒逼产业链回归美国。</li>
                         </ul>
                        </div>
                        <div class="text-9xl font-black text-right text-gray-800 opacity-80">01</div>
@@ -243,19 +291,19 @@
                             <p class="en-small mb-4">POLITICAL GOAL</p>
                             <h4 class="text-4xl zh-large-bold">政治目的</h4>
                             <ul class="mt-6 text-2xl text-gray-300 space-y-6">
-                                <li><strong class="text-white">延续“美国优先” <span class="en-small">AMERICA FIRST</span></strong><p class="text-xl text-gray-400 mt-2">强化核心执政理念，将外部“不公”作为国内问题的替罪羊，凝聚票仓。</p></li>
-                                <li><strong class="text-white">兑现竞选承诺 <span class="en-small">PROMISE</span></strong><p class="text-xl text-gray-400 mt-2">向“铁锈带”等受全球化冲击的选民展示强硬姿态，维持政治基本盘。</p></li>
+                                <li><strong class="text-white">延续“美国优先”：</strong>强化核心执政理念，凝聚票仓。</li>
+                                <li><strong class="text-white">兑现竞选承诺：</strong>向“铁锈带”选民展示强硬姿态。</li>
                             </ul>
                         </div>
                         <div class="text-9xl font-black text-right text-gray-800 opacity-80">02</div>
                     </div>
                     <div class="bento-card flex flex-col justify-between bg-highlight-gradient border-none">
                         <div>
-                            <p class="en-small mb-4 text-white">GEOSTRATEGIC GOAL</p>
-                            <h4 class="text-4xl zh-large-bold text-white">地缘战略目的</h4>
-                            <ul class="mt-6 text-2xl text-white space-y-6">
-                                <li><strong class="font-bold">遏制战略竞争对手</strong><p class="text-xl text-gray-200 mt-2">以关税为武器，精准打击对手的优势产业，服务于大国竞争的宏观战略。</p></li>
-                                <li><strong class="font-bold">试图建立新贸易规则</strong><p class="text-xl text-gray-200 mt-2">“破而后立”，意图瓦解多边体系，建立由美国主导的双边贸易新秩序。</p></li>
+                            <p class="en-small mb-4 text-white">STRATEGIC BARGAINING</p>
+                            <h4 class="text-4xl zh-large-bold text-white">战略博弈目的</h4>
+                             <ul class="mt-6 text-2xl text-white space-y-6">
+                                <li><strong class="font-bold">制造谈判筹码：</strong>以关税为工具，迫使他国在汇率、债务、安全等议题上让步。</li>
+                                <li><strong class="font-bold">遏制战略对手：</strong>服务于大国竞争，打击对手优势产业。</li>
                             </ul>
                         </div>
                         <div class="text-9xl font-black text-right text-white opacity-20">03</div>
@@ -263,7 +311,7 @@
                  </div>
             </section>
 
-             <!-- Q2-2 - 第6页 -->
+             <!-- Q2-2 - 第7页 -->
             <section>
                  <div class="section-header">
                     <p class="text-highlight font-bold text-4xl">Q2</p>
@@ -278,7 +326,7 @@
                                 <i class="fa-solid fa-arrow-trend-up text-red-500 text-3xl w-10 mt-1"></i>
                                 <div>
                                     <h5 class="text-2xl font-bold">滞胀风险与内部撕裂</h5>
-                                    <p class="text-xl text-gray-400">通货膨胀加剧，消费者成本上升，出口产业受创，经济引擎面临失速风险。</p>
+                                    <p class="text-xl text-gray-400">输入性通胀加剧，企业成本上升，消费者利益受损，出口（特别是农业）因报复性关税而遭受重创。</p>
                                 </div>
                             </div>
                         </div>
@@ -291,7 +339,7 @@
                                 <i class="fa-solid fa-earth-americas text-blue-500 text-3xl w-10 mt-1"></i>
                                 <div>
                                     <h5 class="text-2xl font-bold">碎片化与秩序重构</h5>
-                                    <p class="text-xl text-gray-400">全球供应链断裂，贸易摩擦加剧，多边体系面临崩溃，全球经济增长放缓。</p>
+                                    <p class="text-xl text-gray-400">贸易格局重塑，产业链分散；WTO边缘化，区域协定更受重视；全球经济增长因成本上升而放缓。</p>
                                 </div>
                             </div>
                         </div>
@@ -301,65 +349,137 @@
                     </div>
                 </div>
             </section>
+            
+            <!-- Q2-3 最终总结页 - 第8页 -->
+             <section>
+                <div class="section-header">
+                    <p class="text-highlight font-bold text-4xl">Q2</p>
+                </div>
+                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">政策影响深度总结 / DEEP DIVE SUMMARY</h3>
+                <div class="summary-table w-full">
+                    <table class="w-full text-left text-xl">
+                        <thead>
+                            <tr>
+                                <th class="w-1/4">分析维度</th>
+                                <th class="w-3/4">详细阐述与关键结论</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold text-2xl text-white">核心目的</td>
+                                <td><ul class="list-disc list-outside space-y-2 pl-4 text-gray-300">
+                                    <li><strong>战术层 (财政增收):</strong> 增加财政收入 (2022年近千亿美元)。</li>
+                                    <li><strong>战役层 (制造业回流):</strong> 引导产业链回流，具政治象征意义。</li>
+                                    <li class="text-white"><strong>战略层 (博弈筹码):</strong> <span class="text-highlight font-bold">真正的核心目的。</span>将经济问题武器化，服务于大国竞争。</li>
+                                </ul></td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-2xl text-white">对美国经济</td>
+                                <td><ul class="list-disc list-outside space-y-2 pl-4 text-gray-300">
+                                    <li><strong>负面为主:</strong> 输入性通胀，企业成本上升，消费者利益受损，出口受创。</li>
+                                    <li><strong>正面为辅:</strong> 短期保护特定行业，催生后续产业政策。</li>
+                                </ul></td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-2xl text-white">对全球贸易</td>
+                                <td><ul class="list-disc list-outside space-y-2 pl-4 text-gray-300">
+                                    <li><strong>供应链“大重构”：</strong>全球逻辑从<strong class="text-white">“效率优先”</strong>转向<strong class="text-white">“安全/韧性优先”</strong>。</li>
+                                    <li><strong>贸易转移加速：</strong><strong class="text-white">加拿大</strong>、<strong class="text-white">越南</strong>等成为主要受益者。</li>
+                                    <li><strong>多边体系被削弱：</strong>WTO被边缘化，全球贸易更趋向区域化和集团化。</li>
+                                </ul></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+             <!-- Q3-1 - 第9页 -->
+            <section>
+                 <div class="section-header">
+                    <p class="text-highlight font-bold text-4xl">Q3</p>
+                </div>
+                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">关税冲击：“家俱跨境电商”面临的挑战</h3>
+                <div class="grid grid-cols-2 gap-8 h-[80vh]">
+                    <div class="bento-card">
+                        <p class="en-small">DIRECT FINANCIAL IMPACT</p>
+                        <h4 class="text-4xl zh-large-bold">直接财务冲击</h4>
+                        <ul class="mt-6 text-2xl text-gray-300 space-y-4 list-disc list-inside">
+                           <li><strong class="text-white">采购成本飙升 (COGS)：</strong>关税直接叠加在出厂价上，对利润率形成毁灭性打击。</li>
+                           <li><strong class="text-white">利润空间被极限挤压：</strong>涨价可能导致销量暴跌，不涨价则可能亏损。</li>
+                           <li><strong class="text-white">现金流巨大压力：</strong>关税需在进口时预缴，极大占用现金流。</li>
+                        </ul>
+                    </div>
+                    <div class="bento-card">
+                        <p class="en-small">INDIRECT STRATEGIC IMPACT</p>
+                        <h4 class="text-4xl zh-large-bold">间接战略冲击</h4>
+                        <ul class="mt-6 text-2xl text-gray-300 space-y-4 list-disc list-inside">
+                           <li><strong class="text-white">供应链稳定性崩溃：</strong>政策不确定性使长期采购与新品开发极为困难。</li>
+                           <li><strong class="text-white">竞争格局恶化：</strong>已布局墨西哥或美国本土的对手将获得巨大成本优势。</li>
+                           <li><strong class="text-white">库存风险剧增：</strong>错误的库存决策可能导致大批高成本货物积压。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Q3-2 - 第10页 -->
+            <section>
+                 <div class="section-header">
+                    <p class="text-highlight font-bold text-4xl">Q3</p>
+                </div>
+                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">应对策略：公司的生存手册</h3>
+                 <div class="grid grid-cols-2 gap-8 h-[80vh]">
+                    <div class="bento-card">
+                        <p class="en-small">SHORT-TERM TACTICS</p>
+                        <h4 class="text-4xl zh-large-bold">短期应对 (战术层面)</h4>
+                        <ul class="mt-6 text-2xl text-gray-300 space-y-4 list-disc list-inside">
+                            <li><strong class="text-white">价格谈判：</strong>与客户协商分担关税，区分高替代性与主导性产品。</li>
+                            <li><strong class="text-white">内部优化：</strong>利用美国公司作为销售主体，优化内部定价以降低关税总额。</li>
+                            <li><strong class="text-white">库存管理：</strong>与客户沟通未交订单，暂停或延后生产，避免无效库存。</li>
+                        </ul>
+                    </div>
+                     <div class="bento-card bg-highlight-gradient border-none">
+                        <p class="en-small text-white">LONG-TERM RESTRUCTURING</p>
+                        <h4 class="text-4xl zh-large-bold text-white">长期重构 (战略层面)</h4>
+                        <ul class="mt-6 text-2xl text-white space-y-4 list-disc list-inside">
+                            <li><strong class="font-bold">产能布局调整 (近岸外包)：</strong>将高关税地区产能逐步转移至墨西哥及南美等低关税地区。</li>
+                            <li><strong class="font-bold">市场多元化：</strong>减少对美国市场的依赖，大力开拓欧盟、东南亚、拉美等新市场。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-            <!-- Q3-1 - 第7页 -->
+             <!-- Q3-3 最终总结页 - 第11页 -->
             <section>
-                 <div class="section-header">
+                <div class="section-header">
                     <p class="text-highlight font-bold text-4xl">Q3</p>
                 </div>
-                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">关税冲击：“家俱电商”面临的核心挑战</h3>
-                <div class="grid grid-cols-4 gap-8 h-[80vh]">
-                    <div class="bento-card col-span-2 flex flex-col justify-center">
-                        <p class="text-9xl font-black text-highlight">25%</p>
-                        <h4 class="text-4xl zh-large-bold mt-2">成本冲击</h4>
-                        <p class="en-small">COST SHOCK</p>
-                        <p class="mt-4 text-2xl text-gray-300">假设平均关税增加25%，采购与物流成本将发生毁灭性上涨，直接侵蚀所有利润空间。</p>
-                    </div>
-                     <div class="bento-card col-span-2 flex flex-col justify-center">
-                        <i class="fa-solid fa-tags text-5xl mb-6 text-gray-500"></i>
-                        <h4 class="text-4xl zh-large-bold">价格与销售冲击</h4>
-                         <p class="en-small">PRICE & SALES SHOCK</p>
-                         <p class="mt-4 text-2xl text-gray-300">陷入“涨价必死，不涨等死”的定价两难，市场竞争力骤降。</p>
-                    </div>
-                    <div class="bento-card col-span-4 flex items-center gap-8">
-                        <svg class="w-24 h-24 text-highlight flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"/><line x1="8" y1="2" x2="8" y2="5"/><line x1="2" y1="8" x2="5" y2="8"/><line x1="16" y1="19" x2="16" y2="22"/><line x1="19" y1="16" x2="22" y2="16"/></svg>
-                        <div>
-                            <h4 class="text-4xl zh-large-bold">供应链与市场风险</h4>
-                            <p class="en-small">SUPPLY CHAIN & MARKET RISK</p>
-                            <p class="mt-2 text-2xl text-gray-300">长期合作关系瓦解，替代方案难寻；同时北美市场可能出现消费降级，需求萎缩。</p>
-                        </div>
-                    </div>
+                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">Homeliving 应对策略手册 / PLAYBOOK SUMMARY</h3>
+                <div class="summary-table w-full">
+                    <table class="w-full text-left text-xl">
+                        <thead>
+                            <tr>
+                                <th class="w-1/5">冲击领域</th>
+                                <th class="w-2/5">具体表现 (对Homeliving)</th>
+                                <th class="w-2/5">应对策略 (Playbook)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold text-2xl text-white">直接财务冲击</td>
+                                <td><ul class="list-disc list-outside space-y-2 pl-4 text-red-300"><li><strong>成本飙升:</strong> 关税直接叠加，毁灭性打击利润率。</li><li><strong>现金流压力:</strong> 关税需预缴，占用巨额资金。</li></ul></td>
+                                <td class="text-gray-300"><strong class="text-blue-400">短期应对 (战术):</strong><ul class="list-decimal list-outside space-y-1 pl-4 mt-2"><li><strong>关税工程:</strong> 优化HS编码。</li><li><strong>动态定价:</strong> 分阶段调价，促销清库存。</li><li><strong>供应商协商:</strong> 分担成本，延长账期。</li></ul></td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-2xl text-white">间接战略冲击</td>
+                                <td><ul class="list-disc list-outside space-y-2 pl-4 text-yellow-300"><li><strong>供应链崩溃:</strong> 长期规划困难，稳定性丧失。</li><li><strong>竞争格局恶化:</strong> 近岸布局的对手获得巨大优势。</li></ul></td>
+                                <td class="text-gray-300"><strong class="text-purple-400">长期重构 (战略):</strong><ul class="list-decimal list-outside space-y-1 pl-4 mt-2"><li><strong>供应链“近岸外包”:</strong> 核心产能尽快向<strong class="text-white">墨西哥</strong>转移。</li><li><strong>“中国+N”布局:</strong> 部分轻工产品向<strong class="text-white">越南</strong>等转移。</li><li><strong>产品线优化:</strong> 开发“北美/墨西哥制造”产品线。</li></ul></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
             
-            <!-- Q3-2 - 第8页 -->
-            <section>
-                 <div class="section-header">
-                    <p class="text-highlight font-bold text-4xl">Q3</p>
-                </div>
-                <h3 class="title-small mb-8 text-center" style="margin-top:20px;">战略应对：跨境电商的破局之路</h3>
-                 <div class="grid grid-cols-2 grid-rows-2 gap-8 h-[80vh]">
-                    <div class="bento-card row-span-2 flex flex-col justify-center p-12 bg-highlight-gradient border-none">
-                        <p class="en-small text-white">CORE STRATEGY</p>
-                        <h4 class="text-5xl zh-large-bold text-white">供应链多元化与近岸化</h4>
-                        <p class="mt-6 text-white text-2xl leading-relaxed">
-                            核心破局点。紧急启动对<strong class="font-black">加拿大</strong>、东欧等地的供应商开发，探索“近岸外包”(Nearshoring)模式，利用USMCA协定规避关税壁垒。
-                        </p>
-                    </div>
-                     <div class="bento-card flex flex-col justify-center">
-                        <p class="en-small">COST & PRICE</p>
-                        <h4 class="text-3xl zh-large-bold">成本优化与灵活定价</h4>
-                        <p class="mt-4 text-xl text-gray-300">内部挖潜，压缩非关税成本；实施动态定价，差异化分摊压力。</p>
-                    </div>
-                     <div class="bento-card flex flex-col justify-center">
-                         <p class="en-small">PRODUCT & MARKET</p>
-                        <h4 class="text-3xl zh-large-bold">产品与市场策略调整</h4>
-                         <p class="mt-4 text-xl text-gray-300">优化产品组合，转向高附加值产品；深耕加拿大市场，分散风险。</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Q4-1 - 第9页 -->
+            <!-- Q4-1 - 第12页 -->
             <section>
                 <div class="section-header">
                     <p class="text-highlight font-bold text-4xl">&infin;</p>
@@ -369,18 +489,18 @@
                     <p class="en-small mt-4">A DALIO PERSPECTIVE</p>
                     <div class="w-24 h-1 bg-highlight-gradient my-8"></div>
                     <p class="text-3xl text-gray-300 max-w-5xl leading-relaxed">
-                        我们面临的并非孤立的贸易摩擦，而是全球经济、政治、地缘三大秩序的<strong class="text-white">同步周期性变革</strong>。关税仅是表象。
+                        关税并非孤立的贸易摩擦，而是全球三大秩序同步变革的表象，更是服务于财政增收、产业回流、重塑核心硬实力的<strong class="text-white">战略博弈手段</strong>。
                     </p>
                     <div class="flex items-center mt-16 text-5xl font-black">
                         <span class="text-gray-500">效率</span>
                         <svg class="w-32 h-32 mx-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m-7-7l7 7-7 7"/></svg>
-                        <span class="text-highlight">安全 & 韧性</span>
+                        <span class="text-highlight">安全 & 韌性</span>
                     </div>
                     <p class="text-2xl text-gray-400 mt-4">旧范式正在瓦解，全球竞争的核心正从<strong class="text-white">“效率至上”</strong>转向<strong class="text-white">“安全优先”</strong>。</p>
                 </div>
             </section>
             
-             <!-- 结尾页 - 第10页 -->
+             <!-- 结尾页 - 第13页 -->
             <section class="bg-gradient-theme">
                  <div class="h-full flex flex-col justify-center items-center text-center">
                     <h2 class="text-6xl font-black text-white m-0">Thank You</h2>
