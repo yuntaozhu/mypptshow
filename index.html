@@ -27,6 +27,7 @@
             --bg-orange-end: #FFD1B3;
             --r-main-font: 'Noto Sans SC', sans-serif;
             --r-heading-font: 'Noto Sans SC', sans-serif;
+            --r-main-font-size: 32px; /* Globally reduced font size */
             --r-heading-font-weight: 900;
             --r-main-color: #333;
             --r-heading-color: #111;
@@ -47,7 +48,7 @@
         }
         
         .reveal .page-title {
-            font-size: 1.5em;
+            font-size: 1.4em;
             text-align: left;
             margin-bottom: 20px;
             opacity: 0.8;
@@ -55,18 +56,18 @@
 
         .bento-grid {
             display: grid;
-            gap: 24px;
+            gap: 20px;
             width: 100%;
             height: 85%;
         }
 
         .bento-item {
-            background-color: rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 2rem;
-            padding: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
             /* Animation properties */
             opacity: 0;
@@ -83,11 +84,9 @@
         .reveal .slides section.present .bento-item:nth-child(2) { transition-delay: 100ms; }
         .reveal .slides section.present .bento-item:nth-child(3) { transition-delay: 200ms; }
         .reveal .slides section.present .bento-item:nth-child(4) { transition-delay: 300ms; }
-        .reveal .slides section.present .bento-item:nth-child(5) { transition-delay: 400ms; }
-
 
         .ultra-text {
-            font-size: clamp(4rem, 12vw, 10rem);
+            font-size: clamp(3rem, 10vw, 8rem);
             font-weight: 900;
             line-height: 1;
             color: var(--highlight-red);
@@ -145,86 +144,74 @@
                 </div>
             </section>
 
-            <!-- Page 2: Core Value -->
+            <!-- Page 2: Core Value (REDESIGNED) -->
             <section>
                 <h2 class="page-title">核心价值: 战略转型</h2>
-                <div class="bento-grid" style="grid-template-columns: repeat(2, 1fr);">
-                    <div class="bento-item flex flex-col justify-center items-center text-center">
+                <div class="bento-grid" style="grid-template-columns: 1fr auto 1fr; align-items: center; justify-items: center;">
+                    <div class="bento-item flex flex-col justify-center items-center text-center h-full">
                         <span class="ultra-text">价格</span>
-                        <h3 class="text-3xl font-bold mt-[-3rem] z-10 relative">传统模式: "价格采购"</h3>
+                        <h3 class="text-2xl font-bold mt-[-2rem] z-10 relative">传统模式: "价格采购"</h3>
                         <p class="english-small">TRADITIONAL: "PRICE PURCHASING"</p>
-                        <p class="mt-4">关注“价格”(元/吨)，采购最“便宜”的原料。</p>
+                        <p class="mt-4 text-sm">关注“价格”(元/吨)，采购最“便宜”的原料。</p>
                     </div>
-                    <div class="bento-item flex flex-col justify-center items-center text-center">
+                    <div class="bento-item flex justify-center items-center p-8">
+                         <i class="fas fa-arrow-right fa-4x icon"></i>
+                    </div>
+                    <div class="bento-item flex flex-col justify-center items-center text-center h-full">
                         <span class="ultra-text">价值</span>
-                        <h3 class="text-3xl font-bold mt-[-3rem] z-10 relative">新范式: "价值采购"</h3>
+                        <h3 class="text-2xl font-bold mt-[-2rem] z-10 relative">新范式: "价值采购"</h3>
                         <p class="english-small">NEW PARADIGM: "VALUE PURCHASING"</p>
-                        <p class="mt-4">关注“价值”(元/营养单位)，采购最“划算”的原料。</p>
-                    </div>
-                    <div class="bento-item flex flex-col justify-center text-center" style="grid-column: span 2;">
-                        <p class="chinese-bold text-2xl">通过科学模型，将原料的多重营养属性（能量、蛋白等）统一量化为可比较的经济价值，实现真正的 <span class="highlight-text">价值发现</span>。</p>
+                        <p class="mt-4 text-sm">关注“价值”(元/营养单位)，采购最“划算”的原料。</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Page 3: System Architecture -->
+            <!-- Page 3: System Architecture (REDESIGNED) -->
             <section>
                 <h2 class="page-title">系统核心功能架构</h2>
                 <div class="bento-item flex justify-center items-center h-full">
                      <svg width="90%" height="90%" viewBox="0 0 800 500">
-                        <defs>
-                            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#555" /></marker>
-                        </defs>
+                        <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#555" /></marker></defs>
                         <!-- Top Layer -->
-                        <g transform="translate(250, 0)">
-                            <rect x="0" y="0" width="300" height="100" rx="10" class="line-art" fill="rgba(255,255,255,0.3)"/>
-                            <text x="150" y="30" text-anchor="middle" font-size="16" class="chinese-bold">基础数据与计算层</text>
-                            <rect x="15" y="50" width="130" height="40" rx="5" class="line-art" fill="rgba(255,255,255,0.2)"/>
-                            <text x="80" y="75" text-anchor="middle" font-size="14">数据管理与定价</text>
-                            <rect x="155" y="50" width="130" height="40" rx="5" class="line-art" fill="rgba(255,255,255,0.2)"/>
-                            <text x="220" y="75" text-anchor="middle" font-size="14">配方空间价值计算</text>
+                        <g transform="translate(250, 20)">
+                            <rect x="0" y="0" width="300" height="100" rx="15" class="line-art" fill="rgba(255,255,255,0.3)"/><text x="150" y="30" text-anchor="middle" font-size="20" class="chinese-bold">基础数据与计算层</text>
+                            <rect x="15" y="50" width="130" height="40" rx="8" class="line-art" fill="rgba(255,255,255,0.2)"/><text x="80" y="75" text-anchor="middle" font-size="14">数据管理与定价</text>
+                            <rect x="155" y="50" width="130" height="40" rx="8" class="line-art" fill="rgba(255,255,255,0.2)"/><text x="220" y="75" text-anchor="middle" font-size="14">配方空间价值计算</text>
                         </g>
                         <!-- Middle Layer -->
-                        <g transform="translate(150, 150)">
-                            <rect x="0" y="0" width="500" height="100" rx="10" class="line-art" fill="rgba(255,255,255,0.3)"/>
-                            <text x="250" y="30" text-anchor="middle" font-size="16" class="chinese-bold">核心功能层</text>
-                            <rect x="15" y="50" width="150" height="40" rx="5" class="line-art" fill="rgba(255,255,255,0.2)"/>
-                            <text x="90" y="75" text-anchor="middle" font-size="14">综合查询与报告</text>
-                            <rect x="175" y="50" width="150" height="40" rx="5" class="line-art line-art-highlight" fill="rgba(227,25,55,0.1)"/>
-                            <text x="250" y="75" text-anchor="middle" font-size="14" class="highlight-text">智能价值评估</text>
-                            <rect x="335" y="50" width="150" height="40" rx="5" class="line-art" fill="rgba(255,255,255,0.2)"/>
-                            <text x="410" y="75" text-anchor="middle" font-size="14">对比分析与决策</text>
+                        <g transform="translate(150, 180)">
+                            <rect x="0" y="0" width="500" height="100" rx="15" class="line-art" fill="rgba(255,255,255,0.3)"/><text x="250" y="30" text-anchor="middle" font-size="20" class="chinese-bold">核心功能层</text>
+                            <rect x="15" y="50" width="150" height="40" rx="8" class="line-art" fill="rgba(255,255,255,0.2)"/><text x="90" y="75" text-anchor="middle" font-size="14">综合查询与报告</text>
+                            <rect x="175" y="50" width="150" height="40" rx="8" class="line-art line-art-highlight" fill="rgba(227,25,55,0.1)"/><text x="250" y="75" text-anchor="middle" font-size="14" class="highlight-text">智能价值评估</text>
+                            <rect x="335" y="50" width="150" height="40" rx="8" class="line-art" fill="rgba(255,255,255,0.2)"/><text x="410" y="75" text-anchor="middle" font-size="14">对比分析与决策</text>
                         </g>
                         <!-- Bottom Layer -->
-                        <g transform="translate(250, 300)">
-                             <rect x="0" y="0" width="300" height="100" rx="10" class="line-art" fill="rgba(255,255,255,0.3)"/>
-                            <text x="150" y="30" text-anchor="middle" font-size="16" class="chinese-bold">应用输出层</text>
-                            <rect x="15" y="50" width="130" height="40" rx="5" class="line-art" fill="rgba(255,255,255,0.2)"/>
-                            <text x="80" y="75" text-anchor="middle" font-size="14">采购决策支持</text>
-                            <rect x="155" y="50" width="130" height="40" rx="5" class="line-art" fill="rgba(255,255,255,0.2)"/>
-                            <text x="220" y="75" text-anchor="middle" font-size="14">数据服务</text>
+                        <g transform="translate(250, 340)">
+                            <rect x="0" y="0" width="300" height="100" rx="15" class="line-art" fill="rgba(255,255,255,0.3)"/><text x="150" y="30" text-anchor="middle" font-size="20" class="chinese-bold">应用输出层</text>
+                            <rect x="15" y="50" width="130" height="40" rx="8" class="line-art" fill="rgba(255,255,255,0.2)"/><text x="80" y="75" text-anchor="middle" font-size="14">采购决策支持</text>
+                            <rect x="155" y="50" width="130" height="40" rx="8" class="line-art" fill="rgba(255,255,255,0.2)"/><text x="220" y="75" text-anchor="middle" font-size="14">数据服务</text>
                         </g>
                         <!-- Arrows -->
-                        <path d="M 400 100 V 150" class="line-art" marker-end="url(#arrow)" />
-                        <path d="M 400 250 V 300" class="line-art" marker-end="url(#arrow)" />
-                        <path d="M 165 200 H 135" class="line-art" marker-end="url(#arrow)" /><text x="150" y="195" font-size="12" text-anchor="middle">驱动</text>
-                        <path d="M 325 200 H 295" class="line-art" marker-end="url(#arrow)" /><text x="310" y="195" font-size="12" text-anchor="middle">驱动</text>
+                        <path d="M 400 120 V 180" class="line-art" marker-end="url(#arrow)" /><text x="410" y="150" font-size="12">为...提供数据</text>
+                        <path d="M 400 280 V 340" class="line-art" marker-end="url(#arrow)" /><text x="410" y="310" font-size="12">支撑</text>
+                        <path d="M 325 230 H 165" class="line-art" marker-end="url(#arrow)" /><text x="245" y="225" font-size="12" text-anchor="middle">驱动</text>
+                        <path d="M 175 230 L 335 230" class="line-art" marker-end="url(#arrow)" /><text x="255" y="245" font-size="12" text-anchor="middle">驱动</text>
                      </svg>
                 </div>
             </section>
 
-            <!-- Page 4: Module 1 -->
+            <!-- Page 4: Module 1 (Adjusted) -->
             <section>
                 <h2 class="page-title">模块一: 综合查询与数据溯源</h2>
                 <div class="bento-grid" style="grid-template-columns: 2fr 3fr;">
                     <div class="bento-item flex flex-col justify-center">
                         <h3 class="text-3xl font-bold mb-4">核心功能</h3>
-                        <p class="chinese-bold">通过多维度、可组合的查询条件，快速定位和调用已计算数据，精确筛选评估报告或对比分析结果。</p>
+                        <p class="chinese-bold" style="font-size:0.9em;">通过多维度、可组合的查询条件，快速定位和调用已计算数据，精确筛选评估报告或对比分析结果。</p>
                         <p class="english-small mt-2">MULTI-DIMENSIONAL & COMBINABLE QUERY</p>
                     </div>
                     <div class="bento-item">
                         <h3 class="text-2xl font-bold mb-4">关键查询条件</h3>
-                        <ul class="space-y-3" style="font-size: 0.9em;">
+                        <ul class="space-y-3" style="font-size: 0.8em;">
                             <li><i class="fas fa-tag icon mr-2"></i> <span class="chinese-bold">主体标识:</span> 工厂、原料编码、名称、类型。</li>
                             <li><i class="fas fa-cogs icon mr-2"></i> <span class="chinese-bold">核心参数:</span> 配方空间价值系数 (能量/蛋白)。</li>
                             <li><i class="fas fa-history icon mr-2"></i> <span class="chinese-bold">时间与版本:</span> 计算时间、版本号，实现历史追溯。</li>
@@ -233,72 +220,110 @@
                     </div>
                 </div>
             </section>
-
-            <!-- Page 5: Module 2 & 3 -->
+            
+            <!-- Page 5: Module 2 (NEW) -->
             <section>
-                <h2 class="page-title">模块二 & 三: 基准定价与智能评估</h2>
-                <div class="bento-grid" style="grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr;">
-                    <div class="bento-item text-center">
-                        <h3 class="text-2xl font-bold">模块二: 配方空间与基准定价</h3>
-                        <p class="mt-2 text-sm">输入“配方空间价值系数”，计算出 <span class="highlight-text">能量和蛋白</span> 的边际成本，作为后续评估的基石。</p>
+                <h2 class="page-title">模块二: 配方空间与基准定价</h2>
+                <div class="bento-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="bento-item">
+                        <h3 class="text-2xl font-bold mb-4">核心功能</h3>
+                        <p class="chinese-bold" style="font-size:0.9em;">根据特定原料或营养标准，计算出核心营养素（能量和蛋白）的边际成本，为所有后续评估建立一个科学、客观的价值基准。</p>
+                        <p class="english-small mt-2">CALCULATING MARGINAL COSTS FOR BENCHMARKING</p>
                     </div>
-                     <div class="bento-item text-center">
-                        <h3 class="text-2xl font-bold">模块三: 智能价值评估与报告</h3>
-                        <p class="mt-2 text-sm">基于基准价格，对原料进行多维度深度分析，生成包含采购建议的标准化评估报告。</p>
-                    </div>
-                    <div class="bento-item" style="grid-column: span 2; padding: 0; overflow: hidden;">
-                        <img src="https://i.imgur.com/e5T5x1N.png" class="w-full h-full object-cover object-left-top"/>
+                    <div class="bento-item flex justify-center items-center">
+                        <svg width="80%" height="80%" viewBox="0 0 300 150">
+                             <rect x="10" y="50" width="80" height="50" rx="8" class="line-art"/><text x="50" y="80" text-anchor="middle" font-size="12">价值系数</text>
+                             <path d="M 90 75 L 120 75" class="line-art" marker-end="url(#arrow)"/>
+                             <rect x="120" y="25" width="100" height="100" rx="8" class="line-art-highlight" fill="rgba(227,25,55,0.1)"/><text x="170" y="80" text-anchor="middle" font-size="14" class="highlight-text">计算模块</text>
+                             <path d="M 220 50 L 250 50" class="line-art" marker-end="url(#arrow)"/><text x="275" y="45" font-size="12">NE价格</text>
+                             <path d="M 220 100 L 250 100" class="line-art" marker-end="url(#arrow)"/><text x="275" y="105" font-size="12">CP价格</text>
+                        </svg>
                     </div>
                 </div>
             </section>
 
-            <!-- Page 6: Module 4 & 5 -->
+            <!-- Page 6: Module 3 (NEW) -->
             <section>
-                 <h2 class="page-title">模块四 & 五: 对比分析与数据服务</h2>
-                 <div class="bento-grid" style="grid-template-columns: 3fr 2fr;">
-                     <div class="bento-item" style="padding: 0; overflow: hidden;">
-                         <img src="https://i.imgur.com/XGf4fQx.png" class="w-full h-full object-cover object-top"/>
-                     </div>
+                 <h2 class="page-title">模块三: 智能价值评估与报告</h2>
+                 <div class="bento-grid" style="grid-template-columns: 1fr 2fr;">
                      <div class="bento-item">
-                         <h3 class="text-2xl font-bold mb-4">模块四: 对比分析</h3>
-                         <p class="chinese-bold">提供原料间的横向对比功能。</p>
-                         <ul style="font-size:0.9em" class="mt-2 space-y-2">
-                             <li>- 基础信息对比</li>
-                             <li>- 价格对比 (市场/在库/预测)</li>
-                             <li>- 评估价值对比</li>
-                             <li>- 营养指标对比</li>
+                        <h3 class="text-2xl font-bold mb-4">核心功能</h3>
+                        <p class="chinese-bold" style="font-size:0.9em;">基于模块二计算的基准价格，对单一原料进行多维度深度分析，并自动生成标准化的评估报告。</p>
+                         <h4 class="font-bold mt-4" style="font-size:0.9em;">评估维度:</h4>
+                         <ul class="list-disc list-inside text-sm mt-2">
+                             <li>基础相对价值</li>
+                             <li>相对于能量基准的价值</li>
+                             <li>相对于蛋白基准的价值</li>
                          </ul>
                      </div>
-                      <div class="bento-item" style="grid-column: span 2;">
-                         <h3 class="text-2xl font-bold mb-4">模块五: 系统与数据服务</h3>
-                         <div class="flex justify-around items-center h-full text-center">
-                            <div class="flex flex-col items-center">
-                                <i class="fas fa-save fa-3x icon"></i>
-                                <p class="chinese-bold mt-2">保存</p>
-                                <p class="text-sm">保存评估报告，生成版本号</p>
-                            </div>
-                             <div class="flex flex-col items-center">
-                                <i class="fas fa-download fa-3x icon"></i>
-                                <p class="chinese-bold mt-2">下载</p>
-                                <p class="text-sm">将报告或对比结果下载为离线文件</p>
-                            </div>
-                         </div>
+                     <div class="bento-item" style="padding: 0; overflow: hidden;">
+                          <img src="https://i.imgur.com/uGf8s2j.png" class="w-full h-full object-contain"/>
                      </div>
                  </div>
             </section>
 
-            <!-- Page 7: Core Workflow & Conclusion -->
+            <!-- Page 7: Module 4 (NEW) -->
+            <section>
+                 <h2 class="page-title">模块四: 对比分析与决策支持</h2>
+                 <div class="bento-grid" style="grid-template-columns: 2fr 1fr;">
+                      <div class="bento-item" style="padding: 0; overflow: hidden;">
+                          <img src="https://i.imgur.com/XGf4fQx.png" class="w-full h-full object-cover object-top"/>
+                     </div>
+                     <div class="bento-item">
+                        <h3 class="text-2xl font-bold mb-4">核心功能</h3>
+                        <p class="chinese-bold" style="font-size:0.9em;">在单一原料评估的基础上，提供原料间的横向对比功能，帮助用户在多种选择中做出最优决策。</p>
+                         <h4 class="font-bold mt-4" style="font-size:0.9em;">对比维度:</h4>
+                         <ul class="list-disc list-inside text-sm mt-2">
+                             <li>基础信息</li>
+                             <li>价格 (市场/在库/预测)</li>
+                             <li>评估价值</li>
+                             <li>营养指标</li>
+                         </ul>
+                     </div>
+                 </div>
+            </section>
+            
+            <!-- Page 8: Module 5 (NEW) -->
+            <section>
+                <h2 class="page-title">模块五: 系统与数据服务</h2>
+                <div class="bento-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="bento-item flex flex-col justify-center items-center text-center">
+                        <i class="fas fa-save fa-4x icon"></i>
+                        <h3 class="text-2xl font-bold mt-4">保存 (Save)</h3>
+                        <p class="mt-2 chinese-bold" style="font-size:0.9em;">支持数据的持久化、输出和管理。将评估报告和计算版本保存到系统中，生成唯一的版本号，为数据提供完整的审计追溯链条。</p>
+                    </div>
+                     <div class="bento-item flex flex-col justify-center items-center text-center">
+                        <i class="fas fa-download fa-4x icon"></i>
+                        <h3 class="text-2xl font-bold mt-4">下载 (Download)</h3>
+                        <p class="mt-2 chinese-bold" style="font-size:0.9em;">将评估报告或对比分析结果一键下载为离线文件（如PDF, Excel），方便用户进行内部报告、分享讨论或进行更深度的二次分析。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 9: Core Workflow (REDESIGNED) -->
             <section>
                 <h2 class="page-title">总结: 系统的核心工作流</h2>
-                <div class="bento-item h-full flex flex-col justify-center">
-                    <ul class="space-y-4">
-                        <li><i class="fas fa-cogs icon mr-4"></i> <span class="chinese-bold text-xl">配置与计算:</span> 用户配置参数，系统计算基准价格。</li>
-                        <li><i class="fas fa-file-alt icon mr-4"></i> <span class="chinese-bold text-xl">评估与保存:</span> 系统对原料进行评估，生成带版本号和时间戳的报告。</li>
-                        <li><i class="fas fa-search icon mr-4"></i> <span class="chinese-bold text-xl">查询与溯源:</span> 用户通过多维度条件，精准定位历史报告。</li>
-                        <li><i class="fas fa-balance-scale icon mr-4"></i> <span class="chinese-bold text-xl">分析与决策:</span> 用户查看报告或进行对比分析，结合“价格偏差”生成采购建议。</li>
-                    </ul>
-                    <hr class="my-8">
-                    <p class="text-center text-3xl font-bold">
+                <div class="bento-item h-full flex flex-col justify-center items-center">
+                    <svg width="100%" height="300" viewBox="0 0 1000 200">
+                        <!-- Nodes -->
+                        <g class="fragment" data-fragment-index="1">
+                             <circle cx="100" cy="100" r="60" class="line-art" fill="rgba(255,255,255,0.4)"/><text x="100" y="100" text-anchor="middle" font-size="16" dominant-baseline="central" class="chinese-bold">配置与计算</text>
+                        </g>
+                         <g class="fragment" data-fragment-index="2">
+                             <circle cx="350" cy="100" r="60" class="line-art" fill="rgba(255,255,255,0.4)"/><text x="350" y="100" text-anchor="middle" font-size="16" dominant-baseline="central" class="chinese-bold">评估与保存</text>
+                        </g>
+                         <g class="fragment" data-fragment-index="3">
+                             <circle cx="600" cy="100" r="60" class="line-art" fill="rgba(255,255,255,0.4)"/><text x="600" y="100" text-anchor="middle" font-size="16" dominant-baseline="central" class="chinese-bold">查询与溯源</text>
+                        </g>
+                         <g class="fragment" data-fragment-index="4">
+                             <circle cx="850" cy="100" r="60" class="line-art-highlight" fill="rgba(227,25,55,0.1)"/><text x="850" y="100" text-anchor="middle" font-size="16" dominant-baseline="central" class="highlight-text">分析与决策</text>
+                        </g>
+                        <!-- Arrows -->
+                        <path d="M 160 100 L 290 100" class="line-art fragment" data-fragment-index="2" marker-end="url(#arrow)"/>
+                        <path d="M 410 100 L 540 100" class="line-art fragment" data-fragment-index="3" marker-end="url(#arrow)"/>
+                        <path d="M 660 100 L 790 100" class="line-art fragment" data-fragment-index="4" marker-end="url(#arrow)"/>
+                    </svg>
+                    <p class="text-center text-xl font-bold mt-8 fragment" data-fragment-index="5">
                         确保所有评估结果 <span class="highlight-text">可追溯、可审计、可对比</span>，<br>将饲料原料采购决策从 <span class="highlight-text">经验导向</span> 推向 <span class="highlight-text">精准的数据驱动</span>。
                     </p>
                 </div>
@@ -312,6 +337,7 @@
         Reveal.initialize({
             hash: true,
             slideNumber: 'c/t',
+            fragments: true, // Enable fragments
         });
     </script>
 </body>
