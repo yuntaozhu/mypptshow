@@ -68,8 +68,23 @@
             padding: 2.5rem;
             border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            opacity: 0; /* Initial state for animation */
+            /* Animation properties */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
+        
+        .reveal .slides section.present .bento-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Staggered animation delay */
+        .reveal .slides section.present .bento-item:nth-child(2) { transition-delay: 100ms; }
+        .reveal .slides section.present .bento-item:nth-child(3) { transition-delay: 200ms; }
+        .reveal .slides section.present .bento-item:nth-child(4) { transition-delay: 300ms; }
+        .reveal .slides section.present .bento-item:nth-child(5) { transition-delay: 400ms; }
+
 
         .ultra-text {
             font-size: clamp(4rem, 12vw, 10rem);
@@ -293,47 +308,10 @@
 
     <!-- Frameworks -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.js"></script>
-    <script type="module">
-        import { animate } from "https://cdn.skypack.dev/framer-motion@10";
-
+    <script>
         Reveal.initialize({
             hash: true,
             slideNumber: 'c/t',
-        });
-
-        // Framer Motion Animation
-        function animateBentoItems(slide) {
-             const bentoItems = slide.querySelectorAll('.bento-item');
-            
-            bentoItems.forEach((item, index) => {
-                // Reset initial state
-                item.style.opacity = 0;
-                item.style.transform = 'translateY(30px)';
-                
-                // Animate
-                animate(item, {
-                    opacity: 1,
-                    y: 0
-                }, {
-                    duration: 0.6,
-                    delay: index * 0.1,
-                    ease: "easeOut"
-                });
-            });
-        }
-
-        Reveal.on('slidechanged', event => {
-            animateBentoItems(event.currentSlide);
-        });
-
-        // Trigger animation for the first slide on load
-        document.addEventListener('DOMContentLoaded', () => {
-             setTimeout(() => {
-                const firstSlide = Reveal.getCurrentSlide();
-                if (firstSlide) {
-                   animateBentoItems(firstSlide);
-                }
-             }, 300); // Small delay to ensure everything is loaded
         });
     </script>
 </body>
