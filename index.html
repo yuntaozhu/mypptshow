@@ -1,336 +1,339 @@
-<!doctype html>
-<html lang="zh">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星叶石原料价值评估系统 - 演示文稿</title>
 
-    <title>对等关税对全球贸易的影响及应对</title>
-
-    <!-- Frameworks & Libraries (CDN) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/white.min.css" id="theme">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Reveal.js Core CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css" id="theme">
     
-    <!-- Custom Fonts & Styles -->
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.3"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --highlight-color: #0D6EFD; /* Professional Blue */
-            --text-color: #212529;      /* Dark Grey Text */
-            --bg-color: #F8F9FA;        /* Light Grey Background */
-            --border-color: #E9ECEF;    /* Light Border */
+            --highlight-red: #E31937;
+            --bg-orange-start: #FFF2E6;
+            --bg-orange-end: #FFD1B3;
+            --r-main-font: 'Noto Sans SC', sans-serif;
+            --r-heading-font: 'Noto Sans SC', sans-serif;
+            --r-heading-font-weight: 900;
+            --r-main-color: #333;
+            --r-heading-color: #111;
         }
+
         .reveal {
-            font-family: 'Noto Sans SC', sans-serif;
-            font-size: 26px;
-            color: var(--text-color);
+            background: linear-gradient(135deg, var(--bg-orange-start), var(--bg-orange-end));
         }
-        .reveal .slides {
-            text-align: left;
-        }
+
         .reveal .slides section {
-            background-color: var(--bg-color);
-            padding: 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            text-align: left;
+            padding: 40px;
         }
-        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
-            text-transform: none;
+
+        .reveal h1, .reveal h2, .reveal h3 {
             font-weight: 900;
-            color: var(--text-color);
-            text-shadow: none;
+            text-align: center;
         }
+        
         .reveal .page-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            border-bottom: 3px solid var(--highlight-color);
-            padding-bottom: 1rem;
-            margin-bottom: 2.5rem;
-            flex-shrink: 0;
+            font-size: 1.5em;
+            text-align: left;
+            margin-bottom: 20px;
+            opacity: 0.8;
         }
-        .text-highlight {
-            color: var(--highlight-color);
-        }
-        .en-small {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-weight: 500;
-            color: rgba(0, 0, 0, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        .card {
-            background-color: #FFFFFF;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-color);
-            height: 100%;
-        }
-        .reveal ul {
-            margin-left: 1.5rem;
-        }
-        .reveal li {
-            margin-bottom: 1rem;
-        }
-        .content-wrapper {
-            flex-grow: 1;
-        }
-        .svg-footer {
-            flex-shrink: 0;
-            margin-top: 2rem;
+
+        .bento-grid {
+            display: grid;
+            gap: 24px;
             width: 100%;
-            height: 150px; /* Fixed height for SVG container */
+            height: 85%;
+        }
+
+        .bento-item {
+            background-color: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            opacity: 0; /* Initial state for animation */
+        }
+
+        .ultra-text {
+            font-size: clamp(4rem, 12vw, 10rem);
+            font-weight: 900;
+            line-height: 1;
+            color: var(--highlight-red);
+            background: linear-gradient(180deg, rgba(227, 25, 55, 1) 0%, rgba(227, 25, 55, 0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .highlight-text {
+             color: var(--highlight-red);
+        }
+
+        .line-art {
+            stroke: #555;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .line-art-highlight {
+            stroke: var(--highlight-red);
+            stroke-width: 2;
+        }
+
+        .chinese-bold {
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        .english-small {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.8em;
+            color: #555;
+            text-transform: uppercase;
+        }
+        
+        .reveal .icon {
+            color: var(--highlight-red);
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
     <div class="reveal">
         <div class="slides">
+
             <!-- Page 1: Cover Page -->
-            <section style="background: linear-gradient(135deg, #E0E7FF 0%, #FFFFFF 100%); justify-content: center; align-items: center;">
-                <h1 class="text-9xl font-black leading-tight">对等关税对全球贸易的<br>影响及应对</h1>
-                <p class="text-3xl text-gray-500 mt-12">一份基于深度讨论的战略分析报告</p>
-                <p class="text-3xl text-black-500 mt-12">2025级2班8组</p>
-            </section>
-
-            <!-- Page 2: Question 1 Analysis (Part 1) -->
-            <section>
-                <h2 class="page-title">Q1: 辩证作用 (上) - 解构“对等关税”的逻辑谬误</h2>
-                <div class="content-wrapper grid grid-cols-2 gap-12">
-                    <div class="card">
-                        <h3 class="text-3xl font-bold">表面逻辑：<span class="text-highlight">追求“对等”与“公平”</span></h3>
-                        <p class="en-small mt-2">SURFACE LOGIC</p>
-                        <p class="mt-4 text-2xl leading-relaxed text-gray-700">美方声称其“对等关税”是为了实现贸易条件的绝对对等，即外国对美国产品的综合税率（包括关税、增值税、非关税壁垒等）是多少，美国就对其征收一定比例（如一半）的税率作为反制。</p>
-                        <ul class="mt-4 text-2xl text-gray-600 space-y-2 list-disc list-inside">
-                            <li><strong>话术示例：</strong>声称中国对美综合税率为67%，因此对中国加征34%的“对等关税”。</li>
-                            <li><strong>核心诉求：</strong>营造一种“我们只是在追求公平竞争环境”的舆论叙事。</li>
-                        </ul>
-                    </div>
-                    <div class="card border-4 border-highlight">
-                        <h3 class="text-3xl font-bold">实际逻辑：<span class="text-highlight">贸易逆差导向，手段粗暴</span></h3>
-                        <p class="en-small mt-2">ACTUAL LOGIC</p>
-                        <p class="mt-4 text-2xl leading-relaxed text-gray-700">其真实计算方式与所谓的“综合税率”无关，而是基于一个简单粗暴的公式，完全以贸易逆差为核心目标：</p>
-                        <div class="my-4 p-4 bg-gray-100 rounded-lg text-center">
-                            <strong class="text-black text-3xl">“对等税率” ≈ (贸易逆差 / 进口总额)</strong>
-                        </div>
-                        <p class="mt-4 text-2xl text-gray-600 leading-relaxed"><strong>结论：</strong>这清晰地说明其真实目的并非精准对等，而是以逆差为单一借口，实现惩罚性、广泛性的加税，服务于国内政治议程。</p>
-                    </div>
-                </div>
-                <div class="svg-footer">
-                    <svg viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                        <path d="M 50 100 L 350 100" stroke="#cccccc" stroke-width="2" />
-                        <path d="M 450 100 L 750 100" stroke="#cccccc" stroke-width="2" />
-                        <text x="200" y="80" font-family="Noto Sans SC" font-size="20" fill="#333" text-anchor="middle">公平竞争</text>
-                        <text x="600" y="80" font-family="Noto Sans SC" font-size="20" fill="#333" text-anchor="middle">贸易逆差</text>
-                        <path d="M 200 60 C 200 30, 200 30, 200 20 L 600 20" fill="none" stroke="var(--highlight-color)" stroke-width="3" stroke-dasharray="8 8" />
-                        <path d="M 600 60 L 600 20" fill="none" stroke="var(--highlight-color)" stroke-width="3" />
-                        <polygon points="595,20 605,20 600,10" fill="var(--highlight-color)"/>
-                        <text x="400" y="15" font-family="Noto Sans SC" font-size="18" fill="var(--highlight-color)" text-anchor="middle">绕过公平，直指逆差</text>
+            <section class="text-center flex flex-col justify-center items-center">
+                <div class="bento-item w-full">
+                    <h1 class="text-6xl font-black">星叶石原料价值评估系统</h1>
+                    <h2 class="text-3xl font-normal opacity-70 mt-4">科学决策，价值采购</h2>
+                    <svg class="mx-auto my-12" width="200" height="20" viewBox="0 0 200 20">
+                        <line x1="0" y1="10" x2="200" y2="10" class="line-art" stroke-width="2"/>
+                        <circle cx="100" cy="10" r="8" class="line-art-highlight" fill="var(--bg-orange-end)"/>
                     </svg>
+                    <p class="english-small tracking-widest">Xing Ye Shi Raw Material Value Assessment System</p>
                 </div>
             </section>
 
-            <!-- Page 3: Question 1 Analysis (Part 2) -->
+            <!-- Page 2: Core Value -->
             <section>
-                <h2 class="page-title">Q1: 辩证作用 (下) - 保护与破坏的双重效应</h2>
-                <div class="content-wrapper grid grid-cols-2 gap-12">
-                    <div class="card">
-                        <h3 class="text-3xl font-bold text-green-700">短期保护作用</h3>
-                        <p class="en-small mt-2">SHORT-TERM PROTECTIVE EFFECT</p>
-                        <p class="mt-4 text-2xl leading-relaxed text-gray-700">通过制造高额贸易壁垒，在短期内确实可以为美国本土部分产业带来“保护”效果，主要体现在：</p>
-                        <ul class="mt-4 text-2xl text-gray-600 space-y-2 list-disc list-inside">
-                            <li><strong>提升本土竞争力：</strong>直接削弱进口商品的价格优势，使美国本土产品在价格上显得更具竞争力。</li>
-                            <li><strong>吸引产业回流：</strong>高昂的关税成本可能迫使部分对美国市场依赖度高、供应链较短的企业将生产环节迁回美国，从而在一定程度上增加国内就业。</li>
-                        </ul>
+                <h2 class="page-title">核心价值: 战略转型</h2>
+                <div class="bento-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="bento-item flex flex-col justify-center items-center text-center">
+                        <span class="ultra-text">价格</span>
+                        <h3 class="text-3xl font-bold mt-[-3rem] z-10 relative">传统模式: "价格采购"</h3>
+                        <p class="english-small">TRADITIONAL: "PRICE PURCHASING"</p>
+                        <p class="mt-4">关注“价格”(元/吨)，采购最“便宜”的原料。</p>
                     </div>
-                    <div class="card bg-red-50 border-red-200">
-                        <h3 class="text-3xl font-bold text-red-600">长期破坏作用</h3>
-                        <p class="en-small mt-2">LONG-TERM DESTRUCTIVE EFFECT</p>
-                        <p class="mt-4 text-2xl leading-relaxed text-gray-700">然而，这种保护的代价是巨大的，其长期破坏性将远超短期利益，主要体现在：</p>
-                         <ul class="mt-4 text-2xl text-gray-600 space-y-2 list-disc list-inside">
-                            <li><strong>推高美国通胀：</strong>成本最终由消费者和企业承担，全面推高物价。</li>
-                            <li><strong>引发全球贸易体系混乱：</strong>动摇WTO根基，让全球贸易规则基本失效。</li>
-                            <li><strong>激起他国反制：</strong>不可避免地导致贸易伙伴采取报复措施，形成关税战的恶性循环，严重时可能造成全球经济大萧条。</li>
-                        </ul>
+                    <div class="bento-item flex flex-col justify-center items-center text-center">
+                        <span class="ultra-text">价值</span>
+                        <h3 class="text-3xl font-bold mt-[-3rem] z-10 relative">新范式: "价值采购"</h3>
+                        <p class="english-small">NEW PARADIGM: "VALUE PURCHASING"</p>
+                        <p class="mt-4">关注“价值”(元/营养单位)，采购最“划算”的原料。</p>
                     </div>
-                </div>
-                <div class="svg-footer">
-                    <svg viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                        <rect x="50" y="20" width="300" height="110" rx="10" fill="#f0fff4" stroke="#28a745" stroke-width="2"/>
-                        <text x="200" y="50" font-family="Noto Sans SC" font-size="20" fill="#28a745" text-anchor="middle">短期保护</text>
-                        <path d="M 120 100 L 150 70 L 180 100" fill="none" stroke="#28a745" stroke-width="3"/>
-                        <path d="M 220 100 L 250 70 L 280 100" fill="none" stroke="#28a745" stroke-width="3"/>
-                        <rect x="450" y="20" width="300" height="110" rx="10" fill="#fff5f5" stroke="#dc3545" stroke-width="2"/>
-                        <text x="600" y="50" font-family="Noto Sans SC" font-size="20" fill="#dc3545" text-anchor="middle">长期破坏</text>
-                        <line x1="520" y1="80" x2="680" y2="110" stroke="#dc3545" stroke-width="3"/>
-                        <line x1="520" y1="110" x2="680" y2="80" stroke="#dc3545" stroke-width="3"/>
-                    </svg>
+                    <div class="bento-item flex flex-col justify-center text-center" style="grid-column: span 2;">
+                        <p class="chinese-bold text-2xl">通过科学模型，将原料的多重营养属性（能量、蛋白等）统一量化为可比较的经济价值，实现真正的 <span class="highlight-text">价值发现</span>。</p>
+                    </div>
                 </div>
             </section>
 
-            <!-- Page 4: Question 2 Analysis (Part 1) -->
+            <!-- Page 3: System Architecture -->
             <section>
-                <h2 class="page-title">Q2: 政策目的 (上) - 关税大棒背后的三大战略意图</h2>
-                <div class="content-wrapper grid grid-cols-3 gap-8">
-                    <div class="card"><p class="text-7xl font-black text-gray-200">01</p><h3 class="text-3xl font-bold mt-4">财政增收 <br><span class="en-small">FISCAL REVENUE</span></h3><p class="mt-4 text-2xl text-gray-700">大规模加征关税可以直接、快速地增加联邦政府的财政收入。这笔资金可以用来弥补国内因减税政策造成的财政缺口，或为基础设施建设等公共支出提供资金补充，服务于其国内经济议程。</p></div>
-                    <div class="card"><p class="text-7xl font-black text-gray-200">02</p><h3 class="text-3xl font-bold mt-4">制造业回流 <br><span class="en-small">MANUFACTURING RESHORING</span></h3><p class="mt-4 text-2xl text-gray-700">通过对特定行业，尤其是高科技、关键原材料和传统制造业产品加征重税，大幅提高海外生产的综合成本，从而倒逼美国企业将产业链和工作岗位迁回美国本土，重振“美国制造”。</p></div>
-                    <div class="card border-4 border-highlight"><p class="text-7xl font-black text-red-100">03</p><h3 class="text-3xl font-bold mt-4 text-highlight">战略博弈筹码 <br><span class="en-small">STRATEGIC LEVERAGE</span></h3><p class="mt-4 text-2xl text-gray-700">这是其最核心的目的。以关税为工具，“虚空造牌”，制造未来谈判的筹码，迫使贸易伙伴在汇率、债务、市场准入、知识产权乃至地缘安全等更广泛的议题上对美国做出重大让步。</p></div>
+                <h2 class="page-title">系统核心功能架构</h2>
+                <div class="bento-item flex justify-center items-center h-full">
+                     <svg width="90%" height="90%" viewBox="0 0 800 500">
+                        <defs>
+                            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#555" /></marker>
+                        </defs>
+                        <!-- Top Layer -->
+                        <g transform="translate(250, 0)">
+                            <rect x="0" y="0" width="300" height="100" rx="10" class="line-art" fill="rgba(255,255,255,0.3)"/>
+                            <text x="150" y="30" text-anchor="middle" font-size="16" class="chinese-bold">基础数据与计算层</text>
+                            <rect x="15" y="50" width="130" height="40" rx="5" class="line-art" fill="rgba(255,255,255,0.2)"/>
+                            <text x="80" y="75" text-anchor="middle" font-size="14">数据管理与定价</text>
+                            <rect x="155" y="50" width="130" height="40" rx="5" class="line-art" fill="rgba(255,255,255,0.2)"/>
+                            <text x="220" y="75" text-anchor="middle" font-size="14">配方空间价值计算</text>
+                        </g>
+                        <!-- Middle Layer -->
+                        <g transform="translate(150, 150)">
+                            <rect x="0" y="0" width="500" height="100" rx="10" class="line-art" fill="rgba(255,255,255,0.3)"/>
+                            <text x="250" y="30" text-anchor="middle" font-size="16" class="chinese-bold">核心功能层</text>
+                            <rect x="15" y="50" width="150" height="40" rx="5" class="line-art" fill="rgba(255,255,255,0.2)"/>
+                            <text x="90" y="75" text-anchor="middle" font-size="14">综合查询与报告</text>
+                            <rect x="175" y="50" width="150" height="40" rx="5" class="line-art line-art-highlight" fill="rgba(227,25,55,0.1)"/>
+                            <text x="250" y="75" text-anchor="middle" font-size="14" class="highlight-text">智能价值评估</text>
+                            <rect x="335" y="50" width="150" height="40" rx="5" class="line-art" fill="rgba(255,255,255,0.2)"/>
+                            <text x="410" y="75" text-anchor="middle" font-size="14">对比分析与决策</text>
+                        </g>
+                        <!-- Bottom Layer -->
+                        <g transform="translate(250, 300)">
+                             <rect x="0" y="0" width="300" height="100" rx="10" class="line-art" fill="rgba(255,255,255,0.3)"/>
+                            <text x="150" y="30" text-anchor="middle" font-size="16" class="chinese-bold">应用输出层</text>
+                            <rect x="15" y="50" width="130" height="40" rx="5" class="line-art" fill="rgba(255,255,255,0.2)"/>
+                            <text x="80" y="75" text-anchor="middle" font-size="14">采购决策支持</text>
+                            <rect x="155" y="50" width="130" height="40" rx="5" class="line-art" fill="rgba(255,255,255,0.2)"/>
+                            <text x="220" y="75" text-anchor="middle" font-size="14">数据服务</text>
+                        </g>
+                        <!-- Arrows -->
+                        <path d="M 400 100 V 150" class="line-art" marker-end="url(#arrow)" />
+                        <path d="M 400 250 V 300" class="line-art" marker-end="url(#arrow)" />
+                        <path d="M 165 200 H 135" class="line-art" marker-end="url(#arrow)" /><text x="150" y="195" font-size="12" text-anchor="middle">驱动</text>
+                        <path d="M 325 200 H 295" class="line-art" marker-end="url(#arrow)" /><text x="310" y="195" font-size="12" text-anchor="middle">驱动</text>
+                     </svg>
                 </div>
-                <p class="text-center text-2xl text-gray-600 mt-12 flex-shrink-0">三大目的层层递进，从<span class="font-bold">经济表象</span>深入到<span class="font-bold">政治议程</span>，最终服务于<span class="font-bold text-highlight">地缘政治的核心博弈</span>。</p>
             </section>
 
-            <!-- Page 5: Question 2 Analysis (Part 2) -->
+            <!-- Page 4: Module 1 -->
             <section>
-                <h2 class="page-title">Q2: 经济影响 (下) - 从美国本土到全球的连锁反应</h2>
-                <div class="content-wrapper grid grid-cols-2 gap-12">
-                    <div class="card">
-                        <h3 class="text-3xl font-bold mb-4 flex items-center"><i class="fas fa-flag-usa mr-4 text-gray-400"></i>对美国经济的深远影响</h3>
-                        <ul class="text-2xl space-y-3">
-                            <li class="flex items-start"><i class="fas fa-minus-circle text-red-500 mt-2 mr-3"></i><span><strong>输入性通胀加剧：</strong>进口商品价格全面上涨，直接导致消费者生活成本和企业生产成本上升。</span></li>
-                            <li class="flex items-start"><i class="fas fa-minus-circle text-red-500 mt-2 mr-3"></i><span><strong>供应链陷入混乱：</strong>严重依赖全球分工的产业（如汽车、电子）面临零部件断供和成本失控的风险，制造业成本不降反升。</span></li>
-                            <li class="flex items-start"><i class="fas fa-minus-circle text-red-500 mt-2 mr-3"></i><span><strong>出口与领导力受损：</strong>贸易伙伴的报复将精准打击美国农业、能源等出口产业，同时其单边主义行为将严重损害其全球经济领导力。</span></li>
-                        </ul>
+                <h2 class="page-title">模块一: 综合查询与数据溯源</h2>
+                <div class="bento-grid" style="grid-template-columns: 2fr 3fr;">
+                    <div class="bento-item flex flex-col justify-center">
+                        <h3 class="text-3xl font-bold mb-4">核心功能</h3>
+                        <p class="chinese-bold">通过多维度、可组合的查询条件，快速定位和调用已计算数据，精确筛选评估报告或对比分析结果。</p>
+                        <p class="english-small mt-2">MULTI-DIMENSIONAL & COMBINABLE QUERY</p>
                     </div>
-                    <div class="card">
-                        <h3 class="text-3xl font-bold mb-4 flex items-center"><i class="fas fa-globe mr-4 text-gray-400"></i>对全球贸易的系统性冲击</h3>
-                         <ul class="text-2xl space-y-3 text-gray-800 list-disc list-inside">
-                            <li><strong>贸易格局重塑：</strong>全球产业链被迫进行痛苦的、低效率的重组，加速从亚洲向美洲、欧洲等区域化、阵营化方向分散。</li>
-                            <li><strong>多边体系被架空：</strong>WTO的权威和争端解决机制被边缘化，全球贸易退回到基于实力的“丛林法则”时代，区域性、双边协定更受重视。</li>
-                            <li><strong>全球经济增长放缓：</strong>贸易成本普遍上升和巨大的不确定性，将严重抑制全球企业的投资和消费信心，为全球经济复苏蒙上巨大阴影。</li>
+                    <div class="bento-item">
+                        <h3 class="text-2xl font-bold mb-4">关键查询条件</h3>
+                        <ul class="space-y-3" style="font-size: 0.9em;">
+                            <li><i class="fas fa-tag icon mr-2"></i> <span class="chinese-bold">主体标识:</span> 工厂、原料编码、名称、类型。</li>
+                            <li><i class="fas fa-cogs icon mr-2"></i> <span class="chinese-bold">核心参数:</span> 配方空间价值系数 (能量/蛋白)。</li>
+                            <li><i class="fas fa-history icon mr-2"></i> <span class="chinese-bold">时间与版本:</span> 计算时间、版本号，实现历史追溯。</li>
+                            <li><i class="fas fa-dollar-sign icon mr-2"></i> <span class="chinese-bold">价格信息:</span> 市场价格，快速筛选特定价格区间。</li>
                         </ul>
                     </div>
                 </div>
-                 <div class="svg-footer">
-                    <svg viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                        <path d="M 50 60 L 250 60" stroke="var(--highlight-color)" stroke-width="3" />
-                        <text x="30" y="65" font-size="20" fill="var(--highlight-color)">关税</text>
-                        <polygon points="250,55 250,65 260,60" fill="var(--highlight-color)"/>
-                        <rect x="270" y="35" width="200" height="50" rx="5" fill="#fff" stroke="#333" stroke-width="2"/>
-                        <text x="370" y="68" font-size="20" text-anchor="middle">美国经济 (通胀)</text>
-                        <path d="M 480 60 L 580 30" stroke="#333" stroke-width="2" />
-                        <path d="M 480 60 L 580 90" stroke="#333" stroke-width="2" />
-                        <polygon points="580,25 580,35 590,30" fill="#333"/>
-                        <polygon points="580,85 580,95 590,90" fill="#333"/>
-                        <text x="600" y="35" font-size="20">全球贸易 (重塑)</text>
-                        <text x="600" y="95" font-size="20">贸易伙伴 (反制)</text>
-                    </svg>
+            </section>
+
+            <!-- Page 5: Module 2 & 3 -->
+            <section>
+                <h2 class="page-title">模块二 & 三: 基准定价与智能评估</h2>
+                <div class="bento-grid" style="grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr;">
+                    <div class="bento-item text-center">
+                        <h3 class="text-2xl font-bold">模块二: 配方空间与基准定价</h3>
+                        <p class="mt-2 text-sm">输入“配方空间价值系数”，计算出 <span class="highlight-text">能量和蛋白</span> 的边际成本，作为后续评估的基石。</p>
+                    </div>
+                     <div class="bento-item text-center">
+                        <h3 class="text-2xl font-bold">模块三: 智能价值评估与报告</h3>
+                        <p class="mt-2 text-sm">基于基准价格，对原料进行多维度深度分析，生成包含采购建议的标准化评估报告。</p>
+                    </div>
+                    <div class="bento-item" style="grid-column: span 2; padding: 0; overflow: hidden;">
+                        <img src="https://i.imgur.com/e5T5x1N.png" class="w-full h-full object-cover object-left-top"/>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 6: Module 4 & 5 -->
+            <section>
+                 <h2 class="page-title">模块四 & 五: 对比分析与数据服务</h2>
+                 <div class="bento-grid" style="grid-template-columns: 3fr 2fr;">
+                     <div class="bento-item" style="padding: 0; overflow: hidden;">
+                         <img src="https://i.imgur.com/XGf4fQx.png" class="w-full h-full object-cover object-top"/>
+                     </div>
+                     <div class="bento-item">
+                         <h3 class="text-2xl font-bold mb-4">模块四: 对比分析</h3>
+                         <p class="chinese-bold">提供原料间的横向对比功能。</p>
+                         <ul style="font-size:0.9em" class="mt-2 space-y-2">
+                             <li>- 基础信息对比</li>
+                             <li>- 价格对比 (市场/在库/预测)</li>
+                             <li>- 评估价值对比</li>
+                             <li>- 营养指标对比</li>
+                         </ul>
+                     </div>
+                      <div class="bento-item" style="grid-column: span 2;">
+                         <h3 class="text-2xl font-bold mb-4">模块五: 系统与数据服务</h3>
+                         <div class="flex justify-around items-center h-full text-center">
+                            <div class="flex flex-col items-center">
+                                <i class="fas fa-save fa-3x icon"></i>
+                                <p class="chinese-bold mt-2">保存</p>
+                                <p class="text-sm">保存评估报告，生成版本号</p>
+                            </div>
+                             <div class="flex flex-col items-center">
+                                <i class="fas fa-download fa-3x icon"></i>
+                                <p class="chinese-bold mt-2">下载</p>
+                                <p class="text-sm">将报告或对比结果下载为离线文件</p>
+                            </div>
+                         </div>
+                     </div>
                  </div>
             </section>
 
-            <!-- Page 6: Case Study 1 -->
+            <!-- Page 7: Core Workflow & Conclusion -->
             <section>
-                <h2 class="page-title">案例分析 (一)：跨境家具电商的冲击与应对</h2>
-                <div class="content-wrapper grid grid-cols-2 gap-12">
-                    <div class="card">
-                        <h3 class="text-3xl font-bold mb-4 text-red-600">核心冲击</h3>
-                        <ul class="text-2xl text-gray-700 space-y-3 list-disc list-inside">
-                            <li><strong>成本与现金流双重危机：</strong>家具货值高、体积大，25%+的关税直接叠加在采购和高昂的物流成本之上。关税需在进口时预缴，对以资金周转为生命的电商企业是致命打击。</li>
-                            <li><strong>市场竞争力归零：</strong>B2C家具市场对价格极为敏感，关税导致的涨价将使产品在与本土或非关税区（如墨西哥）的竞争对手面前毫无竞争力。</li>
-                            <li><strong>供应链刚性与中断风险：</strong>具备稳定产能、质量控制和设计能力的优质家具供应链难以在短期内被替代，紧急更换供应商的试错成本和品控风险极高。</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3 class="text-3xl font-bold mb-4 text-green-700">应对策略</h3>
-                        <ul class="text-2xl text-gray-700 space-y-3 list-disc list-inside">
-                            <li><strong>短期 (战术层面)：</strong>
-                                <ul class="list-disc list-inside ml-6 text-xl">
-                                    <li><strong>价格谈判：</strong>与供应商协商分担部分关税成本，或争取更长的账期。</li>
-                                    <li><strong>内部定价优化：</strong>利用美国公司作为销售主体，通过合理的内部交易定价来降低关税总额。</li>
-                                    <li><strong>精细化库存管理：</strong>与客户积极沟通未交付订单，避免盲目生产和备货。</li>
-                                </ul>
-                            </li>
-                            <li class="mt-4"><strong>长期 (战略层面)：</strong>
-                                 <ul class="list-disc list-inside ml-6 text-xl">
-                                     <li>核心是<span class="text-highlight font-bold">“供应链近岸外包” (Nearshoring)</span>，将大件、重型产品的产能坚决向墨西哥等低关税、近市场的地区转移。</li>
-                                     <li><strong>市场多元化：</strong>减少对单一美国市场的过度依赖，大力开拓欧盟、东南亚、拉美等新兴市场。</li>
-                                 </ul>
-                            </li>
-                        </ul>
-                    </div>
+                <h2 class="page-title">总结: 系统的核心工作流</h2>
+                <div class="bento-item h-full flex flex-col justify-center">
+                    <ul class="space-y-4">
+                        <li><i class="fas fa-cogs icon mr-4"></i> <span class="chinese-bold text-xl">配置与计算:</span> 用户配置参数，系统计算基准价格。</li>
+                        <li><i class="fas fa-file-alt icon mr-4"></i> <span class="chinese-bold text-xl">评估与保存:</span> 系统对原料进行评估，生成带版本号和时间戳的报告。</li>
+                        <li><i class="fas fa-search icon mr-4"></i> <span class="chinese-bold text-xl">查询与溯源:</span> 用户通过多维度条件，精准定位历史报告。</li>
+                        <li><i class="fas fa-balance-scale icon mr-4"></i> <span class="chinese-bold text-xl">分析与决策:</span> 用户查看报告或进行对比分析，结合“价格偏差”生成采购建议。</li>
+                    </ul>
+                    <hr class="my-8">
+                    <p class="text-center text-3xl font-bold">
+                        确保所有评估结果 <span class="highlight-text">可追溯、可审计、可对比</span>，<br>将饲料原料采购决策从 <span class="highlight-text">经验导向</span> 推向 <span class="highlight-text">精准的数据驱动</span>。
+                    </p>
                 </div>
-                 <div class="svg-footer">
-                    <svg viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                        <text x="400" y="25" font-size="22" text-anchor="middle" font-weight="bold">战略路径：从被动应对到主动重构</text>
-                        <rect x="50" y="50" width="300" height="90" rx="10" fill="#fff" stroke="#333" stroke-width="2"/>
-                        <text x="200" y="80" font-size="20" text-anchor="middle">短期战术</text>
-                        <text x="200" y="115" font-size="16" text-anchor="middle" fill="#555">价格谈判 / 内部优化 / 库存管理</text>
-                        <rect x="450" y="50" width="300" height="90" rx="10" fill="#EBF5FF" stroke="var(--highlight-color)" stroke-width="2"/>
-                        <text x="600" y="80" font-size="20" text-anchor="middle">长期战略</text>
-                        <text x="600" y="115" font-size="16" text-anchor="middle" fill="var(--highlight-color)">近岸外包 / 市场多元化</text>
-                        <path d="M 360 95 L 440 95" stroke="#333" stroke-width="3" />
-                        <polygon points="440,90 440,100 450,95" fill="#333"/>
-                    </svg>
-                 </div>
-            </section>
-
-            <!-- Page 7: Case Study 2 -->
-            <section>
-                <h2 class="page-title">案例分析 (二)：电子元器件产业的冲击与应对</h2>
-                <div class="content-wrapper grid grid-cols-2 gap-12">
-                    <div class="card">
-                        <h3 class="text-3xl font-bold mb-4 text-red-600">核心冲击</h3>
-                        <ul class="text-2xl text-gray-700 space-y-3 list-disc list-inside">
-                            <li><strong>供应链的“级联放大”效应：</strong>产业链高度全球化（如芯片在台湾、封测在越南、模组在中国），关税在每一个环节都可能被层层叠加，导致最终成本失控。任何一环中断都可能导致整个下游产业瘫痪。</li>
-                            <li><strong>客户与技术双重锁定：</strong>B2B客户对供应商有长达1-2年的严格认证周期，切换成本极高。同时，贸易摩擦常伴随技术出口管制，对企业的研发和长期合作构成生存威胁。</li>
-                            <li><strong>区域化成本差异：</strong>不同国家和地区（如中国34%，越南46%，台湾32%）的差异化税率，使全球化布局的成本核算变得异常复杂和动荡。</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3 class="text-3xl font-bold mb-4 text-green-700">应对策略</h3>
-                         <ul class="text-2xl text-gray-700 space-y-3 list-disc list-inside">
-                             <li><strong>短期 (战术层面)：</strong>
-                                <ul class="list-disc list-inside ml-6 text-xl">
-                                    <li>进行<strong class="text-black">“关税工程”(HS Code Engineering)</strong>，与法务、报关专家合作，通过优化产品描述与归类，争取归入更低税率的编码。</li>
-                                    <li><strong>深度绑定核心客户：</strong>与战略客户成立联合工作组，共同评估风险，协商成本分担，确保长期合作关系不受政治因素干扰。</li>
-                                </ul>
-                             </li>
-                            <li class="mt-4"><strong>长期 (战略层面)：</strong>
-                                <ul class="list-disc list-inside ml-6 text-xl">
-                                    <li>构建<span class="text-highlight font-bold">“中国+N”及“非中国”的平行供应链</span>，为不同市场提供独立的、风险隔离的供应方案。</li>
-                                    <li><strong>研发本土化：</strong>在关键市场（如北美、欧洲）设立研发中心和应用支持团队，贴近客户并规避技术封锁风险。</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                 <div class="svg-footer">
-                    <svg viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                        <text x="400" y="25" font-size="22" text-anchor="middle" font-weight="bold">战略路径：从单一链条到平行生态</text>
-                        <text x="175" y="60" font-size="18" text-anchor="middle">之前: 全球化单一供应链</text>
-                        <path d="M 50 100 L 150 100 L 250 100 L 350 100" stroke="#333" stroke-width="2"/>
-                        <circle cx="50" cy="100" r="8" fill=" #333"/><text x="50" y="125" text-anchor="middle">台湾</text>
-                        <circle cx="150" cy="100" r="8" fill="#333"/><text x="150" y="125" text-anchor="middle">越南</text>
-                        <circle cx="250" cy="100" r="8" fill="#333"/><text x="250" y="125" text-anchor="middle">中国</text>
-                        <circle cx="350" cy="100" r="8" fill="#333"/><text x="350" y="125" text-anchor="middle">美国</text>
-                        <text x="625" y="60" font-size="18" text-anchor="middle">之后: “中国+N”平行供应链</text>
-                        <path d="M 500 90 L 600 90 L 750 90" stroke="var(--highlight-color)" stroke-width="2"/>
-                        <path d="M 500 120 L 600 120 L 750 120" stroke="#cccccc" stroke-width="2" stroke-dasharray="4 4"/>
-                        <text x="750" y="85" text-anchor="middle" fill="var(--highlight-color)">非美市场</text>
-                        <text x="750" y="135" text-anchor="middle" fill="#555">美国市场</text>
-                    </svg>
-                 </div>
             </section>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.js"></script>
-    <script>
+    <!-- Frameworks -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.js"></script>
+    <script type="module">
+        import { animate } from "https://cdn.skypack.dev/framer-motion@10";
+
         Reveal.initialize({
             hash: true,
-            controls: true,
-            progress: true,
-            center: true,
-            width: 1920,
-            height: 1080,
-            margin: 0.04,
-            transition: 'none',
-            backgroundTransition: 'none',
-            navigationMode: 'linear'
+            slideNumber: 'c/t',
+        });
+
+        // Framer Motion Animation
+        function animateBentoItems(slide) {
+             const bentoItems = slide.querySelectorAll('.bento-item');
+            
+            bentoItems.forEach((item, index) => {
+                // Reset initial state
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(30px)';
+                
+                // Animate
+                animate(item, {
+                    opacity: 1,
+                    y: 0
+                }, {
+                    duration: 0.6,
+                    delay: index * 0.1,
+                    ease: "easeOut"
+                });
+            });
+        }
+
+        Reveal.on('slidechanged', event => {
+            animateBentoItems(event.currentSlide);
+        });
+
+        // Trigger animation for the first slide on load
+        document.addEventListener('DOMContentLoaded', () => {
+             setTimeout(() => {
+                const firstSlide = Reveal.getCurrentSlide();
+                if (firstSlide) {
+                   animateBentoItems(firstSlide);
+                }
+             }, 300); // Small delay to ensure everything is loaded
         });
     </script>
 </body>
