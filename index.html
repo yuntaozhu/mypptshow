@@ -205,7 +205,7 @@
                 <h2 class="page-title">模块一: 综合查询与数据溯源</h2>
                 <div class="bento-grid" style="grid-template-columns: 2fr 3fr;">
                     <div class="bento-item flex flex-col justify-center">
-                        <h3 class="text-3xl font-bold mb-4">核心功能</h3>
+                        <h3 class="text-2xl font-bold mb-4">核心功能</h3>
                         <p class="chinese-bold" style="font-size:0.9em;">通过多维度、可组合的查询条件，快速定位和调用已计算数据，精确筛选评估报告或对比分析结果。</p>
                         <p class="english-small mt-2">MULTI-DIMENSIONAL & COMBINABLE QUERY</p>
                     </div>
@@ -242,7 +242,7 @@
                 </div>
             </section>
 
-            <!-- Page 6: Module 3 (NEW) -->
+            <!-- Page 6: Module 3 (UPDATED) -->
             <section>
                  <h2 class="page-title">模块三: 智能价值评估与报告</h2>
                  <div class="bento-grid" style="grid-template-columns: 1fr 2fr;">
@@ -257,17 +257,17 @@
                          </ul>
                      </div>
                      <div class="bento-item" style="padding: 0; overflow: hidden;">
-                          <img src="https://i.imgur.com/uGf8s2j.png" class="w-full h-full object-contain"/>
+                          <img src="value.jpg" class="w-full h-full object-contain"/>
                      </div>
                  </div>
             </section>
 
-            <!-- Page 7: Module 4 (NEW) -->
+            <!-- Page 7: Module 4 (UPDATED) -->
             <section>
                  <h2 class="page-title">模块四: 对比分析与决策支持</h2>
                  <div class="bento-grid" style="grid-template-columns: 2fr 1fr;">
                       <div class="bento-item" style="padding: 0; overflow: hidden;">
-                          <img src="https://i.imgur.com/XGf4fQx.png" class="w-full h-full object-cover object-top"/>
+                          <img src="decision.jpg" class="w-full h-full object-cover object-top"/>
                      </div>
                      <div class="bento-item">
                         <h3 class="text-2xl font-bold mb-4">核心功能</h3>
@@ -283,7 +283,7 @@
                  </div>
             </section>
             
-            <!-- Page 8: Module 5 (NEW) -->
+            <!-- Page 8: Module 5 -->
             <section>
                 <h2 class="page-title">模块五: 系统与数据服务</h2>
                 <div class="bento-grid" style="grid-template-columns: 1fr 1fr;">
@@ -300,30 +300,30 @@
                 </div>
             </section>
 
-            <!-- Page 9: Core Workflow (REDESIGNED) -->
+            <!-- Page 9: Core Workflow (STATIC) -->
             <section>
                 <h2 class="page-title">总结: 系统的核心工作流</h2>
                 <div class="bento-item h-full flex flex-col justify-center items-center">
                     <svg width="100%" height="300" viewBox="0 0 1000 200">
                         <!-- Nodes -->
-                        <g class="fragment" data-fragment-index="1">
+                        <g>
                              <circle cx="100" cy="100" r="60" class="line-art" fill="rgba(255,255,255,0.4)"/><text x="100" y="100" text-anchor="middle" font-size="16" dominant-baseline="central" class="chinese-bold">配置与计算</text>
                         </g>
-                         <g class="fragment" data-fragment-index="2">
+                         <g>
                              <circle cx="350" cy="100" r="60" class="line-art" fill="rgba(255,255,255,0.4)"/><text x="350" y="100" text-anchor="middle" font-size="16" dominant-baseline="central" class="chinese-bold">评估与保存</text>
                         </g>
-                         <g class="fragment" data-fragment-index="3">
+                         <g>
                              <circle cx="600" cy="100" r="60" class="line-art" fill="rgba(255,255,255,0.4)"/><text x="600" y="100" text-anchor="middle" font-size="16" dominant-baseline="central" class="chinese-bold">查询与溯源</text>
                         </g>
-                         <g class="fragment" data-fragment-index="4">
+                         <g>
                              <circle cx="850" cy="100" r="60" class="line-art-highlight" fill="rgba(227,25,55,0.1)"/><text x="850" y="100" text-anchor="middle" font-size="16" dominant-baseline="central" class="highlight-text">分析与决策</text>
                         </g>
                         <!-- Arrows -->
-                        <path d="M 160 100 L 290 100" class="line-art fragment" data-fragment-index="2" marker-end="url(#arrow)"/>
-                        <path d="M 410 100 L 540 100" class="line-art fragment" data-fragment-index="3" marker-end="url(#arrow)"/>
-                        <path d="M 660 100 L 790 100" class="line-art fragment" data-fragment-index="4" marker-end="url(#arrow)"/>
+                        <path d="M 160 100 L 290 100" class="line-art" marker-end="url(#arrow)"/>
+                        <path d="M 410 100 L 540 100" class="line-art" marker-end="url(#arrow)"/>
+                        <path d="M 660 100 L 790 100" class="line-art" marker-end="url(#arrow)"/>
                     </svg>
-                    <p class="text-center text-xl font-bold mt-8 fragment" data-fragment-index="5">
+                    <p class="text-center text-xl font-bold mt-8">
                         确保所有评估结果 <span class="highlight-text">可追溯、可审计、可对比</span>，<br>将饲料原料采购决策从 <span class="highlight-text">经验导向</span> 推向 <span class="highlight-text">精准的数据驱动</span>。
                     </p>
                 </div>
@@ -337,7 +337,6 @@
         Reveal.initialize({
             hash: true,
             slideNumber: 'c/t',
-            fragments: true, // Enable fragments
         });
     </script>
 </body>
