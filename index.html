@@ -783,144 +783,189 @@
                 </div>
             </section>
 
-         <!-- ================= NEW SLIDE: AI MASTERY PATH (COMPACT VERSION) ================= -->
+        <!-- ================= NEW SLIDE: CAPABILITY STRUCTURE (SVG RECREATION) ================= -->
             <section>
-                <div class="h-full flex flex-col px-8 py-6">
+                <div class="h-full flex flex-col px-8 py-4">
                     
                     <!-- Header -->
-                    <div class="flex items-center mb-4 gs-anim-down shrink-0">
-                        <div class="bg-tesla text-white px-3 py-1 rounded-full text-[10px] font-bold mr-3 tracking-wider">METHODOLOGY</div>
-                        <h2 class="text-xl font-bold tracking-tight text-gray-900">AI + 实战：通往大师之路</h2>
+                    <div class="flex items-center mb-2 shrink-0 gs-anim-down">
+                        <div class="bg-tesla text-white px-3 py-1 rounded-full text-[10px] font-bold mr-3 tracking-wider">FRAMEWORK</div>
+                        <h2 class="text-xl font-bold tracking-tight text-gray-900">能力进阶架构图 L1-L4</h2>
                     </div>
 
-                    <div class="grid grid-cols-12 gap-3 h-full">
+                    <!-- Main SVG Container -->
+                    <div class="flex-grow w-full flex items-center justify-center gs-anim-scale relative">
                         
-                        <!-- Main Metaphor Card (Split View) -->
-                        <div class="col-span-12 bento-card p-0 flex overflow-hidden gs-anim-up shadow-sm h-[340px]">
-                            
-                            <!-- Left: The Wuxia Story -->
-                            <div class="w-1/2 bg-gray-50 p-5 border-r border-gray-200 flex flex-col relative justify-center">
-                                <div class="absolute top-2 right-2 opacity-5">
-                                    <i class="fa-solid fa-khanda text-6xl text-gray-800"></i>
-                                </div>
-                                <h4 class="text-sm font-bold text-gray-800 mb-4 flex items-center">
-                                    <span class="bg-gray-800 text-white text-[9px] px-1.5 py-0.5 rounded mr-2 uppercase tracking-wide">Story</span>
-                                    武侠隐喻：令狐冲与独孤九剑
-                                </h4>
+                        <svg width="1000" height="580" viewBox="0 0 1000 580" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <!-- Filters & Gradients -->
+                                <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+                                    <feOffset dx="2" dy="4" result="offsetblur"/>
+                                    <feComponentTransfer>
+                                        <feFuncA type="linear" slope="0.2"/>
+                                    </feComponentTransfer>
+                                    <feMerge> 
+                                        <feMergeNode/>
+                                        <feMergeNode in="SourceGraphic"/> 
+                                    </feMerge>
+                                </filter>
+
+                                <!-- Gold Gradient (Top) -->
+                                <linearGradient id="gradGold" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FCD34D;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1" />
+                                </linearGradient>
+
+                                <!-- Orange Gradient (L3-L4) -->
+                                <linearGradient id="gradOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#EAB308;stop-opacity:1" />
+                                </linearGradient>
+
+                                <!-- Blue Gradient (AI Tool) -->
+                                <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.9" />
+                                    <stop offset="100%" style="stop-color:#2563EB;stop-opacity:0.9" />
+                                </linearGradient>
+
+                                <!-- Cyan Gradient (Feynman) -->
+                                <linearGradient id="gradCyan" x1="100%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:0.9" />
+                                    <stop offset="100%" style="stop-color:#0891B2;stop-opacity:0.9" />
+                                </linearGradient>
+
+                                <!-- Green Gradient (Foundation) -->
+                                <linearGradient id="gradGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4ADE80;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#22C55E;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+
+                            <!-- 1. LEFT SIDE LABEL & BRACKET -->
+                            <g transform="translate(50, 50)">
+                                <!-- Connecting Line -->
+                                <path d="M140,480 L50,480 L50,60 L280,60" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="5,5" />
+                                <circle cx="50" cy="480" r="3" fill="#666" />
+                                <polygon points="280,60 275,55 285,60 275,65" fill="#666" />
                                 
-                                <div class="space-y-3 relative z-10">
-                                    <!-- Step 1 -->
-                                    <div class="flex items-start">
-                                        <div class="w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center mr-2 text-gray-600 font-bold text-[9px] shrink-0">1</div>
-                                        <div>
-                                            <h4 class="font-bold text-xs text-gray-800">高人指点 (Guidance)</h4>
-                                            <p class="text-[10px] text-gray-500 mt-0.5 leading-tight">风清扬传授口诀，习得顶级剑理。</p>
-                                        </div>
-                                    </div>
-                                    <!-- Arrow -->
-                                    <div class="pl-2 -my-1.5 text-gray-300 text-[9px]"><i class="fa-solid fa-arrow-down"></i></div>
+                                <!-- Vertical Text -->
+                                <text x="70" y="300" font-family="Noto Sans SC, sans-serif" font-size="24" font-weight="900" fill="#E31937" style="writing-mode: tb; text-anchor: middle; letter-spacing: 4px;">
+                                    提升学生更高能力 L4
+                                </text>
+                            </g>
+
+
+                            <!-- 2. TOP GOAL (Gold Box) -->
+                            <g transform="translate(300, 20)" filter="url(#dropShadow)">
+                                <rect x="80" y="0" width="340" height="70" rx="12" fill="url(#gradGold)" />
+                                <text x="250" y="45" font-family="Noto Sans SC" font-size="26" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="2">
+                                    解决更复杂的问题
+                                </text>
+                                <!-- Arrow Down to L3 -->
+                                <line x1="250" y1="70" x2="250" y2="110" stroke="#F59E0B" stroke-width="2" />
+                            </g>
+
+
+                            <!-- 3. MIDDLE UPPER (L3-L4 Pills & Bar) -->
+                            <g transform="translate(180, 110)">
+                                <!-- Small Pills Container -->
+                                <g transform="translate(50, 0)">
+                                    <!-- Reading -->
+                                    <rect x="0" y="0" width="100" height="40" rx="8" fill="#FDE68A" />
+                                    <text x="50" y="26" font-family="Noto Sans SC" font-size="14" fill="#92400E" text-anchor="middle" font-weight="bold">阅读能力</text>
                                     
-                                    <!-- Step 2 -->
-                                    <div class="flex items-start">
-                                        <div class="w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center mr-2 text-gray-600 font-bold text-[9px] shrink-0">2</div>
-                                        <div>
-                                            <h4 class="font-bold text-xs text-gray-800">境界初成 (Potential)</h4>
-                                            <p class="text-[10px] text-gray-500 mt-0.5 leading-tight">气力与眼界极高，但<span class="font-bold text-gray-800">战力尚缺</span>。</p>
-                                        </div>
-                                    </div>
-                                    <!-- Arrow -->
-                                    <div class="pl-2 -my-1.5 text-gray-300 text-[9px]"><i class="fa-solid fa-arrow-down"></i></div>
+                                    <!-- Writing -->
+                                    <rect x="110" y="0" width="100" height="40" rx="8" fill="#FDE68A" />
+                                    <text x="160" y="26" font-family="Noto Sans SC" font-size="14" fill="#92400E" text-anchor="middle" font-weight="bold">写作能力</text>
 
-                                    <!-- Step 3 -->
-                                    <div class="flex items-start">
-                                        <div class="w-5 h-5 rounded-full bg-gray-800 text-white flex items-center justify-center mr-2 font-bold text-[9px] shrink-0">3</div>
-                                        <div>
-                                            <h4 class="font-bold text-xs text-gray-800">实战磨练 (Combat)</h4>
-                                            <p class="text-[10px] text-gray-500 mt-0.5 leading-tight">经历生死对决，将剑理化为本能。</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    <!-- Software -->
+                                    <rect x="220" y="0" width="100" height="40" rx="8" fill="#FDE68A" />
+                                    <text x="270" y="26" font-family="Noto Sans SC" font-size="14" fill="#92400E" text-anchor="middle" font-weight="bold">软件能力</text>
 
-                            <!-- Right: The AI Reality -->
-                            <div class="w-1/2 bg-white p-5 flex flex-col relative justify-center">
-                                <div class="absolute top-2 right-2 opacity-5">
-                                    <i class="fa-solid fa-microchip text-6xl text-tesla"></i>
-                                </div>
-                                <h3 class="text-sm font-bold text-tesla mb-4 flex items-center">
-                                    <span class="bg-tesla text-white text-[9px] px-1.5 py-0.5 rounded mr-2 uppercase tracking-wide">Reality</span>
-                                    教育路径：AI 辅助与学科竞赛
-                                </h3>
+                                    <!-- Image -->
+                                    <rect x="330" y="0" width="100" height="40" rx="8" fill="#FDE68A" />
+                                    <text x="380" y="26" font-family="Noto Sans SC" font-size="14" fill="#92400E" text-anchor="middle" font-weight="bold">影像能力</text>
 
-                                <div class="space-y-3 relative z-10">
-                                    <!-- Step 1 -->
-                                    <div class="flex items-start">
-                                        <div class="w-5 h-5 rounded-full bg-orange-50 flex items-center justify-center mr-2 text-tesla font-bold text-[9px] shrink-0">1</div>
-                                        <div>
-                                            <h4 class="font-bold text-xs text-gray-800">AI 赋能 (AI Assistant)</h4>
-                                            <p class="text-[10px] text-gray-500 mt-0.5 leading-tight">快速掌握复杂概念与代码框架。</p>
-                                        </div>
-                                    </div>
-                                    <!-- Arrow -->
-                                    <div class="pl-2 -my-1.5 text-tesla/20 text-[9px]"><i class="fa-solid fa-arrow-down"></i></div>
-                                    
-                                    <!-- Step 2 -->
-                                    <div class="flex items-start">
-                                        <div class="w-5 h-5 rounded-full bg-orange-50 flex items-center justify-center mr-2 text-tesla font-bold text-[9px] shrink-0">2</div>
-                                        <div>
-                                            <h4 class="font-bold text-xs text-gray-800">认知拔高 (Level Up)</h4>
-                                            <p class="text-[10px] text-gray-500 mt-0.5 leading-tight">能力底座已成，等待<span class="font-bold text-tesla">场景激活</span>。</p>
-                                        </div>
-                                    </div>
-                                    <!-- Arrow -->
-                                    <div class="pl-2 -my-1.5 text-tesla/20 text-[9px]"><i class="fa-solid fa-arrow-down"></i></div>
+                                    <!-- Analysis -->
+                                    <rect x="440" y="0" width="100" height="40" rx="8" fill="#FDE68A" />
+                                    <text x="490" y="26" font-family="Noto Sans SC" font-size="14" fill="#92400E" text-anchor="middle" font-weight="bold">分析能力</text>
+                                </g>
 
-                                    <!-- Step 3 -->
-                                    <div class="flex items-start">
-                                        <div class="w-5 h-5 rounded-full bg-tesla text-white flex items-center justify-center mr-2 font-bold text-[9px] shrink-0">3</div>
-                                        <div>
-                                            <h4 class="font-bold text-xs text-gray-800">竞赛实战 (Projects)</h4>
-                                            <p class="text-[10px] text-gray-500 mt-0.5 leading-tight">在竞赛中反复运用，实现<span class="font-bold text-black">融会贯通</span>。</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                <!-- Orange Bar -->
+                                <g transform="translate(0, 55)" filter="url(#dropShadow)">
+                                    <rect x="0" y="0" width="640" height="50" rx="25" fill="url(#gradOrange)" />
+                                    <text x="320" y="32" font-family="Noto Sans SC" font-size="18" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="1">
+                                        学生能力 L3-L4
+                                    </text>
+                                </g>
+                            </g>
 
-                        <!-- Bottom Row Container -->
-                        <div class="col-span-12 h-[140px] grid grid-cols-2 gap-3">
-                            <!-- Bottom Left: Nobel Prize Proof -->
-                            <div class="col-span-1 bento-card bg-gradient-to-br from-gray-900 to-black text-white p-4 flex flex-col justify-center gs-anim-up delay-100 shadow-sm">
-                                <div class="flex items-center mb-2">
-                                    <i class="fa-solid fa-medal text-yellow-500 text-base mr-2"></i>
-                                    <h4 class="font-bold text-xs">2024 诺贝尔奖的启示</h4>
-                                </div>
-                                <p class="text-[10px] opacity-80 leading-relaxed mb-2">
-                                    物理学与化学奖均颁发给 AI 先驱。标志着 <span class="text-tesla font-bold">AI 正式主导前沿科学</span>。
-                                </p>
-                                <div class="text-[9px] font-mono opacity-50 border-t border-gray-700 pt-2 mt-auto leading-tight">
-                                    > Physics: Neural Networks<br>
-                                    > Chemistry: AlphaFold (Protein Structure)
-                                </div>
-                            </div>
 
-                            <!-- Bottom Right: Future Competitions -->
-                            <div class="col-span-1 bento-card bg-orange-50 border border-orange-100 p-4 flex flex-col justify-center gs-anim-up delay-200 shadow-sm">
-                                <div class="flex items-center mb-2">
-                                    <i class="fa-solid fa-rocket text-tesla text-base mr-2"></i>
-                                    <h4 class="font-bold text-xs text-gray-800">未来的开放式竞赛</h4>
-                                </div>
-                                <p class="text-[10px] text-gray-600 leading-relaxed">
-                                    刷题式竞赛已成过去。顶级竞赛（如建模）将是<span class="font-bold text-tesla">开放式</span>的。
-                                    唯有善用 AI “外脑”，才能在有限时间内处理海量数据，产出深度成果。
-                                </p>
-                            </div>
-                        </div>
+                            <!-- 4. CENTER CORE (Venn Diagram) -->
+                            <g transform="translate(500, 310)">
+                                <!-- Left Circle (AI Tools) -->
+                                <circle cx="-60" cy="0" r="110" fill="url(#gradBlue)" style="mix-blend-mode: multiply;" />
+                                <text x="-80" y="10" font-family="Noto Sans SC" font-size="36" font-weight="900" fill="white" text-anchor="middle">AI 工具</text>
+                                
+                                <!-- Right Circle (Feynman) -->
+                                <circle cx="60" cy="0" r="110" fill="url(#gradCyan)" style="mix-blend-mode: multiply;" />
+                                <text x="80" y="10" font-family="Noto Sans SC" font-size="32" font-weight="900" fill="white" text-anchor="middle">费曼学习法</text>
+                                
+                                <!-- Intersection Hint (Optional) -->
+                                <path d="M0,-80 L0,80" stroke="white" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="3,3" />
+                            </g>
 
+
+                            <!-- 5. BOTTOM FOUNDATION (L1 Pills & Bar) -->
+                            <g transform="translate(180, 440)">
+                                <!-- Skill Pills (2 Rows) -->
+                                <g transform="translate(20, -10)">
+                                    <!-- Row 1 -->
+                                    <g fill="#DCFCE7">
+                                        <rect x="0" y="0" width="100" height="30" rx="6" />
+                                        <text x="50" y="20" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">提示词工程</text>
+                                        
+                                        <rect x="180" y="0" width="80" height="30" rx="6" />
+                                        <text x="220" y="20" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">AI 文案</text>
+                                        
+                                        <rect x="300" y="0" width="80" height="30" rx="6" />
+                                        <text x="340" y="20" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">AI 图像</text>
+
+                                        <rect x="420" y="0" width="80" height="30" rx="6" />
+                                        <text x="460" y="20" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">AI 分析</text>
+                                    </g>
+
+                                    <!-- Row 2 -->
+                                    <g transform="translate(0, 40)" fill="#DCFCE7">
+                                        <rect x="0" y="0" width="120" height="30" rx="6" />
+                                        <text x="60" y="20" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">生成式AI原理</text>
+                                        
+                                        <rect x="180" y="0" width="80" height="30" rx="6" />
+                                        <text x="220" y="20" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">AI 数据</text>
+                                        
+                                        <rect x="300" y="0" width="80" height="30" rx="6" />
+                                        <text x="340" y="20" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">AI 开发</text>
+
+                                        <rect x="420" y="0" width="80" height="30" rx="6" />
+                                        <text x="460" y="20" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">AI 推理</text>
+                                    </g>
+                                </g>
+
+                                <!-- Green Bar -->
+                                <g transform="translate(0, 85)" filter="url(#dropShadow)">
+                                    <rect x="0" y="0" width="640" height="45" rx="10" fill="url(#gradGreen)" />
+                                    <text x="320" y="30" font-family="Noto Sans SC" font-size="18" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="1">
+                                        学生能力 L1
+                                    </text>
+                                </g>
+                            </g>
+
+                        </svg>
                     </div>
+
                 </div>
             </section>
-
              <!-- Slide H4: Deep Dive Track B (Computer Vision) -->
             <section>
                 <div class="grid grid-cols-12 gap-4 h-full">
