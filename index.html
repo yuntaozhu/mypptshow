@@ -2,342 +2,892 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星叶石原料价值评估系统 - 演示文稿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI 赋能教育：大模型时代的创新融合</title>
 
-    <!-- Reveal.js Core CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css" id="theme">
-    
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com/3.4.3"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/simple.min.css">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;500;700;900&family=Inter:wght@300;600&display=swap" rel="stylesheet">
 
     <style>
+        /* Global Styles */
         :root {
-            --highlight-red: #E31937;
-            --bg-orange-start: #FFF2E6;
-            --bg-orange-end: #FFD1B3;
-            --r-main-font: 'Noto Sans SC', sans-serif;
-            --r-heading-font: 'Noto Sans SC', sans-serif;
-            --r-main-font-size: 32px; /* Globally reduced font size */
-            --r-heading-font-weight: 900;
-            --r-main-color: #333;
-            --r-heading-color: #111;
+            --tesla-red: #E31937;
+            --bg-gradient-start: #FFF5EB; /* Very light orange */
+            --bg-gradient-end: #FFD8B5;   /* Soft Orange */
         }
 
-        .reveal {
-            background: linear-gradient(135deg, var(--bg-orange-start), var(--bg-orange-end));
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: #1a1a1a;
+            overflow: hidden;
         }
 
-        .reveal .slides section {
+        /* Reveal.js Overrides */
+        .reveal .slides {
             text-align: left;
-            padding: 40px;
         }
+        .reveal .controls { color: var(--tesla-red); }
+        .reveal .progress { color: var(--tesla-red); }
 
-        .reveal h1, .reveal h2, .reveal h3 {
-            font-weight: 900;
-            text-align: center;
-        }
+        /* Typography & Highlights */
+        .text-tesla { color: var(--tesla-red); }
+        .bg-tesla { background-color: var(--tesla-red); }
+        .border-tesla { border-color: var(--tesla-red); }
         
-        .reveal .page-title {
-            font-size: 1.4em;
-            text-align: left;
-            margin-bottom: 20px;
-            opacity: 0.8;
-        }
-
-        .bento-grid {
-            display: grid;
-            gap: 20px;
-            width: 100%;
-            height: 85%;
-        }
-
-        .bento-item {
-            background-color: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 2rem;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            /* Animation properties */
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        
-        .reveal .slides section.present .bento-item {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Staggered animation delay */
-        .reveal .slides section.present .bento-item:nth-child(2) { transition-delay: 100ms; }
-        .reveal .slides section.present .bento-item:nth-child(3) { transition-delay: 200ms; }
-        .reveal .slides section.present .bento-item:nth-child(4) { transition-delay: 300ms; }
-
-        .ultra-text {
-            font-size: clamp(3rem, 10vw, 8rem);
-            font-weight: 900;
-            line-height: 1;
-            color: var(--highlight-red);
-            background: linear-gradient(180deg, rgba(227, 25, 55, 1) 0%, rgba(227, 25, 55, 0.7) 100%);
+        .gradient-text {
+            background: linear-gradient(45deg, #1a1a1a, var(--tesla-red));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .highlight-text {
-             color: var(--highlight-red);
         }
 
-        .line-art {
-            stroke: #555;
-            stroke-width: 1.5;
-            fill: none;
-        }
-        .line-art-highlight {
-            stroke: var(--highlight-red);
-            stroke-width: 2;
-        }
-
-        .chinese-bold {
-            font-weight: 700;
-            font-size: 1.1em;
-        }
-        .english-small {
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.8em;
-            color: #555;
-            text-transform: uppercase;
+        /* Bento Grid Utilities */
+        .bento-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(227, 25, 55, 0.2);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .reveal .icon {
-            color: var(--highlight-red);
-            opacity: 0.8;
+        .bento-card:hover {
+            border-color: rgba(227, 25, 55, 0.5);
+        }
+
+        /* Line Art Graphics simulation */
+        .line-art-circle {
+            border: 2px solid var(--tesla-red);
+            border-radius: 50%;
+            background: transparent;
+        }
+        .line-art-rect {
+            border: 2px solid #1a1a1a;
+            background: transparent;
+        }
+
+        /* Background Canvas */
+        #p5-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
+
+    <!-- Background Animation -->
+    <div id="p5-container"></div>
+
     <div class="reveal">
         <div class="slides">
 
-            <!-- Page 1: Cover Page -->
-            <section class="text-center flex flex-col justify-center items-center">
-                <div class="bento-item w-full">
-                    <h1 class="text-6xl font-black">星叶石原料价值评估系统</h1>
-                    <h2 class="text-3xl font-normal opacity-70 mt-4">科学决策，价值采购</h2>
-                    <svg class="mx-auto my-12" width="200" height="20" viewBox="0 0 200 20">
-                        <line x1="0" y1="10" x2="200" y2="10" class="line-art" stroke-width="2"/>
-                        <circle cx="100" cy="10" r="8" class="line-art-highlight" fill="var(--bg-orange-end)"/>
-                    </svg>
-                    <p class="english-small tracking-widest">Xing Ye Shi Raw Material Value Assessment System</p>
-                </div>
-            </section>
-
-            <!-- Page 2: Core Value (REDESIGNED) -->
-            <section>
-                <h2 class="page-title">核心价值: 战略转型</h2>
-                <div class="bento-grid" style="grid-template-columns: 1fr auto 1fr; align-items: center; justify-items: center;">
-                    <div class="bento-item flex flex-col justify-center items-center text-center h-full">
-                        <span class="ultra-text">价格</span>
-                        <h3 class="text-2xl font-bold mt-[-2rem] z-10 relative">传统模式: "价格采购"</h3>
-                        <p class="english-small">TRADITIONAL: "PRICE PURCHASING"</p>
-                        <p class="mt-4 text-sm">关注“价格”(元/吨)，采购最“便宜”的原料。</p>
+            <!-- ================= INTRO ================= -->
+            <section data-auto-animate>
+                <div class="h-full flex flex-col justify-center items-center text-center">
+                    <div class="bento-card mb-8 p-12 gs-anim-up">
+                        <h4 class="text-tesla text-xl font-bold tracking-widest uppercase mb-4">AI Driven Curriculum K-12</h4>
+                        <h1 class="text-6xl font-black mb-6 leading-tight">
+                            大模型时代的<br>
+                            <span class="gradient-text">教育创新与融合</span>
+                        </h1>
+                        <p class="text-xl text-gray-600 font-medium">The Innovative Fusion of Large Models and Education</p>
                     </div>
-                    <div class="bento-item flex justify-center items-center p-8">
-                         <i class="fas fa-arrow-right fa-4x icon"></i>
-                    </div>
-                    <div class="bento-item flex flex-col justify-center items-center text-center h-full">
-                        <span class="ultra-text">价值</span>
-                        <h3 class="text-2xl font-bold mt-[-2rem] z-10 relative">新范式: "价值采购"</h3>
-                        <p class="english-small">NEW PARADIGM: "VALUE PURCHASING"</p>
-                        <p class="mt-4 text-sm">关注“价值”(元/营养单位)，采购最“划算”的原料。</p>
+                    
+                    <div class="grid grid-cols-3 gap-6 w-full max-w-5xl">
+                        <div class="bento-card flex flex-col items-center justify-center h-40 gs-anim-up delay-100">
+                            <i class="fa-solid fa-shapes text-tesla text-4xl mb-4"></i>
+                            <h3 class="font-bold text-lg">数学建模</h3>
+                            <p class="text-xs text-gray-500 uppercase mt-1">Mathematical Modeling</p>
+                        </div>
+                        <div class="bento-card flex flex-col items-center justify-center h-40 gs-anim-up delay-200">
+                            <i class="fa-solid fa-code text-tesla text-4xl mb-4"></i>
+                            <h3 class="font-bold text-lg">计算艺术</h3>
+                            <p class="text-xs text-gray-500 uppercase mt-1">Artistic Programming</p>
+                        </div>
+                        <div class="bento-card flex flex-col items-center justify-center h-40 gs-anim-up delay-300">
+                            <i class="fa-solid fa-scale-balanced text-tesla text-4xl mb-4"></i>
+                            <h3 class="font-bold text-lg">教育公平</h3>
+                            <p class="text-xs text-gray-500 uppercase mt-1">Educational Equity</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Page 3: System Architecture (REDESIGNED) -->
-            <section>
-                <h2 class="page-title">系统核心功能架构</h2>
-                <div class="bento-item flex justify-center items-center h-full">
-                     <svg width="90%" height="90%" viewBox="0 0 800 500">
-                        <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#555" /></marker></defs>
-                        <!-- Top Layer -->
-                        <g transform="translate(250, 20)">
-                            <rect x="0" y="0" width="300" height="100" rx="15" class="line-art" fill="rgba(255,255,255,0.3)"/><text x="150" y="30" text-anchor="middle" font-size="20" class="chinese-bold">基础数据与计算层</text>
-                            <rect x="15" y="50" width="130" height="40" rx="8" class="line-art" fill="rgba(255,255,255,0.2)"/><text x="80" y="75" text-anchor="middle" font-size="14">数据管理与定价</text>
-                            <rect x="155" y="50" width="130" height="40" rx="8" class="line-art" fill="rgba(255,255,255,0.2)"/><text x="220" y="75" text-anchor="middle" font-size="14">配方空间价值计算</text>
-                        </g>
-                        <!-- Middle Layer -->
-                        <g transform="translate(150, 180)">
-                            <rect x="0" y="0" width="500" height="100" rx="15" class="line-art" fill="rgba(255,255,255,0.3)"/><text x="250" y="30" text-anchor="middle" font-size="20" class="chinese-bold">核心功能层</text>
-                            <rect x="15" y="50" width="150" height="40" rx="8" class="line-art" fill="rgba(255,255,255,0.2)"/><text x="90" y="75" text-anchor="middle" font-size="14">综合查询与报告</text>
-                            <rect x="175" y="50" width="150" height="40" rx="8" class="line-art line-art-highlight" fill="rgba(227,25,55,0.1)"/><text x="250" y="75" text-anchor="middle" font-size="14" class="highlight-text">智能价值评估</text>
-                            <rect x="335" y="50" width="150" height="40" rx="8" class="line-art" fill="rgba(255,255,255,0.2)"/><text x="410" y="75" text-anchor="middle" font-size="14">对比分析与决策</text>
-                        </g>
-                        <!-- Bottom Layer -->
-                        <g transform="translate(250, 340)">
-                            <rect x="0" y="0" width="300" height="100" rx="15" class="line-art" fill="rgba(255,255,255,0.3)"/><text x="150" y="30" text-anchor="middle" font-size="20" class="chinese-bold">应用输出层</text>
-                            <rect x="15" y="50" width="130" height="40" rx="8" class="line-art" fill="rgba(255,255,255,0.2)"/><text x="80" y="75" text-anchor="middle" font-size="14">采购决策支持</text>
-                            <rect x="155" y="50" width="130" height="40" rx="8" class="line-art" fill="rgba(255,255,255,0.2)"/><text x="220" y="75" text-anchor="middle" font-size="14">数据服务</text>
-                        </g>
-                        <!-- Arrows -->
-                        <path d="M 400 120 V 180" class="line-art" marker-end="url(#arrow)" /><text x="410" y="150" font-size="12">为...提供数据</text>
-                        <path d="M 400 280 V 340" class="line-art" marker-end="url(#arrow)" /><text x="410" y="310" font-size="12">支撑</text>
-                        <path d="M 325 230 H 165" class="line-art" marker-end="url(#arrow)" /><text x="245" y="225" font-size="12" text-anchor="middle">驱动</text>
-                        <path d="M 175 230 L 335 230" class="line-art" marker-end="url(#arrow)" /><text x="255" y="245" font-size="12" text-anchor="middle">驱动</text>
-                     </svg>
+            <!-- ================= ELEMENTARY SECTION (5 Slides) ================= -->
+            
+            <!-- Slide E1: Concept -->
+            <section data-auto-animate>
+                <div class="grid grid-cols-12 grid-rows-6 gap-4 h-[700px]">
+                    <div class="col-span-12 row-span-1 flex items-center">
+                        <div class="bg-tesla text-white px-4 py-1 rounded-full text-sm font-bold mr-4">ELEMENTARY (G3-G6)</div>
+                        <h2 class="text-3xl font-bold">启蒙与探索：AI 数学魔法画室</h2>
+                    </div>
+
+                    <div class="col-span-4 row-span-5 bento-card flex flex-col justify-between gs-anim-left">
+                        <div>
+                            <h3 class="text-tesla font-black text-6xl mb-2">01</h3>
+                            <h4 class="text-2xl font-bold mb-4">从抽象到具象</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                这里的数学不再是枯燥的数字。通过 AI，我们将抽象的数学概念（如分数、几何）转化为生动的视觉艺术。
+                            </p>
+                        </div>
+                        <div class="mt-8 border-t border-gray-200 pt-4">
+                            <p class="font-mono text-xs text-tesla uppercase">Core Objective</p>
+                            <p class="font-bold">用 AI 画出数学，激发兴趣</p>
+                        </div>
+                    </div>
+
+                    <div class="col-span-8 row-span-3 bento-card relative overflow-hidden gs-anim-right">
+                        <div class="absolute top-4 right-4 text-tesla opacity-20 text-9xl font-black">AI</div>
+                        <h4 class="text-xl font-bold mb-4">Spiral Curriculum / 螺旋式上升</h4>
+                        <div class="grid grid-cols-3 gap-4 h-full">
+                            <div class="border-l-2 border-tesla pl-4">
+                                <h5 class="font-bold text-lg">G3 具象思维</h5>
+                                <p class="text-xs text-gray-500 mt-2">数字 -> 图像<br>Magic Conversion</p>
+                            </div>
+                            <div class="border-l-2 border-tesla pl-4">
+                                <h5 class="font-bold text-lg">G4 分析思维</h5>
+                                <p class="text-xs text-gray-500 mt-2">风格 vs 内容<br>Data Value</p>
+                            </div>
+                            <div class="border-l-2 border-tesla pl-4">
+                                <h5 class="font-bold text-lg">G5 叙事思维</h5>
+                                <p class="text-xs text-gray-500 mt-2">逻辑演绎<br>Narrative & Emotion</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-span-8 row-span-2 bento-card flex items-center justify-around gs-anim-up">
+                        <div class="text-center">
+                            <i class="fa-solid fa-wand-magic-sparkles text-3xl mb-2 text-gray-400"></i>
+                            <div class="font-bold">Gemini</div>
+                            <div class="text-xs">构思 & 逻辑</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-tesla"></i>
+                        <div class="text-center">
+                            <i class="fa-solid fa-image text-3xl mb-2 text-gray-400"></i>
+                            <div class="font-bold">Imagen 4</div>
+                            <div class="text-xs">视觉创造</div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-tesla"></i>
+                        <div class="text-center">
+                            <i class="fa-solid fa-video text-3xl mb-2 text-gray-400"></i>
+                            <div class="font-bold">Veo</div>
+                            <div class="text-xs">动态演绎</div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Page 4: Module 1 (Adjusted) -->
+            <!-- Slide E2: Methodology -->
             <section>
-                <h2 class="page-title">模块一: 综合查询与数据溯源</h2>
-                <div class="bento-grid" style="grid-template-columns: 2fr 3fr;">
-                    <div class="bento-item flex flex-col justify-center">
-                        <h3 class="text-2xl font-bold mb-4">核心功能</h3>
-                        <p class="chinese-bold" style="font-size:0.9em;">通过多维度、可组合的查询条件，快速定位和调用已计算数据，精确筛选评估报告或对比分析结果。</p>
-                        <p class="english-small mt-2">MULTI-DIMENSIONAL & COMBINABLE QUERY</p>
+                <div class="grid grid-cols-2 gap-8 h-full items-center">
+                    <div class="bento-card h-full flex flex-col justify-center gs-anim-left">
+                        <h3 class="text-4xl font-bold mb-6">提示词的艺术<br><span class="text-tesla text-2xl">Prompt Engineering</span></h3>
+                        <ul class="space-y-6">
+                            <li class="flex items-start">
+                                <div class="bg-tesla text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">1</div>
+                                <div>
+                                    <h5 class="font-bold">Persona (角色)</h5>
+                                    <p class="text-sm text-gray-600">"你是一位想象力丰富的艺术总监..."</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-tesla text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">2</div>
+                                <div>
+                                    <h5 class="font-bold">Task (任务)</h5>
+                                    <p class="text-sm text-gray-600">"为'三分之一'的概念构思视觉表现..."</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-tesla text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">3</div>
+                                <div>
+                                    <h5 class="font-bold">Constraint (约束)</h5>
+                                    <p class="text-sm text-gray-600">"风格为超现实主义，不要简单的图表..."</p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="bento-item">
-                        <h3 class="text-2xl font-bold mb-4">关键查询条件</h3>
-                        <ul class="space-y-3" style="font-size: 0.8em;">
-                            <li><i class="fas fa-tag icon mr-2"></i> <span class="chinese-bold">主体标识:</span> 工厂、原料编码、名称、类型。</li>
-                            <li><i class="fas fa-cogs icon mr-2"></i> <span class="chinese-bold">核心参数:</span> 配方空间价值系数 (能量/蛋白)。</li>
-                            <li><i class="fas fa-history icon mr-2"></i> <span class="chinese-bold">时间与版本:</span> 计算时间、版本号，实现历史追溯。</li>
-                            <li><i class="fas fa-dollar-sign icon mr-2"></i> <span class="chinese-bold">价格信息:</span> 市场价格，快速筛选特定价格区间。</li>
+                    <div class="bento-card h-full flex items-center justify-center bg-gray-50 gs-anim-right">
+                        <div class="text-center">
+                            <div class="text-8xl font-black text-gray-200 mb-4">7</div>
+                            <h4 class="text-2xl font-bold mb-2">7 Days Journey</h4>
+                            <p class="text-gray-500 max-w-xs mx-auto">一周精讲：从初探 Gemini 到 AI 数学创客嘉年华的完整闭环。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide E3: Case Study - Fractions -->
+            <section>
+                <div class="grid grid-cols-12 gap-4 h-full">
+                    <div class="col-span-12 mb-4">
+                        <h2 class="text-3xl font-bold"><span class="text-tesla">Case Study:</span> 看得见的分数</h2>
+                    </div>
+                    <div class="col-span-6 bento-card gs-anim-up">
+                        <h4 class="text-xl font-bold mb-4">Concept: 1/3</h4>
+                        <div class="p-4 bg-orange-50 rounded-lg border border-orange-100">
+                            <p class="italic text-gray-700 font-serif">
+                                "一面华丽的圆形镜子，碎裂成三块完全相等的部分，其中一块闪耀着金色的光芒，背景是深邃宇宙。"
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-center">
+                            <div class="w-32 h-32 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center text-gray-400">
+                                AI Generated Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-6 bento-card gs-anim-up delay-100">
+                        <h4 class="text-xl font-bold mb-4">Logic: The Broken Mirror</h4>
+                        <ul class="text-sm space-y-4">
+                            <li class="flex items-center">
+                                <i class="fa-solid fa-brain text-tesla mr-3"></i>
+                                <span><strong>Gemini 构思:</strong> 将枯燥的分数转化为具有哲学意味的“破碎”意象。</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa-solid fa-paintbrush text-tesla mr-3"></i>
+                                <span><strong>Imagen 创作:</strong> 学习超现实主义 (Surrealism) 风格。</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa-solid fa-eye text-tesla mr-3"></i>
+                                <span><strong>视觉验证:</strong> 直观理解“部分”与“整体”的关系。</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </section>
-            
-            <!-- Page 5: Module 2 (NEW) -->
+
+            <!-- Slide E4: Advanced Application -->
             <section>
-                <h2 class="page-title">模块二: 配方空间与基准定价</h2>
-                <div class="bento-grid" style="grid-template-columns: 1fr 1fr;">
-                    <div class="bento-item">
-                        <h3 class="text-2xl font-bold mb-4">核心功能</h3>
-                        <p class="chinese-bold" style="font-size:0.9em;">根据特定原料或营养标准，计算出核心营养素（能量和蛋白）的边际成本，为所有后续评估建立一个科学、客观的价值基准。</p>
-                        <p class="english-small mt-2">CALCULATING MARGINAL COSTS FOR BENCHMARKING</p>
+                <div class="grid grid-cols-12 grid-rows-2 gap-4 h-full">
+                    <div class="col-span-12 row-span-1 bento-card flex flex-col justify-center text-center gs-anim-down">
+                        <h2 class="text-4xl font-black mb-2">定理的视觉证明</h2>
+                        <p class="text-xl text-tesla">Visual Proof of Theorems with Veo</p>
                     </div>
-                    <div class="bento-item flex justify-center items-center">
-                        <svg width="80%" height="80%" viewBox="0 0 300 150">
-                             <rect x="10" y="50" width="80" height="50" rx="8" class="line-art"/><text x="50" y="80" text-anchor="middle" font-size="12">价值系数</text>
-                             <path d="M 90 75 L 120 75" class="line-art" marker-end="url(#arrow)"/>
-                             <rect x="120" y="25" width="100" height="100" rx="8" class="line-art-highlight" fill="rgba(227,25,55,0.1)"/><text x="170" y="80" text-anchor="middle" font-size="14" class="highlight-text">计算模块</text>
-                             <path d="M 220 50 L 250 50" class="line-art" marker-end="url(#arrow)"/><text x="275" y="45" font-size="12">NE价格</text>
-                             <path d="M 220 100 L 250 100" class="line-art" marker-end="url(#arrow)"/><text x="275" y="105" font-size="12">CP价格</text>
-                        </svg>
+                    <div class="col-span-4 bento-card gs-anim-up">
+                        <h3 class="font-bold text-lg mb-2">勾股定理</h3>
+                        <p class="text-sm text-gray-500">Pythagorean theorem</p>
+                        <div class="mt-4 text-4xl font-mono font-bold text-center text-gray-800">a² + b² = c²</div>
+                    </div>
+                    <div class="col-span-8 bento-card gs-anim-up delay-100 bg-gray-900 text-white">
+                        <h3 class="font-bold text-lg mb-4 text-tesla">Scenario: The Growing Squares</h3>
+                        <p class="text-sm font-light leading-loose">
+                            "视频展示一个直角三角形。从两条直角边 '生长' 出两个正方形。它们像积木一样分解，飞到斜边上，完美重组。画面定格，出现公式。"
+                            <br><br>
+                            <span class="text-tesla font-bold">Outcome:</span> 学生不再死记硬背，而是亲眼目睹真理的动态生成。
+                        </p>
                     </div>
                 </div>
             </section>
 
-            <!-- Page 6: Module 3 (UPDATED) -->
+            <!-- Slide E5: Outcome -->
             <section>
-                 <h2 class="page-title">模块三: 智能价值评估与报告</h2>
-                 <div class="bento-grid" style="grid-template-columns: 1fr 2fr;">
-                     <div class="bento-item">
-                        <h3 class="text-2xl font-bold mb-4">核心功能</h3>
-                        <p class="chinese-bold" style="font-size:0.9em;">基于模块二计算的基准价格，对单一原料进行多维度深度分析，并自动生成标准化的评估报告。</p>
-                         <h4 class="font-bold mt-4" style="font-size:0.9em;">评估维度:</h4>
-                         <ul class="list-disc list-inside text-sm mt-2">
-                             <li>基础相对价值</li>
-                             <li>相对于能量基准的价值</li>
-                             <li>相对于蛋白基准的价值</li>
-                         </ul>
-                     </div>
-                     <div class="bento-item" style="padding: 0; overflow: hidden;">
-                          <img src="value.jpg" class="w-full h-full object-contain"/>
-                     </div>
-                 </div>
-            </section>
-
-            <!-- Page 7: Module 4 (UPDATED) -->
-            <section>
-                 <h2 class="page-title">模块四: 对比分析与决策支持</h2>
-                 <div class="bento-grid" style="grid-template-columns: 2fr 1fr;">
-                      <div class="bento-item" style="padding: 0; overflow: hidden;">
-                          <img src="decision.jpg" class="w-full h-full object-cover object-top"/>
-                     </div>
-                     <div class="bento-item">
-                        <h3 class="text-2xl font-bold mb-4">核心功能</h3>
-                        <p class="chinese-bold" style="font-size:0.9em;">在单一原料评估的基础上，提供原料间的横向对比功能，帮助用户在多种选择中做出最优决策。</p>
-                         <h4 class="font-bold mt-4" style="font-size:0.9em;">对比维度:</h4>
-                         <ul class="list-disc list-inside text-sm mt-2">
-                             <li>基础信息</li>
-                             <li>价格 (市场/在库/预测)</li>
-                             <li>评估价值</li>
-                             <li>营养指标</li>
-                         </ul>
-                     </div>
-                 </div>
-            </section>
-            
-            <!-- Page 8: Module 5 -->
-            <section>
-                <h2 class="page-title">模块五: 系统与数据服务</h2>
-                <div class="bento-grid" style="grid-template-columns: 1fr 1fr;">
-                    <div class="bento-item flex flex-col justify-center items-center text-center">
-                        <i class="fas fa-save fa-4x icon"></i>
-                        <h3 class="text-2xl font-bold mt-4">保存 (Save)</h3>
-                        <p class="mt-2 chinese-bold" style="font-size:0.9em;">支持数据的持久化、输出和管理。将评估报告和计算版本保存到系统中，生成唯一的版本号，为数据提供完整的审计追溯链条。</p>
-                    </div>
-                     <div class="bento-item flex flex-col justify-center items-center text-center">
-                        <i class="fas fa-download fa-4x icon"></i>
-                        <h3 class="text-2xl font-bold mt-4">下载 (Download)</h3>
-                        <p class="mt-2 chinese-bold" style="font-size:0.9em;">将评估报告或对比分析结果一键下载为离线文件（如PDF, Excel），方便用户进行内部报告、分享讨论或进行更深度的二次分析。</p>
+                <div class="flex flex-col items-center justify-center h-full text-center">
+                    <div class="bento-card p-12 max-w-4xl gs-anim-scale">
+                        <i class="fa-solid fa-trophy text-6xl text-tesla mb-6"></i>
+                        <h2 class="text-4xl font-bold mb-6">AI 数学创客嘉年华</h2>
+                        <div class="grid grid-cols-3 gap-8 mt-8 text-left">
+                            <div>
+                                <h4 class="font-bold text-lg border-b-2 border-tesla pb-2 mb-2">核心文案</h4>
+                                <p class="text-sm text-gray-600">Gemini 辅助创作生动的故事与解释。</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg border-b-2 border-tesla pb-2 mb-2">核心视觉</h4>
+                                <p class="text-sm text-gray-600">Imagen 生成高质量概念图或信息图。</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg border-b-2 border-tesla pb-2 mb-2">核心视频</h4>
+                                <p class="text-sm text-gray-600">Veo 生成动态演示或数学广告片。</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Page 9: Core Workflow (STATIC) -->
-            <section>
-                <h2 class="page-title">总结: 系统的核心工作流</h2>
-                <div class="bento-item h-full flex flex-col justify-center items-center">
-                    <svg width="100%" height="300" viewBox="0 0 1000 200">
-                        <!-- Nodes -->
-                        <g>
-                             <circle cx="100" cy="100" r="60" class="line-art" fill="rgba(255,255,255,0.4)"/><text x="100" y="100" text-anchor="middle" font-size="16" dominant-baseline="central" class="chinese-bold">配置与计算</text>
-                        </g>
-                         <g>
-                             <circle cx="350" cy="100" r="60" class="line-art" fill="rgba(255,255,255,0.4)"/><text x="350" y="100" text-anchor="middle" font-size="16" dominant-baseline="central" class="chinese-bold">评估与保存</text>
-                        </g>
-                         <g>
-                             <circle cx="600" cy="100" r="60" class="line-art" fill="rgba(255,255,255,0.4)"/><text x="600" y="100" text-anchor="middle" font-size="16" dominant-baseline="central" class="chinese-bold">查询与溯源</text>
-                        </g>
-                         <g>
-                             <circle cx="850" cy="100" r="60" class="line-art-highlight" fill="rgba(227,25,55,0.1)"/><text x="850" y="100" text-anchor="middle" font-size="16" dominant-baseline="central" class="highlight-text">分析与决策</text>
-                        </g>
-                        <!-- Arrows -->
-                        <path d="M 160 100 L 290 100" class="line-art" marker-end="url(#arrow)"/>
-                        <path d="M 410 100 L 540 100" class="line-art" marker-end="url(#arrow)"/>
-                        <path d="M 660 100 L 790 100" class="line-art" marker-end="url(#arrow)"/>
-                    </svg>
-                    <p class="text-center text-xl font-bold mt-8">
-                        确保所有评估结果 <span class="highlight-text">可追溯、可审计、可对比</span>，<br>将饲料原料采购决策从 <span class="highlight-text">经验导向</span> 推向 <span class="highlight-text">精准的数据驱动</span>。
-                    </p>
+
+            <!-- ================= MIDDLE SCHOOL SECTION (5 Slides) ================= -->
+
+            <!-- Slide M1: Concept -->
+            <section data-auto-animate>
+                <div class="grid grid-cols-12 gap-4 h-full">
+                    <div class="col-span-12 flex items-center mb-4">
+                        <div class="bg-gray-800 text-white px-4 py-1 rounded-full text-sm font-bold mr-4">MIDDLE SCHOOL (G6-G9)</div>
+                        <h2 class="text-3xl font-bold">思想的总导演：AI 计算艺术史</h2>
+                    </div>
+                    <div class="col-span-5 bento-card flex flex-col justify-center gs-anim-left">
+                        <h3 class="text-5xl font-black mb-4">The Director</h3>
+                        <p class="text-lg leading-relaxed mb-6">
+                            告别 "历史->数学->编程" 的线性传递。<br>
+                            学生不仅是 Engineer，更是站在思想高地的 <span class="text-tesla font-bold">Director</span>。
+                        </p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 border border-tesla text-tesla rounded-full text-xs">History</span>
+                            <span class="px-3 py-1 border border-tesla text-tesla rounded-full text-xs">Math</span>
+                            <span class="px-3 py-1 border border-tesla text-tesla rounded-full text-xs">Code</span>
+                        </div>
+                    </div>
+                    <div class="col-span-7 bento-card flex items-center justify-center relative gs-anim-right">
+                        <!-- Simulated Loop Visualization -->
+                        <div class="w-64 h-64 rounded-full border-4 border-gray-100 flex items-center justify-center relative">
+                            <div class="absolute top-0 bg-white px-2 font-bold">历史理解</div>
+                            <div class="absolute right-0 bg-white px-2 font-bold">AI 美学对话</div>
+                            <div class="absolute bottom-0 bg-white px-2 font-bold">数学抽象</div>
+                            <div class="absolute left-0 bg-white px-2 font-bold">协同编程</div>
+                            <i class="fa-solid fa-arrows-spin text-6xl text-tesla opacity-50 animate-spin-slow"></i>
+                        </div>
+                    </div>
                 </div>
             </section>
+
+            <!-- Slide M2: Methodology (Feynman) -->
+            <section>
+                <div class="grid grid-cols-3 gap-6 h-full pt-10">
+                    <div class="col-span-3 text-center mb-4">
+                        <h2 class="text-3xl font-bold">费曼学习法 & 教学闭环</h2>
+                    </div>
+                    
+                    <div class="bento-card gs-anim-up delay-100 border-t-8 border-tesla">
+                        <h4 class="text-xl font-bold mb-4">Teach to Learn</h4>
+                        <p class="text-sm text-gray-600 mb-4">以教促学</p>
+                        <p class="text-xs leading-relaxed">
+                            向 AI 下达精准指令 (Prompt)。AI 的反馈直接暴露你理解的盲区，强制深化认知。
+                        </p>
+                    </div>
+
+                    <div class="bento-card gs-anim-up delay-200 border-t-8 border-gray-800">
+                        <h4 class="text-xl font-bold mb-4">Review & Reflect</h4>
+                        <p class="text-sm text-gray-600 mb-4">回顾与反思</p>
+                        <p class="text-xs leading-relaxed">
+                            当代码不符合预期，即是宝贵的“卡壳”时刻。回到历史与数学原理中寻找缺口。
+                        </p>
+                    </div>
+
+                    <div class="bento-card gs-anim-up delay-300 border-t-8 border-tesla">
+                        <h4 class="text-xl font-bold mb-4">Simplify</h4>
+                        <p class="text-sm text-gray-600 mb-4">简化与内化</p>
+                        <p class="text-xs leading-relaxed">
+                            最终任务不是写最复杂的代码，而是设计最优雅的模型。将复杂知识终极简化。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide M3: Case - Seurat -->
+            <section>
+                <div class="grid grid-cols-12 gap-4 h-full">
+                    <div class="col-span-12">
+                        <h3 class="text-2xl font-bold mb-6">Unit 02: 乔治·修拉 - 点彩与像素</h3>
+                    </div>
+                    <div class="col-span-4 bento-card bg-gray-900 text-white gs-anim-left">
+                        <h4 class="text-tesla font-bold uppercase text-sm mb-2">Art History</h4>
+                        <h2 class="text-3xl font-bold mb-4">秩序感</h2>
+                        <p class="text-sm opacity-80">
+                            科学主义盛行。试图用理性的、可分析的系统来构建艺术。点彩画派是对混乱工业社会的逃避还是重构？
+                        </p>
+                    </div>
+                    <div class="col-span-4 bento-card gs-anim-up">
+                        <h4 class="text-tesla font-bold uppercase text-sm mb-2">Math Model</h4>
+                        <h2 class="text-3xl font-bold mb-4">离散化</h2>
+                        <ul class="text-sm space-y-2">
+                            <li>1. 离散化与像素化 (Pixelation)</li>
+                            <li>2. 网格算法 (Grid Calculation)</li>
+                            <li>3. 平均色值计算 (Average Color)</li>
+                        </ul>
+                    </div>
+                    <div class="col-span-4 bento-card gs-anim-right">
+                        <h4 class="text-tesla font-bold uppercase text-sm mb-2">Code Output</h4>
+                        <h2 class="text-3xl font-bold mb-4">通用点彩生成器</h2>
+                        <p class="font-mono text-xs bg-gray-100 p-2 rounded">
+                            for (grid cell) {<br>
+                            &nbsp; calculate avg color;<br>
+                            &nbsp; draw dot;<br>
+                            }
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide M4: Case - Van Gogh -->
+            <section>
+                <div class="grid grid-cols-12 gap-4 h-full">
+                    <div class="col-span-12">
+                        <h3 class="text-2xl font-bold mb-6">Unit 03: 梵高 - 流动的星夜</h3>
+                    </div>
+                    <div class="col-span-6 bento-card h-[400px] flex items-center justify-center bg-blue-900 text-white relative overflow-hidden gs-anim-scale">
+                        <!-- Abstract representation of Starry Night -->
+                        <div class="absolute inset-0 opacity-30">
+                            <svg width="100%" height="100%">
+                                <pattern id="pattern-circles" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <circle cx="2" cy="2" r="1" fill="#fff"></circle>
+                                </pattern>
+                                <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles)"></rect>
+                            </svg>
+                        </div>
+                        <h2 class="text-4xl font-black z-10">Flow Fields</h2>
+                        <p class="absolute bottom-4 text-xs z-10">Vector Fields & Perlin Noise</p>
+                    </div>
+                    <div class="col-span-6 flex flex-col gap-4">
+                        <div class="bento-card flex-1 gs-anim-right">
+                            <h4 class="font-bold text-lg text-tesla">哲学思潮</h4>
+                            <p class="text-sm mt-2">存在主义的先声。主观真实高于客观现实。不可见的向量场，释放成千上万的粒子。</p>
+                        </div>
+                        <div class="bento-card flex-1 gs-anim-right delay-100">
+                            <h4 class="font-bold text-lg text-tesla">技术实现 (p5.js)</h4>
+                            <p class="text-sm mt-2 font-mono">noise() Function</p>
+                            <p class="text-xs text-gray-500 mt-1">利用柏林噪声构建看不见的风场，驱动粒子运动。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide M5: Outcome -->
+            <section>
+                <div class="h-full flex flex-col items-center justify-center text-center">
+                    <h2 class="text-4xl font-bold mb-10">跨学科系统思维</h2>
+                    <div class="grid grid-cols-4 gap-4 w-full">
+                        <div class="bento-card py-8 gs-anim-up">
+                            <div class="text-5xl font-black text-gray-200 mb-2">01</div>
+                            <div class="font-bold">印象派</div>
+                            <div class="text-xs text-tesla mt-1">光的插值</div>
+                        </div>
+                        <div class="bento-card py-8 gs-anim-up delay-100">
+                            <div class="text-5xl font-black text-gray-200 mb-2">02</div>
+                            <div class="font-bold">立体主义</div>
+                            <div class="text-xs text-tesla mt-1">多视角投影</div>
+                        </div>
+                        <div class="bento-card py-8 gs-anim-up delay-200">
+                            <div class="text-5xl font-black text-gray-200 mb-2">03</div>
+                            <div class="font-bold">抽象派</div>
+                            <div class="text-xs text-tesla mt-1">音频FFT映射</div>
+                        </div>
+                        <div class="bento-card py-8 gs-anim-up delay-300">
+                            <div class="text-5xl font-black text-gray-200 mb-2">04</div>
+                            <div class="font-bold">波普艺术</div>
+                            <div class="text-xs text-tesla mt-1">复制与阈值</div>
+                        </div>
+                    </div>
+                    <p class="mt-8 text-lg font-medium">Outcome: 学生建立起真正的跨学科理解，用代码重构人类艺术文明。</p>
+                </div>
+            </section>
+
+
+            <!-- ================= HIGH SCHOOL SECTION (5 Slides) ================= -->
+
+            <!-- Slide H1: Concept -->
+            <section data-auto-animate>
+                <div class="grid grid-cols-12 gap-4 h-full">
+                    <div class="col-span-12 flex items-center mb-4">
+                        <div class="bg-black text-white px-4 py-1 rounded-full text-sm font-bold mr-4">HIGH SCHOOL (G10-G12)</div>
+                        <h2 class="text-3xl font-bold">专业与精通：构建 "ExtBrain"</h2>
+                    </div>
+                    
+                    <div class="col-span-12 bento-card bg-tesla text-white flex flex-col items-center justify-center py-12 gs-anim-down">
+                        <h1 class="text-6xl font-black mb-2">ExtBrain</h1>
+                        <p class="text-xl opacity-90">External Brain Construction</p>
+                        <p class="mt-4 max-w-2xl text-center text-sm opacity-80">
+                            不仅是使用者，更是创造者。构建个性化的 AI Agent 系统，作为长期学习与科研的伙伴。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide H2: Tracks Overview -->
+            <section>
+                <div class="grid grid-cols-2 gap-8 h-full">
+                    <!-- Track A -->
+                    <div class="bento-card flex flex-col h-full gs-anim-left">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-2xl font-bold text-tesla">Track A</h3>
+                            <i class="fa-solid fa-flask text-3xl text-gray-300"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">科学研究与数学建模</h4>
+                        <ul class="space-y-4 text-sm flex-grow">
+                            <li class="border-b border-gray-100 pb-2">
+                                <strong>Toolchain:</strong> Python, ModSimPy, LLM APIs
+                            </li>
+                            <li class="border-b border-gray-100 pb-2">
+                                <strong>Goal:</strong> HIMCM 竞赛, 科研论文
+                            </li>
+                            <li>
+                                <strong>Deep Research Agent:</strong> 自动文献综述、信息抽取。
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Track B -->
+                    <div class="bento-card flex flex-col h-full gs-anim-right">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-2xl font-bold text-tesla">Track B</h3>
+                            <i class="fa-solid fa-person-running text-3xl text-gray-300"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">智能应用与运动科学</h4>
+                        <ul class="space-y-4 text-sm flex-grow">
+                            <li class="border-b border-gray-100 pb-2">
+                                <strong>Toolchain:</strong> OpenCV, MediaPipe, YOLO
+                            </li>
+                            <li class="border-b border-gray-100 pb-2">
+                                <strong>Goal:</strong> 工程产品, 计算机专业申请
+                            </li>
+                            <li>
+                                <strong>AI Coach:</strong> 姿态识别与实时纠错系统。
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide H3: Deep Dive Track A (Modeling) -->
+            <section>
+                <div class="grid grid-cols-12 gap-4 h-full">
+                    <div class="col-span-12">
+                        <h2 class="text-3xl font-bold">科研深潜：系统建模</h2>
+                    </div>
+                    <div class="col-span-8 bento-card gs-anim-up">
+                        <h4 class="font-bold text-lg mb-4">SIR 传染病模型 & 优化</h4>
+                        <div class="h-48 bg-gray-50 rounded border border-gray-200 flex items-center justify-center relative">
+                            <!-- Simulated Chart -->
+                            <svg viewBox="0 0 300 100" class="w-full h-full p-4">
+                                <path d="M10,90 Q50,10 90,90" fill="none" stroke="#E31937" stroke-width="2"/>
+                                <path d="M10,10 Q150,90 290,10" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-dasharray="4"/>
+                            </svg>
+                            <span class="absolute top-2 right-4 text-xs font-mono text-tesla">Infected (I)</span>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-4">
+                            <div class="text-xs p-2 bg-orange-50 rounded">
+                                <strong>Model Analysis Agent:</strong> 自动分析参数敏感度。
+                            </div>
+                            <div class="text-xs p-2 bg-orange-50 rounded">
+                                <strong>Optimization Agent:</strong> 探索参数空间寻找最优解。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 bento-card bg-gray-900 text-white flex flex-col justify-center gs-anim-right">
+                        <div class="text-4xl font-bold mb-2">HIMCM</div>
+                        <p class="text-sm opacity-80">High School Mathematical Contest in Modeling</p>
+                        <hr class="border-gray-700 my-4">
+                        <p class="text-xs">冲击国际顶级奖项，产出高水平学术论文。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide H4: Deep Dive Track B (Computer Vision) -->
+            <section>
+                <div class="grid grid-cols-12 gap-4 h-full">
+                    <div class="col-span-12">
+                        <h2 class="text-3xl font-bold">工程实践：AI 体能觉醒</h2>
+                    </div>
+                    <div class="col-span-5 bento-card flex flex-col justify-between gs-anim-left">
+                        <div>
+                            <h4 class="font-bold text-xl mb-2">Tech Stack</h4>
+                            <ul class="text-sm space-y-2 font-mono text-gray-600">
+                                <li>> import cv2 (OpenCV)</li>
+                                <li>> import mediapipe as mp</li>
+                                <li>> model = YOLO('v8.pt')</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4">
+                            <h4 class="font-bold text-xl mb-2">Logic</h4>
+                            <p class="text-sm">IF 膝关节内扣 THEN 标记错误</p>
+                            <p class="text-sm">Real-time Feedback Loop</p>
+                        </div>
+                    </div>
+                    <div class="col-span-7 bento-card relative overflow-hidden gs-anim-right">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-10">
+                            <i class="fa-solid fa-person text-9xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 relative z-10">Project: AI Personal Coach</h3>
+                        <div class="grid grid-cols-2 gap-4 relative z-10">
+                            <div class="border border-tesla rounded p-3 bg-white/80">
+                                <h5 class="font-bold text-sm">视觉启蒙</h5>
+                                <p class="text-xs text-gray-500">关键点检测 (33 Keypoints)</p>
+                            </div>
+                            <div class="border border-tesla rounded p-3 bg-white/80">
+                                <h5 class="font-bold text-sm">数据分析</h5>
+                                <p class="text-xs text-gray-500">动作角度计算 & 可视化</p>
+                            </div>
+                            <div class="border border-tesla rounded p-3 bg-white/80">
+                                <h5 class="font-bold text-sm">产品开发</h5>
+                                <p class="text-xs text-gray-500">GUI 界面 & 报告生成</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide H5: Outcome -->
+            <section>
+                <div class="flex flex-col items-center justify-center h-full text-center">
+                    <h2 class="text-4xl font-bold mb-8">高中阶段核心产出</h2>
+                    <div class="grid grid-cols-3 gap-6 w-full max-w-5xl">
+                        <div class="bento-card py-10 hover:bg-tesla hover:text-white group transition-colors duration-500 gs-anim-up">
+                            <i class="fa-solid fa-scroll text-4xl mb-4 group-hover:text-white text-tesla"></i>
+                            <h4 class="font-bold text-xl">学术论文</h4>
+                            <p class="text-xs mt-2 opacity-70">Research Papers</p>
+                        </div>
+                        <div class="bento-card py-10 hover:bg-tesla hover:text-white group transition-colors duration-500 gs-anim-up delay-100">
+                            <i class="fa-solid fa-medal text-4xl mb-4 group-hover:text-white text-tesla"></i>
+                            <h4 class="font-bold text-xl">顶级竞赛奖项</h4>
+                            <p class="text-xs mt-2 opacity-70">HIMCM / AMC</p>
+                        </div>
+                        <div class="bento-card py-10 hover:bg-tesla hover:text-white group transition-colors duration-500 gs-anim-up delay-200">
+                            <i class="fa-solid fa-laptop-code text-4xl mb-4 group-hover:text-white text-tesla"></i>
+                            <h4 class="font-bold text-xl">工程产品原型</h4>
+                            <p class="text-xs mt-2 opacity-70">Working Prototypes</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= NEW SLIDE: EDUCATIONAL EQUITY ================= -->
+            <section>
+                <div class="grid grid-cols-12 grid-rows-6 gap-4 h-full">
+                    
+                    <!-- Header -->
+                    <div class="col-span-12 row-span-1 flex items-center">
+                        <div class="bg-gray-800 text-white px-4 py-1 rounded-full text-sm font-bold mr-4">EQUITY & INCLUSION</div>
+                        <h2 class="text-3xl font-bold">技术平权：让创意超越门槛</h2>
+                    </div>
+
+                    <!-- Left Card: The Shift in Paradigm -->
+                    <div class="col-span-4 row-span-5 bento-card flex flex-col justify-between gs-anim-left">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6">打破“学霸”垄断</h3>
+                            <div class="mb-6 opacity-50">
+                                <h5 class="text-sm font-bold uppercase text-gray-500 mb-1">Before AI</h5>
+                                <p class="text-sm border-l-2 border-gray-300 pl-3">
+                                    顶级竞赛是<span class="font-bold text-black">前 5% 优等生</span>的特权。<br>
+                                    门槛：复杂的语法、晦涩的公式。
+                                </p>
+                            </div>
+                            <div>
+                                <h5 class="text-sm font-bold uppercase text-tesla mb-1">With AI</h5>
+                                <p class="text-sm border-l-2 border-tesla pl-3 font-medium">
+                                    <span class="text-tesla font-bold">每一个</span>有想法的孩子都能入场。<br>
+                                    核心：独特的洞察、逻辑与创造力。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <i class="fa-solid fa-scale-balanced text-4xl text-gray-200"></i>
+                        </div>
+                    </div>
+
+                    <!-- Right Top Card: Multimodal Capabilities -->
+                    <div class="col-span-8 row-span-3 bento-card relative overflow-hidden gs-anim-right">
+                        <div class="absolute top-4 right-4 text-tesla opacity-10 text-6xl font-black">LLM</div>
+                        <h3 class="text-xl font-bold mb-6">LLM 多模态能力的桥梁作用</h3>
+                        
+                        <!-- Visualization of Transformation -->
+                        <div class="flex items-center justify-between px-4">
+                            <!-- Student Input -->
+                            <div class="text-center w-1/4">
+                                <div class="w-12 h-12 mx-auto bg-orange-100 rounded-full flex items-center justify-center mb-2 text-orange-600">
+                                    <i class="fa-solid fa-lightbulb"></i>
+                                </div>
+                                <h5 class="font-bold text-sm">Idea / 想法</h5>
+                                <p class="text-xs text-gray-500 mt-1">"我想模拟交通拥堵"</p>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div class="flex-1 flex flex-col items-center px-2">
+                                <div class="w-full h-1 bg-gray-200 relative">
+                                    <div class="absolute left-0 top-0 h-full bg-tesla w-1/2 animate-pulse"></div>
+                                </div>
+                                <span class="text-xs font-mono text-tesla bg-white px-2 -mt-2">AI Translation</span>
+                            </div>
+
+                            <!-- AI Core -->
+                            <div class="text-center w-1/4">
+                                <div class="w-16 h-16 mx-auto bg-gray-900 rounded-xl flex items-center justify-center mb-2 text-white border-2 border-tesla shadow-lg shadow-red-500/20">
+                                    <i class="fa-solid fa-wand-magic-sparkles text-2xl"></i>
+                                </div>
+                                <h5 class="font-bold text-sm">Multimodal AI</h5>
+                                <p class="text-xs text-gray-500 mt-1">Code Gen & Data Viz</p>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div class="flex-1 flex flex-col items-center px-2">
+                                <div class="w-full h-1 bg-gray-200"></div>
+                            </div>
+
+                            <!-- Output -->
+                            <div class="text-center w-1/4">
+                                <div class="w-12 h-12 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-2 text-blue-600">
+                                    <i class="fa-solid fa-trophy"></i>
+                                </div>
+                                <h5 class="font-bold text-sm">Result / 成果</h5>
+                                <p class="text-xs text-gray-500 mt-1">复杂模型 & 论文</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Bottom Card: Specific Examples -->
+                    <div class="col-span-8 row-span-2 bento-card bg-tesla text-white flex items-center justify-around gs-anim-up delay-100">
+                        <div class="text-center px-4">
+                            <i class="fa-solid fa-pen-nib text-2xl mb-2 opacity-80"></i>
+                            <h4 class="font-bold">语意 -> 代码</h4>
+                            <p class="text-xs opacity-70 mt-1">自然语言描述逻辑<br>AI 编写 Python</p>
+                        </div>
+                        <div class="h-10 w-px bg-white opacity-30"></div>
+                        <div class="text-center px-4">
+                            <i class="fa-solid fa-image text-2xl mb-2 opacity-80"></i>
+                            <h4 class="font-bold">草图 -> 原型</h4>
+                            <p class="text-xs opacity-70 mt-1">手绘 UI 草图<br>AI 生成前端界面</p>
+                        </div>
+                        <div class="h-10 w-px bg-white opacity-30"></div>
+                        <div class="text-center px-4">
+                            <i class="fa-solid fa-chart-line text-2xl mb-2 opacity-80"></i>
+                            <h4 class="font-bold">数据 -> 洞察</h4>
+                            <p class="text-xs opacity-70 mt-1">上传 Excel 表格<br>AI 自动建模分析</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ================= CONCLUSION ================= -->
+            <section>
+                <div class="h-full flex flex-col items-center justify-center text-center">
+                    <div class="bento-card p-16 gs-anim-scale">
+                        <h1 class="text-5xl font-black mb-6">培养未来的创新领军人才</h1>
+                        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                            从“画出概念”到“思想导演”，再到“深海远航”。<br>
+                            这是一个将 AI 素养、编程技能、数学思维、艺术品味和科学精神融为一体的旅程。
+                        </p>
+                        <div class="w-24 h-1 bg-tesla mx-auto"></div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </div>
 
-    <!-- Frameworks -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
     <script>
+        // Initialize Reveal.js
         Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
             hash: true,
-            slideNumber: 'c/t',
+            width: 1280,
+            height: 720,
+            margin: 0.04,
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            view: 'scroll', // Enable scroll view if desired, though slide is standard
         });
+
+        // GSAP Animations Hook
+        Reveal.on('slidechanged', event => {
+            // Reset animations for current slide elements
+            const currentSlide = event.currentSlide;
+            
+            // Animate Up
+            const upElements = currentSlide.querySelectorAll('.gs-anim-up');
+            if(upElements.length) {
+                gsap.fromTo(upElements, 
+                    { y: 50, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out" }
+                );
+            }
+
+            // Animate Left
+            const leftElements = currentSlide.querySelectorAll('.gs-anim-left');
+            if(leftElements.length) {
+                gsap.fromTo(leftElements, 
+                    { x: -50, opacity: 0 },
+                    { x: 0, opacity: 1, duration: 0.8, delay: 0.1, ease: "power3.out" }
+                );
+            }
+
+            // Animate Right
+            const rightElements = currentSlide.querySelectorAll('.gs-anim-right');
+            if(rightElements.length) {
+                gsap.fromTo(rightElements, 
+                    { x: 50, opacity: 0 },
+                    { x: 0, opacity: 1, duration: 0.8, delay: 0.1, ease: "power3.out" }
+                );
+            }
+            
+            // Animate Down
+            const downElements = currentSlide.querySelectorAll('.gs-anim-down');
+            if(downElements.length) {
+                gsap.fromTo(downElements, 
+                    { y: -50, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+                );
+            }
+
+            // Animate Scale
+            const scaleElements = currentSlide.querySelectorAll('.gs-anim-scale');
+            if(scaleElements.length) {
+                gsap.fromTo(scaleElements, 
+                    { scale: 0.9, opacity: 0 },
+                    { scale: 1, opacity: 1, duration: 1, ease: "elastic.out(1, 0.75)" }
+                );
+            }
+        });
+
+        // Trigger animation for the first slide on load
+        window.addEventListener('load', () => {
+            const firstSlide = document.querySelector('.slides section');
+            const elements = firstSlide.querySelectorAll('.gs-anim-up');
+            gsap.fromTo(elements, 
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power3.out" }
+            );
+        });
+
+        // P5.js Background Script
+        function setup() {
+            let canvas = createCanvas(windowWidth, windowHeight);
+            canvas.parent('p5-container');
+            noStroke();
+        }
+
+        function draw() {
+            clear();
+            // Subtle floating particles
+            let t = millis() / 1000;
+            for (let i = 0; i < 50; i++) {
+                let x = noise(i, t * 0.1) * width;
+                let y = noise(i + 100, t * 0.1) * height;
+                let size = noise(i + 200, t * 0.1) * 20;
+                
+                // Colors: Tesla Red low opacity or Orange
+                if (i % 3 == 0) {
+                    fill(227, 25, 55, 10); // Red
+                } else {
+                    fill(255, 165, 0, 15); // Orange
+                }
+                circle(x, y, size);
+            }
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+        }
     </script>
 </body>
 </html>
