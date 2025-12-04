@@ -3,154 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iron Pascal WOD - 1920x1080</title>
+    <title>Iron Pascal WOD - Display Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Roboto:wght@700;900&family=Noto+Sans+SC:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+SC:wght@400;700&display=swap');
-
         :root {
-            --bg-color: #121212;
-            --hex-bg: #1e1e1e;
-            --hex-border: #333;
-            --text-main: #ffffff;
-            --text-sub: #aaaaaa;
+            --bg-dark: #0a0a0a;
+            --bg-panel: #141414;
+            --grid-line: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
             
             /* Intensity Colors */
-            --color-barbell: #3b82f6; /* Blue - Tech Barbell */
-            --color-gym: #eab308;     /* Yellow - Gymnastics/Body */
-            --color-metcon: #f97316;  /* Orange - Cardio */
-            --color-boss: #ef4444;    /* Red - Thruster */
+            --c-strength: #00d2ff; /* Cyan for Low Reps/Strength */
+            --c-tech: #ffc107;     /* Amber for Mid Reps/Tech */
+            --c-burn: #ff2e63;     /* Red for High Reps/Pain */
+            --c-core: #adff2f;     /* Green/Lime for Core */
         }
 
         body {
             margin: 0;
             padding: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Noto Sans SC', sans-serif;
-            overflow: hidden; /* Prevent scroll for fixed display */
+            width: 1920px;
+            height: 1080px;
+            background-color: var(--bg-dark);
+            /* Industrial Grid Background */
+            background-image: 
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: var(--text-primary);
+            font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+            overflow: hidden; /* Lock layout for display */
             display: flex;
             flex-direction: column;
         }
 
-        /* Header Section */
+        /* Header Styling */
         header {
-            height: 120px;
+            height: 100px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 60px;
-            border-bottom: 2px solid #333;
-            background: linear-gradient(to bottom, #1a1a1a, #121212);
+            background: rgba(20, 20, 20, 0.9);
+            border-bottom: 4px solid #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            z-index: 10;
         }
 
-        .title-box h1 {
+        .header-left h1 {
             font-family: 'Black Ops One', cursive;
-            font-size: 3.5rem;
+            font-size: 48px;
             margin: 0;
-            letter-spacing: 4px;
-            color: var(--text-main);
             text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .title-box span {
-            color: var(--color-boss);
+        .header-left .subtitle {
+            color: var(--text-secondary);
+            font-size: 18px;
+            letter-spacing: 1px;
         }
 
-        .info-box {
+        .header-right {
             text-align: right;
         }
 
-        .info-box .rx {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--color-barbell);
+        .header-right .rx-weight {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--c-strength);
         }
 
-        .info-box .sub {
-            font-size: 1rem;
-            color: var(--text-sub);
+        .header-right .rx-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
         }
 
-        /* Main SVG Container */
-        #visualization {
-            flex-grow: 1;
+        /* Main Visualization Area */
+        #viz-container {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
             position: relative;
+            width: 100%;
         }
 
         svg {
             width: 100%;
             height: 100%;
-            filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+            /* Add slight perspective/depth */
+            filter: drop-shadow(0 0 15px rgba(0,0,0,0.6));
         }
 
-        /* Node Styling */
-        .node-shape {
+        /* SVG Elements styling */
+        .node-rect {
             stroke: rgba(255,255,255,0.1);
-            stroke-width: 1px;
+            stroke-width: 2px;
             transition: all 0.3s ease;
+            rx: 8; /* Rounded corners */
         }
 
-        .node-group:hover .node-shape {
+        .node-group {
+            cursor: default;
+        }
+
+        /* Hover Effect */
+        .node-group:hover .node-rect {
             stroke: #fff;
-            stroke-width: 3px;
+            stroke-width: 4px;
             filter: brightness(1.3);
+            transform: scale(1.02);
         }
 
         .text-abbr {
             font-family: 'Black Ops One', cursive;
-            font-size: 22px;
+            font-size: 28px;
             fill: #fff;
             text-anchor: middle;
-            pointer-events: none;
+            dominant-baseline: middle;
+            filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.8));
         }
 
         .text-cn {
-            font-size: 12px;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
             fill: rgba(255,255,255,0.9);
-            font-weight: bold;
             text-anchor: middle;
-            pointer-events: none;
+            dominant-baseline: middle;
         }
 
-        .text-count {
-            font-size: 10px;
-            fill: rgba(255,255,255,0.4);
+        .text-val {
+            font-family: 'Roboto', sans-serif;
+            font-size: 12px;
+            fill: rgba(0,0,0,0.6);
+            font-weight: 900;
             text-anchor: middle;
-            pointer-events: none;
         }
 
-        /* Legend at bottom */
-        .legend {
+        .rep-badge {
+            fill: rgba(255,255,255,0.8);
+        }
+
+        /* Footer Legend */
+        footer {
             height: 60px;
+            background: rgba(0,0,0,0.3);
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
-            background: #0f0f0f;
+            gap: 60px;
             border-top: 1px solid #333;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
-            font-size: 1rem;
-            color: var(--text-sub);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 16px;
+            color: #ccc;
+            font-weight: bold;
         }
 
         .dot {
-            width: 14px;
-            height: 14px;
-            margin-right: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 2px;
-            transform: rotate(45deg);
+            margin-right: 10px;
+            box-shadow: 0 0 8px currentColor;
         }
 
     </style>
@@ -158,145 +187,158 @@
 <body>
 
     <header>
-        <div class="title-box">
-            <h1>Iron <span>Pascal</span></h1>
+        <div class="header-left">
+            <h1>IRON PASCAL</h1>
+            <div class="subtitle">BARBELL COMPLEX & METABOLIC CONDITIONING</div>
         </div>
-        <div class="info-box">
-            <div class="rx">Rx: 40kg / 25kg</div>
-            <div class="sub">Barbell Focused • 7 Rounds • For Time</div>
+        <div class="header-right">
+            <div class="rx-label">Prescribed Weight (Rx)</div>
+            <div class="rx-weight">40KG / 25KG</div>
         </div>
     </header>
 
-    <div id="visualization">
-        <!-- SVG injected here -->
+    <div id="viz-container">
+        <!-- SVG content will be injected via JS -->
     </div>
 
-    <div class="legend">
-        <div class="legend-item"><div class="dot" style="background: var(--color-barbell)"></div>Barbell (杠铃)</div>
-        <div class="legend-item"><div class="dot" style="background: var(--color-gym)"></div>Gymnastics/Core (体操/核心)</div>
-        <div class="legend-item"><div class="dot" style="background: var(--color-metcon)"></div>MetCon (代谢)</div>
-        <div class="legend-item"><div class="dot" style="background: var(--color-boss)"></div>The Boss (痛苦之王)</div>
-    </div>
+    <footer>
+        <div class="legend-item"><div class="dot" style="background-color: var(--c-strength); box-shadow: 0 0 10px var(--c-strength);"></div>Strength (力量)</div>
+        <div class="legend-item"><div class="dot" style="background-color: var(--c-tech); box-shadow: 0 0 10px var(--c-tech);"></div>Technique (技巧)</div>
+        <div class="legend-item"><div class="dot" style="background-color: var(--c-core); box-shadow: 0 0 10px var(--c-core);"></div>Core (核心)</div>
+        <div class="legend-item"><div class="dot" style="background-color: var(--c-burn); box-shadow: 0 0 10px var(--c-burn);"></div>MetCon (代谢)</div>
+    </footer>
 
 <script>
-    // 1920x1080 Optimization
-    const WIDTH = 1920;
-    const HEIGHT = 900; // Height excluding header/footer
-    const ROWS = 7;
-
-    // Movement Data derived from Board + Logic
-    const movementMap = {
-        1:  { abbr: "DL", cn: "硬拉", type: "barbell" },
-        2:  { abbr: "PP", cn: "借力推", type: "barbell" },
-        3:  { abbr: "FS", cn: "前蹲", type: "barbell" },
-        4:  { abbr: "HPC", cn: "膝上高翻", type: "barbell" },
-        5:  { abbr: "V-UP", cn: "两头起", type: "gym" },
-        6:  { abbr: "BoB", cn: "过杆波比", type: "metcon" }, // Burpee Over Bar
-        10: { abbr: "PULL", cn: "引体向上", type: "gym" },
-        15: { abbr: "PUSH", cn: "俯卧撑", type: "gym" },
-        20: { abbr: "THRUSTER", cn: "火箭推", type: "boss" }
+    // --- Configuration ---
+    const CONFIG = {
+        rows: 7,
+        svgWidth: 1920,
+        svgHeight: 920, // Height minus header/footer
+        nodeWidth: 160, // Wider blocks for wide screen
+        nodeHeight: 85,
+        verticalSpacing: 105, // Distance between rows
+        horizontalSpacing: 10 // Gap between blocks
     };
 
-    function getColor(type) {
-        const colors = {
-            'barbell': '#3b82f6',
-            'gym': '#eab308',
-            'metcon': '#f97316',
-            'boss': '#ef4444'
-        };
-        return colors[type] || '#444';
-    }
+    // --- Data Mapping (Based on The Iron Pascal Plan) ---
+    const MOVEMENT_DB = {
+        1:  { abbr: "DL",       cn: "硬拉",         cat: "strength" },
+        2:  { abbr: "PP",       cn: "借力推",       cat: "strength" },
+        3:  { abbr: "FS",       cn: "前蹲",         cat: "strength" },
+        4:  { abbr: "HPC",      cn: "膝上高翻",     cat: "strength" },
+        5:  { abbr: "V-UP",     cn: "两头起",       cat: "core" },
+        6:  { abbr: "B.O.B",    cn: "过杆波比",     cat: "metcon" },
+        10: { abbr: "PULL-UP",  cn: "引体向上",     cat: "tech" },
+        15: { abbr: "PUSH-UP",  cn: "俯卧撑",       cat: "tech" },
+        20: { abbr: "THRUSTER", cn: "火箭推",       cat: "burn" }
+    };
 
-    // Pascal Logic
-    function generatePascalTriangle(n) {
-        let triangle = [];
+    const COLOR_MAP = {
+        "strength": "#00d2ff", // Blue
+        "tech":     "#ffc107", // Amber
+        "core":     "#adff2f", // Lime
+        "burn":     "#ff2e63"  // Red
+    };
+
+    // --- Pascal's Triangle Logic ---
+    function getPascalData(n) {
+        let result = [];
         for (let i = 0; i < n; i++) {
-            triangle[i] = new Array(i + 1);
-            triangle[i][0] = 1;
-            triangle[i][i] = 1;
-            for (let j = 1; j < i; j++) {
-                triangle[i][j] = triangle[i-1][j-1] + triangle[i-1][j];
+            result[i] = [];
+            for (let j = 0; j <= i; j++) {
+                if (j === 0 || j === i) {
+                    result[i].push(1);
+                } else {
+                    result[i].push(result[i-1][j-1] + result[i-1][j]);
+                }
             }
         }
-        return triangle;
+        return result;
     }
 
-    function render() {
-        const container = document.getElementById('visualization');
+    // --- Render Function ---
+    function init() {
+        const container = document.getElementById('viz-container');
+        const triangle = getPascalData(CONFIG.rows);
+        
         const svgNS = "http://www.w3.org/2000/svg";
         const svg = document.createElementNS(svgNS, "svg");
-        svg.setAttribute("viewBox", `0 0 ${WIDTH} ${HEIGHT}`);
-        
-        const triangle = generatePascalTriangle(ROWS);
-        
-        // Layout calculations for Wide Screen
-        const startY = 80;
-        const ySpacing = 110; // Vertical distance between rows
-        const nodeWidth = 130; // Width of the shape
-        const nodeHeight = 80;  // Height of the shape
-        
+        svg.setAttribute("viewBox", `0 0 ${CONFIG.svgWidth} ${CONFIG.svgHeight}`);
+
+        const centerX = CONFIG.svgWidth / 2;
+        const startY = 80; // Top padding
+
         triangle.forEach((row, rowIndex) => {
-            const rowLen = row.length;
-            // Calculate total width of this row to center it
-            const totalRowWidth = rowLen * (nodeWidth + 20) - 20; 
-            const startX = (WIDTH - totalRowWidth) / 2;
+            // Calculate total width of the current row to center it
+            const rowTotalWidth = row.length * CONFIG.nodeWidth + (row.length - 1) * CONFIG.horizontalSpacing;
+            const startX = centerX - (rowTotalWidth / 2);
 
             row.forEach((val, colIndex) => {
-                const data = movementMap[val] || { abbr: "REST", cn: "休息", type: "gym" };
-                
-                const x = startX + colIndex * (nodeWidth + 20);
-                const y = startY + rowIndex * ySpacing;
-                
+                // Get Movement Data
+                const move = MOVEMENT_DB[val] || { abbr: "REST", cn: "休息", cat: "core" };
+                const color = COLOR_MAP[move.cat] || "#555";
+
+                const x = startX + colIndex * (CONFIG.nodeWidth + CONFIG.horizontalSpacing);
+                const y = startY + rowIndex * CONFIG.verticalSpacing;
+
+                // Create Group
                 const g = document.createElementNS(svgNS, "g");
                 g.setAttribute("class", "node-group");
-                g.style.transformBox = "fill-box";
-                g.style.transformOrigin = "center";
 
-                // Draw Diamond/Rhombus Shape for Tech feel
-                const shape = document.createElementNS(svgNS, "polygon");
-                // Creating a cut-corner rectangle (techno shape)
-                const points = `
-                    ${x + 10},${y} 
-                    ${x + nodeWidth - 10},${y} 
-                    ${x + nodeWidth},${y + 10} 
-                    ${x + nodeWidth},${y + nodeHeight - 10} 
-                    ${x + nodeWidth - 10},${y + nodeHeight} 
-                    ${x + 10},${y + nodeHeight} 
-                    ${x},${y + nodeHeight - 10} 
-                    ${x},${y + 10}
-                `;
-                
-                shape.setAttribute("points", points);
-                shape.setAttribute("fill", getColor(data.type));
-                shape.setAttribute("class", "node-shape");
-                // Slight opacity to blend with dark bg
-                shape.setAttribute("fill-opacity", "0.85"); 
+                // 1. Main Block (Rect with rounded corners)
+                const rect = document.createElementNS(svgNS, "rect");
+                rect.setAttribute("x", x);
+                rect.setAttribute("y", y);
+                rect.setAttribute("width", CONFIG.nodeWidth);
+                rect.setAttribute("height", CONFIG.nodeHeight);
+                rect.setAttribute("fill", color);
+                rect.setAttribute("fill-opacity", "0.15"); // Low opacity background
+                rect.setAttribute("stroke", color);
+                rect.setAttribute("class", "node-rect");
+                g.appendChild(rect);
 
-                // Number Label (Top Left corner)
-                const countText = document.createElementNS(svgNS, "text");
-                countText.setAttribute("x", x + nodeWidth/2);
-                countText.setAttribute("y", y + 15);
-                countText.setAttribute("class", "text-count");
-                countText.textContent = val;
+                // 2. Top Bar (Color Indicator)
+                const topBar = document.createElementNS(svgNS, "rect");
+                topBar.setAttribute("x", x);
+                topBar.setAttribute("y", y);
+                topBar.setAttribute("width", CONFIG.nodeWidth);
+                topBar.setAttribute("height", 6);
+                topBar.setAttribute("rx", 3); // Top rounded
+                topBar.setAttribute("fill", color);
+                g.appendChild(topBar);
 
-                // Abbr Text
-                const abbrText = document.createElementNS(svgNS, "text");
-                abbrText.setAttribute("x", x + nodeWidth/2);
-                abbrText.setAttribute("y", y + 48);
-                abbrText.setAttribute("class", "text-abbr");
-                abbrText.textContent = data.abbr;
+                // 3. Rep Count Badge (Small circle top left)
+                const badge = document.createElementNS(svgNS, "circle");
+                badge.setAttribute("cx", x + 20);
+                badge.setAttribute("cy", y + 25);
+                badge.setAttribute("r", 12);
+                badge.setAttribute("fill", color);
+                badge.setAttribute("class", "rep-badge");
+                g.appendChild(badge);
 
-                // CN Text
-                const cnText = document.createElementNS(svgNS, "text");
-                cnText.setAttribute("x", x + nodeWidth/2);
-                cnText.setAttribute("y", y + 68);
-                cnText.setAttribute("class", "text-cn");
-                cnText.textContent = data.cn;
+                const badgeText = document.createElementNS(svgNS, "text");
+                badgeText.setAttribute("x", x + 20);
+                badgeText.setAttribute("y", y + 29);
+                badgeText.setAttribute("class", "text-val");
+                badgeText.textContent = val;
+                g.appendChild(badgeText);
 
-                g.appendChild(shape);
-                g.appendChild(countText);
-                g.appendChild(abbrText);
-                g.appendChild(cnText);
+                // 4. Text: English Abbr
+                const txtAbbr = document.createElementNS(svgNS, "text");
+                txtAbbr.setAttribute("x", x + CONFIG.nodeWidth / 2);
+                txtAbbr.setAttribute("y", y + CONFIG.nodeHeight / 2 - 5);
+                txtAbbr.setAttribute("class", "text-abbr");
+                txtAbbr.textContent = move.abbr;
+                g.appendChild(txtAbbr);
+
+                // 5. Text: Chinese Name
+                const txtCn = document.createElementNS(svgNS, "text");
+                txtCn.setAttribute("x", x + CONFIG.nodeWidth / 2);
+                txtCn.setAttribute("y", y + CONFIG.nodeHeight / 2 + 22);
+                txtCn.setAttribute("class", "text-cn");
+                txtCn.textContent = move.cn;
+                g.appendChild(txtCn);
+
                 svg.appendChild(g);
             });
         });
@@ -304,7 +346,9 @@
         container.appendChild(svg);
     }
 
-    render();
+    // Run on load
+    init();
+
 </script>
 </body>
 </html>
