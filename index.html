@@ -3,116 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CrossFit Pascal's WOD</title>
+    <title>Iron Pascal WOD - 1920x1080</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+SC:wght@400;700&display=swap');
+
         :root {
-            --bg-color: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --accent-low: #4ade80;   /* Green for low intensity */
-            --accent-mid: #fbbf24;   /* Amber for mid intensity */
-            --accent-high: #ef4444;  /* Red for high intensity */
-            --card-bg: #262626;
+            --bg-color: #121212;
+            --hex-bg: #1e1e1e;
+            --hex-border: #333;
+            --text-main: #ffffff;
+            --text-sub: #aaaaaa;
+            
+            /* Intensity Colors */
+            --color-barbell: #3b82f6; /* Blue - Tech Barbell */
+            --color-gym: #eab308;     /* Yellow - Gymnastics/Body */
+            --color-metcon: #f97316;  /* Orange - Cardio */
+            --color-boss: #ef4444;    /* Red - Thruster */
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
             margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Noto Sans SC', sans-serif;
+            overflow: hidden; /* Prevent scroll for fixed display */
             display: flex;
             flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
         }
 
+        /* Header Section */
         header {
-            text-align: center;
-            margin-bottom: 30px;
+            height: 120px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+            border-bottom: 2px solid #333;
+            background: linear-gradient(to bottom, #1a1a1a, #121212);
         }
 
-        h1 {
+        .title-box h1 {
+            font-family: 'Black Ops One', cursive;
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 4px;
+            color: var(--text-main);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            border-bottom: 3px solid var(--accent-high);
-            display: inline-block;
-            padding-bottom: 5px;
         }
 
-        p.subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
+        .title-box span {
+            color: var(--color-boss);
         }
 
-        .container {
+        .info-box {
+            text-align: right;
+        }
+
+        .info-box .rx {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-barbell);
+        }
+
+        .info-box .sub {
+            font-size: 1rem;
+            color: var(--text-sub);
+        }
+
+        /* Main SVG Container */
+        #visualization {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
-            max-width: 1000px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            padding: 20px;
-            overflow-x: auto; /* Allow scroll on small screens */
-            text-align: center;
+            position: relative;
         }
 
-        /* SVG Styling */
         svg {
-            display: block;
-            margin: 0 auto;
-            font-family: 'Courier New', monospace;
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
         }
 
+        /* Node Styling */
         .node-shape {
-            stroke: #333;
-            stroke-width: 2px;
-            transition: transform 0.2s ease, filter 0.2s ease;
-            cursor: pointer;
+            stroke: rgba(255,255,255,0.1);
+            stroke-width: 1px;
+            transition: all 0.3s ease;
         }
 
         .node-group:hover .node-shape {
-            transform: scale(1.1);
-            filter: brightness(1.2);
-            z-index: 10;
+            stroke: #fff;
+            stroke-width: 3px;
+            filter: brightness(1.3);
         }
 
-        .node-text-name {
-            font-weight: bold;
-            font-size: 14px;
+        .text-abbr {
+            font-family: 'Black Ops One', cursive;
+            font-size: 22px;
             fill: #fff;
+            text-anchor: middle;
             pointer-events: none;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
-        .node-text-num {
+        .text-cn {
+            font-size: 12px;
+            fill: rgba(255,255,255,0.9);
+            font-weight: bold;
+            text-anchor: middle;
+            pointer-events: none;
+        }
+
+        .text-count {
             font-size: 10px;
-            fill: rgba(255,255,255,0.7);
+            fill: rgba(255,255,255,0.4);
+            text-anchor: middle;
             pointer-events: none;
         }
 
+        /* Legend at bottom */
         .legend {
-            margin-top: 20px;
+            height: 60px;
             display: flex;
             justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            background: #0f0f0f;
+            border-top: 1px solid #333;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 8px;
+            width: 14px;
+            height: 14px;
+            margin-right: 10px;
+            border-radius: 2px;
+            transform: rotate(45deg);
         }
 
     </style>
@@ -120,66 +158,56 @@
 <body>
 
     <header>
-        <h1>Pascal's WOD</h1>
-        <p class="subtitle">基于帕斯卡三角的 CrossFit 强度递增训练计划 <br> (7 Rounds for Quality or Time)</p>
+        <div class="title-box">
+            <h1>Iron <span>Pascal</span></h1>
+        </div>
+        <div class="info-box">
+            <div class="rx">Rx: 40kg / 25kg</div>
+            <div class="sub">Barbell Focused • 7 Rounds • For Time</div>
+        </div>
     </header>
 
-    <div class="container" id="visualization-container">
-        <!-- SVG will be injected here by JS -->
+    <div id="visualization">
+        <!-- SVG injected here -->
     </div>
 
     <div class="legend">
-        <div class="legend-item"><div class="dot" style="background: var(--accent-low)"></div>基础 (Cardio/Basic)</div>
-        <div class="legend-item"><div class="dot" style="background: var(--accent-mid)"></div>进阶 (Skill/Power)</div>
-        <div class="legend-item"><div class="dot" style="background: var(--accent-high)"></div>极限 (Heavy/Complex)</div>
+        <div class="legend-item"><div class="dot" style="background: var(--color-barbell)"></div>Barbell (杠铃)</div>
+        <div class="legend-item"><div class="dot" style="background: var(--color-gym)"></div>Gymnastics/Core (体操/核心)</div>
+        <div class="legend-item"><div class="dot" style="background: var(--color-metcon)"></div>MetCon (代谢)</div>
+        <div class="legend-item"><div class="dot" style="background: var(--color-boss)"></div>The Boss (痛苦之王)</div>
     </div>
 
 <script>
-    // Configuration
-    const ROWS = 7; 
-    const SVG_WIDTH = 900;
-    const SVG_HEIGHT = 600;
-    const NODE_RADIUS = 35; // Size of the hexagons/circles
-    const Y_SPACING = 75;
-    
-    // Mapping Logic
+    // 1920x1080 Optimization
+    const WIDTH = 1920;
+    const HEIGHT = 900; // Height excluding header/footer
+    const ROWS = 7;
+
+    // Movement Data derived from Board + Logic
     const movementMap = {
-        1: { name: "Burpee", type: "low" },
-        2: { name: "Sit-up", type: "low" },
-        3: { name: "Push-up", type: "low" },
-        4: { name: "Air Squat", type: "low" },
-        5: { name: "Box Jump", type: "mid" },
-        6: { name: "KB Swing", type: "mid" },
-        10: { name: "Wall Ball", type: "mid" },
-        15: { name: "Toes-2-Bar", type: "high" },
-        20: { name: "Thruster", type: "high" }
+        1:  { abbr: "DL", cn: "硬拉", type: "barbell" },
+        2:  { abbr: "PP", cn: "借力推", type: "barbell" },
+        3:  { abbr: "FS", cn: "前蹲", type: "barbell" },
+        4:  { abbr: "HPC", cn: "膝上高翻", type: "barbell" },
+        5:  { abbr: "V-UP", cn: "两头起", type: "gym" },
+        6:  { abbr: "BoB", cn: "过杆波比", type: "metcon" }, // Burpee Over Bar
+        10: { abbr: "PULL", cn: "引体向上", type: "gym" },
+        15: { abbr: "PUSH", cn: "俯卧撑", type: "gym" },
+        20: { abbr: "THRUSTER", cn: "火箭推", type: "boss" }
     };
 
-    // Helper: Get Color based on intensity type
-    function getColor(val) {
-        // Default logic for unmapped numbers (fallback)
-        let type = 'low';
-        if (movementMap[val]) {
-            type = movementMap[val].type;
-        } else {
-            if (val > 10) type = 'high';
-            else if (val > 4) type = 'mid';
-        }
-
-        switch(type) {
-            case 'low': return '#4ade80'; // Green
-            case 'mid': return '#fbbf24'; // Amber
-            case 'high': return '#ef4444'; // Red
-            default: return '#a0a0a0';
-        }
+    function getColor(type) {
+        const colors = {
+            'barbell': '#3b82f6',
+            'gym': '#eab308',
+            'metcon': '#f97316',
+            'boss': '#ef4444'
+        };
+        return colors[type] || '#444';
     }
 
-    // Helper: Get Movement Name
-    function getName(val) {
-        return movementMap[val] ? movementMap[val].name : "Rest";
-    }
-
-    // 1. Generate Pascal's Triangle Data
+    // Pascal Logic
     function generatePascalTriangle(n) {
         let triangle = [];
         for (let i = 0; i < n; i++) {
@@ -193,69 +221,82 @@
         return triangle;
     }
 
-    // 2. Render Logic
-    function renderTriangle() {
-        const triangle = generatePascalTriangle(ROWS);
-        const container = document.getElementById('visualization-container');
-        
-        // Create SVG element
+    function render() {
+        const container = document.getElementById('visualization');
         const svgNS = "http://www.w3.org/2000/svg";
         const svg = document.createElementNS(svgNS, "svg");
-        svg.setAttribute("width", "100%");
-        svg.setAttribute("height", SVG_HEIGHT);
-        svg.setAttribute("viewBox", `0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`);
-
-        // Calculate centering
-        const centerX = SVG_WIDTH / 2;
-        const startY = 60;
-
+        svg.setAttribute("viewBox", `0 0 ${WIDTH} ${HEIGHT}`);
+        
+        const triangle = generatePascalTriangle(ROWS);
+        
+        // Layout calculations for Wide Screen
+        const startY = 80;
+        const ySpacing = 110; // Vertical distance between rows
+        const nodeWidth = 130; // Width of the shape
+        const nodeHeight = 80;  // Height of the shape
+        
         triangle.forEach((row, rowIndex) => {
-            const rowWidth = row.length * (NODE_RADIUS * 2.2); // Width of the current row
-            const startX = centerX - (rowWidth / 2) + NODE_RADIUS * 1.1;
+            const rowLen = row.length;
+            // Calculate total width of this row to center it
+            const totalRowWidth = rowLen * (nodeWidth + 20) - 20; 
+            const startX = (WIDTH - totalRowWidth) / 2;
 
             row.forEach((val, colIndex) => {
-                const x = startX + colIndex * (NODE_RADIUS * 2.2);
-                const y = startY + rowIndex * Y_SPACING;
-                const color = getColor(val);
-                const moveName = getName(val);
-
-                // Create Group
+                const data = movementMap[val] || { abbr: "REST", cn: "休息", type: "gym" };
+                
+                const x = startX + colIndex * (nodeWidth + 20);
+                const y = startY + rowIndex * ySpacing;
+                
                 const g = document.createElementNS(svgNS, "g");
                 g.setAttribute("class", "node-group");
-                // Center transform origin for hover effect
                 g.style.transformBox = "fill-box";
                 g.style.transformOrigin = "center";
 
-                // Draw Hexagon (Polygon) or Circle. Let's do a rounded rect/pill for better text fit
-                const rect = document.createElementNS(svgNS, "rect");
-                rect.setAttribute("x", x - 40);
-                rect.setAttribute("y", y - 25);
-                rect.setAttribute("width", 80);
-                rect.setAttribute("height", 50);
-                rect.setAttribute("rx", 10);
-                rect.setAttribute("ry", 10);
-                rect.setAttribute("fill", color);
-                rect.setAttribute("class", "node-shape");
+                // Draw Diamond/Rhombus Shape for Tech feel
+                const shape = document.createElementNS(svgNS, "polygon");
+                // Creating a cut-corner rectangle (techno shape)
+                const points = `
+                    ${x + 10},${y} 
+                    ${x + nodeWidth - 10},${y} 
+                    ${x + nodeWidth},${y + 10} 
+                    ${x + nodeWidth},${y + nodeHeight - 10} 
+                    ${x + nodeWidth - 10},${y + nodeHeight} 
+                    ${x + 10},${y + nodeHeight} 
+                    ${x},${y + nodeHeight - 10} 
+                    ${x},${y + 10}
+                `;
                 
-                // Movement Text
-                const textName = document.createElementNS(svgNS, "text");
-                textName.setAttribute("x", x);
-                textName.setAttribute("y", y + 2); // slight adjustment
-                textName.setAttribute("text-anchor", "middle");
-                textName.setAttribute("class", "node-text-name");
-                textName.textContent = moveName;
+                shape.setAttribute("points", points);
+                shape.setAttribute("fill", getColor(data.type));
+                shape.setAttribute("class", "node-shape");
+                // Slight opacity to blend with dark bg
+                shape.setAttribute("fill-opacity", "0.85"); 
 
-                // Number Text (Small)
-                const textNum = document.createElementNS(svgNS, "text");
-                textNum.setAttribute("x", x);
-                textNum.setAttribute("y", y + 18);
-                textNum.setAttribute("text-anchor", "middle");
-                textNum.setAttribute("class", "node-text-num");
-                textNum.textContent = `(Val: ${val})`;
+                // Number Label (Top Left corner)
+                const countText = document.createElementNS(svgNS, "text");
+                countText.setAttribute("x", x + nodeWidth/2);
+                countText.setAttribute("y", y + 15);
+                countText.setAttribute("class", "text-count");
+                countText.textContent = val;
 
-                g.appendChild(rect);
-                g.appendChild(textName);
-                g.appendChild(textNum);
+                // Abbr Text
+                const abbrText = document.createElementNS(svgNS, "text");
+                abbrText.setAttribute("x", x + nodeWidth/2);
+                abbrText.setAttribute("y", y + 48);
+                abbrText.setAttribute("class", "text-abbr");
+                abbrText.textContent = data.abbr;
+
+                // CN Text
+                const cnText = document.createElementNS(svgNS, "text");
+                cnText.setAttribute("x", x + nodeWidth/2);
+                cnText.setAttribute("y", y + 68);
+                cnText.setAttribute("class", "text-cn");
+                cnText.textContent = data.cn;
+
+                g.appendChild(shape);
+                g.appendChild(countText);
+                g.appendChild(abbrText);
+                g.appendChild(cnText);
                 svg.appendChild(g);
             });
         });
@@ -263,10 +304,7 @@
         container.appendChild(svg);
     }
 
-    // Run
-    renderTriangle();
-
+    render();
 </script>
-
 </body>
 </html>
